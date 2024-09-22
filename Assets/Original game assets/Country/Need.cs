@@ -11,7 +11,8 @@ public class Need : MonoBehaviour
     public Needs sighnNeedType;	
 	public int currentSignValue = 0;
 	public bool locationIsUncomfortable = false;
-
+	[HideInInspector]
+	public bool isMainSign = false;
 
     [Header("Auto connections")]
 	[HideInInspector]
@@ -57,6 +58,7 @@ public class Need : MonoBehaviour
 		this.transform.localScale = Vector3.one * 1.5f;
 
 		this.GetComponent<BoxCollider>().enabled = false;
+		isMainSign = true;
 	}                                                        
 	public void SetInitialNeedSighnData(Needs sighnType,int initialValue)
     {

@@ -540,12 +540,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8765903579695465204, guid: 72bfda318eeb46145ac6a11d3bdd16b7, type: 3}
       propertyPath: m_text
-      value: End the exchange at another sign of same need(like food,cloth) and with
-        any opposite unballance.
+      value: End the exchange at another sign.
       objectReference: {fileID: 0}
     - target: {fileID: 8765903579695465204, guid: 72bfda318eeb46145ac6a11d3bdd16b7, type: 3}
       propertyPath: m_fontSize
-      value: 12.4
+      value: 19.5
       objectReference: {fileID: 0}
     - target: {fileID: 8765903579695465205, guid: 72bfda318eeb46145ac6a11d3bdd16b7, type: 3}
       propertyPath: m_SizeDelta.x

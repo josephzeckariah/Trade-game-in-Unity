@@ -18,9 +18,11 @@ public class Country : MonoBehaviour                    //holds informatin of co
 
 
 	//  memory
+		[HideInInspector]
+	public Need ourmainSign;
 	public Dictionary<Needs, int> ourCountriesNeedsAndTheirValue = new Dictionary<Needs, int>(); //////comesfrom gameManager  // for initial sighn set
 	List<Need> ourCountriesSigns = new List<Need>();
-	Need ourmainSign;
+
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	

@@ -339,8 +339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68.85822, y: 47.3128}
-  m_SizeDelta: {x: 202.8176, y: 189.612}
+  m_AnchoredPosition: {x: -72.5415, y: 51.6353}
+  m_SizeDelta: {x: 210.1843, y: 180.9693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9156822400151854386
 CanvasRenderer:
@@ -398,13 +398,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.6
+  m_fontSize: 29.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 7
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -804,4 +804,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8353488648deb014b9ba2f1a2af431ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ourHeadSignShower: {fileID: 0}
+  ourHeadTechnicalDrawer: {fileID: 0}
+  ourCanvasRectTransform: {fileID: 0}

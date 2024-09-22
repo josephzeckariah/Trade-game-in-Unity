@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+public enum ExchangeMakingState { LookingToStart, LookingToEnd }
+public struct exchangeToBeCompletedInformation { public Needs typeOfExchange; public bool otherToCompletExchangeIsMoreTHan100; }
 
 public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManager and its child ExchangeMaker are two units working together,
 													   //the mouseExchangeManager looks for  Need objects and after selecting two ,
@@ -14,6 +18,10 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	Exchange exchangeObjectBeingHeld;
 	Coroutine ourLookingToStartExchangeCoroutine;    //the coroutines memorized so that they may be stoped if needed
 	Coroutine ourLookingToEndExchangeCoroutine;
+
+
+	public static exchangeToBeCompletedInformation informationCurrentExchange;
+	public static ExchangeMakingState currentExchangeState;
 
 	private void Awake() 
 	{
@@ -60,8 +68,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 			exchangeObjectBeingHeld.ForighnOrderCancelLine();
 			//GameObject.Destroy(exchangeObjectBeingHeld); 
 
-			StopCoroutine(ourLookingToEndExchangeCoroutine); // stop current cycle 
-			ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange()); //and start next phase
+			GoFRomLookingToEndBackToLookingTOStart();
 		}
 	}
 
@@ -95,11 +102,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 
 			exchangeObjectBeingHeld = exchangeCreated;
 
-			StopCoroutine(ourLookingToStartExchangeCoroutine);           // stop current cycle 
-			ourLookingToEndExchangeCoroutine = StartCoroutine(ContinousCheckForCompletingAnExchange(sighnHit)); //and start next phase
-
-			//Signal
-			GameMaker.anEchangeStarted(sighnHit.sighnNeedType);
+			GoFromLookingToSTartToLookingToEnd(sighnHit);
 		}
 	}
 	void FunMod_CheckSighnToCompleteExchange(Need sighnHit,Need secondSignHit)
@@ -110,19 +113,51 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		bool bothSignsAreOfTHeSameType = sighnHit.sighnNeedType == secondSignHit.sighnNeedType;
 
 		bool allTheBoveBoolConditionsAreTrue = theExchangeIsNotWithTheSameSign && ValuesOfTwoSignsAreNotBothGreaterOrSmallerThan100 && secondSighnIsnotAlready100 && bothSignsAreOfTHeSameType;
+
+		/////////////////////////////////////////////////////////////
 		if (allTheBoveBoolConditionsAreTrue)      
 		{
 			exchangeObjectBeingHeld.GetComponent<Exchange>().ForighnOrderCompleteExchangeOnThisSign(sighnHit);
 
-			StopCoroutine(ourLookingToEndExchangeCoroutine); // stop current cycle 
+			GoFRomLookingToEndBackToLookingTOStart();
 
-			ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange()); //and start next phase
-
-			//Signal
-			GameMaker.anEchangeEnded(sighnHit.sighnNeedType);
+			GameMaker.numberofExchangesCompleted += 1;
+			
+			if (GameStateInformationProvider.anEchangeEnded != null)
+			{
+				GameStateInformationProvider.anEchangeEnded(sighnHit.sighnNeedType);
+			}                                                               //         -------------------------------------------------------->>>
 		}
 	}
 
+	void GoFromLookingToSTartToLookingToEnd(Need sighHit)
+	{
+		StopCoroutine(ourLookingToStartExchangeCoroutine);           // stop current cycle 
+		ourLookingToEndExchangeCoroutine = StartCoroutine(ContinousCheckForCompletingAnExchange(sighHit)); //and start next phase
+
+		currentExchangeState = ExchangeMakingState.LookingToEnd;
+		informationCurrentExchange.typeOfExchange = sighHit.sighnNeedType;
+		informationCurrentExchange.otherToCompletExchangeIsMoreTHan100 = (sighHit.currentSignValue < 100);
+		//Signal
+		/*if (GameMaker.anEchangeStarted != null)
+		{
+			GameMaker.anEchangeStarted();
+		}*/
+
+	}
+	void GoFRomLookingToEndBackToLookingTOStart()
+	{
+		StopCoroutine(ourLookingToEndExchangeCoroutine); // stop current cycle 
+
+		ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange()); //and start next phase
+
+		currentExchangeState = ExchangeMakingState.LookingToStart;
+
+	
+
+	}
+
+	
 
 
 }

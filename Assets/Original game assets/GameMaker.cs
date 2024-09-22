@@ -5,9 +5,10 @@ using UnityEditor;
 using UnityEngine;
 
 
-public enum Needs { Vegs, Fruit, Cloth, Wood };
+public enum Needs { Food,Materials,Electronics,Mechanics };
 public delegate void ResolutionDelegate(Vector2 resolution);
-public delegate void ExchangeDelegate(Needs typeOfExchange);
+//public delegate void ExchangeDelegate();
+
 
 public  class GameMaker : MonoBehaviour
 {
@@ -17,10 +18,10 @@ public  class GameMaker : MonoBehaviour
 
 	[Header("Manual connections")]
 	public  GameObject needSighnTemplateSHowInspector;
-	public  Sprite vegsSprite;
-	public  Sprite fruitSprite;                                                            //set by inspector General game data
-	public  Sprite woodSprite;
-	public Sprite clothSprite;
+	public  Sprite FoodSprite;
+	public  Sprite MaterialsSprite;                                                            //set by inspector General game data
+	public  Sprite ElectronicsSprite;
+	public Sprite MechanicsSprite;
 
 	public Sprite SmileSprite;
 	public Sprite MoneySprite;
@@ -32,23 +33,27 @@ public  class GameMaker : MonoBehaviour
 	public static GameObject needSighnTemplate;
 	//auto connection
 	NeedValueAssighnerWorker ourNeedValueAssighnerWorker;
-	ImaginationSignShower ourImaginationSignShower;
+	SignShowingManager ourSignManager;
 
 	//events	
 	public static ResolutionDelegate gameScreenSizeChanged;
-	public static ExchangeDelegate anEchangeStarted;
-	public static ExchangeDelegate anEchangeEnded;
+	//public static ExchangeDelegate anEchangeStarted;
+	//public static ExchangeDelegate anEchangeEnded;
+
+	public static bool tutorialIsOn = false;
+
+	public static int numberofExchangesCompleted = 0;
 	void Awake()
 	{
 		ourNeedValueAssighnerWorker = this.GetComponentInChildren<NeedValueAssighnerWorker>();
-		ourImaginationSignShower = this.GetComponentInChildren<ImaginationSignShower>();
+		ourSignManager = this.GetComponentInChildren<SignShowingManager>();
 
 		needSighnTemplate = needSighnTemplateSHowInspector;
 		
-		needsAssets.Add(Needs.Vegs, vegsSprite);
-		needsAssets.Add(Needs.Fruit, fruitSprite);
-		needsAssets.Add(Needs.Wood, woodSprite);
-		needsAssets.Add(Needs.Cloth, clothSprite);
+		needsAssets.Add(Needs.Food, FoodSprite);
+		needsAssets.Add(Needs.Materials, MaterialsSprite);
+		needsAssets.Add(Needs.Electronics, ElectronicsSprite);
+		needsAssets.Add(Needs.Mechanics, MechanicsSprite);
 
 		Money = MoneySprite;
 		Smile = SmileSprite;
@@ -57,11 +62,15 @@ public  class GameMaker : MonoBehaviour
 	}
 	private void Start()
 	{
-		StartCoroutine(AlwaysCeckForSCreenSizeChange());
+		//StartCoroutine(AlwaysCeckForSCreenSizeChange());
 
 		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue();
 		SubAwakeTellEachCountryToMakeThierSigns();
-		SubAwakeTellTheImaginationSignsToStart();
+				
+		if (GameStateInformationProvider.GameStarted != null)
+		{
+			GameStateInformationProvider.GameStarted();                        //         -------------------------------------------------------->>>
+		}
 	}
 	void TellAssighningWorkerToAssighnEachCountryItsNeedVAlue()
 	{
@@ -77,21 +86,18 @@ public  class GameMaker : MonoBehaviour
 		}
 	}
 
-	void SubAwakeTellTheImaginationSignsToStart()
-	{
-		ourImaginationSignShower.ForignOrderShowOpeningSccreen();
-	}
+	
 
 
 	//still unfinished
-	IEnumerator AlwaysCeckForSCreenSizeChange()
+	/*IEnumerator AlwaysCeckForSCreenSizeChange()
 	{
 		Vector2 previousScreenSize = new Vector2( Camera.main.pixelWidth, Camera.main.pixelHeight );
 		while (true)
 		{
 			if(Camera.main.pixelWidth != previousScreenSize.x || Camera.main.pixelHeight!= previousScreenSize.y)
 			{
-				Debug.Log("we need to recalculate");
+				
 				if(gameScreenSizeChanged != null)
 				{
 					gameScreenSizeChanged(new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight));
@@ -100,6 +106,6 @@ public  class GameMaker : MonoBehaviour
 			}
 			yield return new WaitForSecondsRealtime(0.2f);
 		}
-	}
+	}*/
 }
 

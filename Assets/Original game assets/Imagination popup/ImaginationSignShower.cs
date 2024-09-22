@@ -1,85 +1,155 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ImaginationSignShower : MonoBehaviour
 {
+	//properites
+	public Vector2 signDimensions = new Vector2(150, 150);
+	//manual connections
 	public OpeningSign openningScreenSign;
-	public ImaginationSign bigSignImagination;
-	public ImaginationSign smallSignImagination;
-	public ImaginationSign manyNeedsImagination;
 
-	public ImaginationSign exchangeTutorial;
-	public ImaginationSign exchangeTutorial2;
+	public List<ImaginationSign> ListOfGeneralSigns = new List<ImaginationSign>();
 
+	public List<ImaginationSign> ListOfFoodSigns = new List<ImaginationSign>();
+	public List<ImaginationSign> ListOfMaterialseSigns = new List<ImaginationSign>();
+	public List<ImaginationSign> ListOfElectronicsSigns = new List<ImaginationSign>();
+	public List<ImaginationSign> ListOfMechanicsSigns = new List<ImaginationSign>();
+
+
+
+	//public facts
+	[HideInInspector]
 	public RectTransform canvasRectTransform;
-	Vector2 signDimensions = new Vector2(150,150);
-	List<ImaginationSign> ListOfGeneralSigns = new List<ImaginationSign>();
-	List<ImaginationSign> ListOfSignsOnScreen = new List<ImaginationSign>();
 
-	//GameObject cube;
+
+	//private memory
+	List<ImaginationSign> ListOfSignsOnScreen = new List<ImaginationSign>();
+	List<ImaginationSign> ListOfSignsLeftToShow = new List<ImaginationSign>();
+
+
+	IEnumerator IenumeratorShowingGeneralSigns ;
 	private void Awake()
 	{
 		canvasRectTransform = GetComponent<RectTransform>();
-		SubAwakeAddGeneralSignsToList();
-		foreach (ImaginationSign sing in ListOfGeneralSigns)
-		{
-			Debug.Log(sing.name);
-		}
-	}
-	void SubAwakeAddGeneralSignsToList()
-	{
-		ListOfGeneralSigns.Add(bigSignImagination);
-		ListOfGeneralSigns.Add(smallSignImagination);
-		ListOfGeneralSigns.Add(manyNeedsImagination);
-
-		ListOfGeneralSigns.Add(exchangeTutorial);
-		ListOfGeneralSigns.Add(exchangeTutorial2);
+	//	GameMaker.anEchangeStarted += ExchangeWasMade;
 	}
 
-	private void Update()
-		{
-		    if (Input.GetKeyUp(KeyCode.A))
-		{
-			ShowSignInARandomLocation(bigSignImagination);
-		}
 
-
-		}
 
 	public void ForignOrderShowOpeningSccreen()
 	{
 		OpeningSign openingSign =  Instantiate(openningScreenSign, this.transform);
-		openingSign.ourHeadSignShower = this;
+		//openingSign.ourHeadSignShower = this;
 	}
 
 	public void ForignOrderOpeningSCreenClosed()
 	{
-		StartCoroutine(ForignOrderStartSignShowingCycle());
-	}
-
-	
-	 IEnumerator ForignOrderStartSignShowingCycle()
-	{	
-		yield return new WaitForSecondsRealtime(3f);
-
-		ShowSignInARandomLocation(bigSignImagination);
 		
-		yield return new WaitForSecondsRealtime(9f);
+		IenumeratorShowingGeneralSigns = (TimerShowSigns());
+	
+		StartCoroutine(IenumeratorShowingGeneralSigns);
 
-		ShowSignInARandomLocation(smallSignImagination);
-		yield return new WaitForSecondsRealtime(6f);
 
-		ShowSignInARandomLocation(manyNeedsImagination);
-		yield return new WaitForSecondsRealtime(6f);
-
-		ShowSignInARandomLocation(exchangeTutorial);
-		yield return new WaitForSecondsRealtime(10f);
-
-		ShowSignInARandomLocation(exchangeTutorial2);
-		yield return new WaitForSecondsRealtime(10f);
 	}
+
+
+	float GeneralSignShowTimer = 0;
+	IEnumerator CheckForTutorialStart()
+	{
+		while (true)
+		{
+			if (ListOfSignsLeftToShow.Contains(ListOfGeneralSigns[3]) == false) //if tutorial started
+			{
+				
+				StopCoroutine(IenumeratorShowingGeneralSigns);
+				while (true)
+				{
+					if(GameMaker.numberofExchangesCompleted >= 2)
+					{
+						StartCoroutine(IenumeratorShowingGeneralSigns);
+						yield break;
+					}
+					yield return null;
+				}
+			}
+			yield return null;
+		}
+	}
+	IEnumerator TimerShowSigns()
+	{
+		foreach (ImaginationSign sign in ListOfGeneralSigns)
+		{
+			ListOfSignsLeftToShow.Add(sign);
+		}
+		StartCoroutine(CheckForTutorialStart());
+
+		while (true)
+		{
+			//Debug.Log("ienum running at "+ GeneralSignShowTimer);
+			if (ListOfSignsLeftToShow.Count == 0)
+			{
+				break;
+			}
+
+			if(GeneralSignShowTimer > 4f)
+			{
+				ShowSignInARandomLocation(ListOfSignsLeftToShow[0]);
+				ListOfSignsLeftToShow.RemoveAt(0);
+				GeneralSignShowTimer = 0;
+			}
+
+			GeneralSignShowTimer+= Time.deltaTime;
+			yield return null;
+		}
+	}
+	bool firstExchangeWasMade = false;
+	void ExchangeWasMade()
+	{
+		if (firstExchangeWasMade == false)
+		{
+			//make exchange tutorial
+			if (ListOfSignsLeftToShow.Contains(ListOfGeneralSigns[3]))
+			{
+				ShowSignInARandomLocation(ListOfGeneralSigns[3]);
+				ListOfSignsLeftToShow.Remove(ListOfGeneralSigns[3]);
+			}
+			if (ListOfSignsLeftToShow.Contains(ListOfGeneralSigns[4]))
+			{
+				ShowSignInARandomLocation(ListOfGeneralSigns[4]);
+				ListOfSignsLeftToShow.Remove(ListOfGeneralSigns[4]);		
+			}
+			GeneralSignShowTimer = 0;
+			firstExchangeWasMade = true;
+			return;
+		}
+		//show specific need content:
+		//add to timer of general signs
+		switch(MouseExchangeManager.informationCurrentExchange.typeOfExchange)
+		{
+			case (Needs.Food):
+				ShowSignInARandomLocation(ListOfFoodSigns[ Random.Range(0,ListOfFoodSigns.Count-1) ]);
+				break;
+			case (Needs.Materials):
+				ShowSignInARandomLocation(ListOfMaterialseSigns[Random.Range(0, ListOfMaterialseSigns.Count - 1)]);
+				break;
+			case (Needs.Electronics):
+				ShowSignInARandomLocation(ListOfElectronicsSigns[Random.Range(0, ListOfElectronicsSigns.Count - 1)]);
+				break;
+			case (Needs.Mechanics):
+				ShowSignInARandomLocation(ListOfMechanicsSigns[Random.Range(0, ListOfMechanicsSigns.Count - 1)]);
+				break;
+		}
+		GeneralSignShowTimer -= 2;
+
+	}
+
+
+
 
 
 	List<Vector2> listOfMadeSignsDImensionsLeft = new List<Vector2>();
@@ -111,7 +181,7 @@ public class ImaginationSignShower : MonoBehaviour
 				
 				break;
 			case screenLocation.button:
-				transofrmOfNewSign.anchorMin = new Vector2(Random.Range(pecentageOfSignOfCanvas.x, 1 - pecentageOfSignOfCanvas.x), pecentageOfSignOfCanvas.y);
+				transofrmOfNewSign.anchorMin = new Vector2(Random.Range(pecentageOfSignOfCanvas.x*2, 1 - (pecentageOfSignOfCanvas.x*2)), pecentageOfSignOfCanvas.y);
 				break;
 			case screenLocation.right:
 				transofrmOfNewSign.anchorMin = new Vector2(1-pecentageOfSignOfCanvas.x, Random.Range(pecentageOfSignOfCanvas.y, 1 - pecentageOfSignOfCanvas.y));
@@ -251,10 +321,10 @@ public class ImaginationSignShower : MonoBehaviour
 	ImaginationSign SubFunSignFabricator(ImaginationSign signToFabricate)
 	{
 		ImaginationSign spawnedSign = Instantiate(signToFabricate, this.transform);
-		spawnedSign.ourHeadSignShower = this;
+		//spawnedSign.ourHeadSignShower = this;
 
 		ListOfSignsOnScreen.Add(spawnedSign);
-		KeepOnlyThreeSignsOnScreen();
+		//KeepOnlyThreeSignsOnScreen();
 
 		return spawnedSign;
 	}
