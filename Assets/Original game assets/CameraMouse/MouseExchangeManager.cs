@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum ExchangeMakingState { LookingToStart, LookingToEnd }
-public struct exchangeToBeCompletedInformation { public Needs typeOfExchange; public bool otherToCompletExchangeIsMoreTHan100; }
+
+
 
 public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManager and its child ExchangeMaker are two units working together,
 													   //the mouseExchangeManager looks for  Need objects and after selecting two ,
 													   //the mouseExchangeManager Calls the its coWorker ExchangeMaker to make an Exchange line connecting them.
 {
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//-//////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	//Auto connections
 	ExchangeMaker ourExchangeMaker;
 
@@ -20,14 +23,18 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	Coroutine ourLookingToEndExchangeCoroutine;
 
 
-	public static exchangeToBeCompletedInformation informationCurrentExchange;
-	public static ExchangeMakingState currentExchangeState;
+	
+	
 
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//I///////////////////////////////////////////////////////////     Initalize       /////////////////////////////////////////////////////////////
 	private void Awake() 
 	{
 		ourExchangeMaker = GetComponentInChildren<ExchangeMaker>();
 	}
-
+	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
 	private void Start()
 	{
 		ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange());  //upoun start be in (waiting to select first sign) state
@@ -135,14 +142,15 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		StopCoroutine(ourLookingToStartExchangeCoroutine);           // stop current cycle 
 		ourLookingToEndExchangeCoroutine = StartCoroutine(ContinousCheckForCompletingAnExchange(sighHit)); //and start next phase
 
-		currentExchangeState = ExchangeMakingState.LookingToEnd;
-		informationCurrentExchange.typeOfExchange = sighHit.sighnNeedType;
-		informationCurrentExchange.otherToCompletExchangeIsMoreTHan100 = (sighHit.currentSignValue < 100);
+		/////////////////////////////////////////////////////////////           signals
+		GameStateInformationProvider.currentExchangeState = ExchangeMakingState.LookingToEnd;
+		GameStateInformationProvider.informationCurrentExchange.typeOfExchange = sighHit.sighnNeedType;
+		GameStateInformationProvider.informationCurrentExchange.otherToCompletExchangeIsMoreTHan100 = (sighHit.currentSignValue < 100);
 		//Signal
-		/*if (GameMaker.anEchangeStarted != null)
+		 if (GameStateInformationProvider.anEchangeStarted != null)
 		{
-			GameMaker.anEchangeStarted();
-		}*/
+			GameStateInformationProvider.anEchangeStarted(sighHit.sighnNeedType);
+		}
 
 	}
 	void GoFRomLookingToEndBackToLookingTOStart()
@@ -151,13 +159,9 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 
 		ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange()); //and start next phase
 
-		currentExchangeState = ExchangeMakingState.LookingToStart;
-
-	
-
+		/////////////////////////////////////////////////////////////  signals
+		GameStateInformationProvider.currentExchangeState = ExchangeMakingState.LookingToStart;
 	}
-
-	
 
 
 }
