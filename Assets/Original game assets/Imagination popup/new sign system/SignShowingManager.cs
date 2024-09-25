@@ -135,9 +135,9 @@ public class SignShowingManager : MonoBehaviour
 				/////////////////////////////////////////////////////////////
 				break;
 
-			case (Needs.Mechanics):
+			case (Needs.Machines):
 
-				MakeASignOfThisNeedType(Needs.Mechanics, ref ListOfMechanicsSignsYetToBeMade, ListOfMechanicsSigns);
+				MakeASignOfThisNeedType(Needs.Machines, ref ListOfMechanicsSignsYetToBeMade, ListOfMechanicsSigns);
 
 				/////////////////////////////////////////////////////////////
 				break;

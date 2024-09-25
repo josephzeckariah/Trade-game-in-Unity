@@ -101,7 +101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648529227732058587}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.19, y: -0.82, z: 0}
+  m_LocalPosition: {x: 0.19, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -291,7 +291,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3154753878817971594}
   - component: {fileID: 4648744935821756090}
-  - component: {fileID: 2616077969270756276}
   - component: {fileID: 7342177850664678258}
   - component: {fileID: 8753905568826418886}
   m_Layer: 0
@@ -341,19 +340,7 @@ MonoBehaviour:
   signWrittenWOrds: {fileID: 5489344185670586933}
   sighnUpperBack: {fileID: 612501372485386138}
   metersParent: {fileID: 675761573141748221}
---- !u!114 &2616077969270756276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292186354558310904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f094e682fcfa77748807cdbd3e9f7fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowSprite: {fileID: 6496271218015997306}
+  ArrowForHighlighting: {fileID: 6496271218015997306}
 --- !u!54 &7342177850664678258
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -433,7 +420,7 @@ GameObject:
   - component: {fileID: 18298202334087398}
   - component: {fileID: 5930616090028259874}
   m_Layer: 0
-  m_Name: Arrow right (1)
+  m_Name: Arrow left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,7 +670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3984174442907382887}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.09, y: 2.96, z: 0}
+  m_LocalPosition: {x: -0.09, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -892,6 +879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6846438440896336219}
+  - component: {fileID: 2412240314384268568}
   m_Layer: 0
   m_Name: Arrow Highlight
   m_TagString: Untagged
@@ -918,6 +906,27 @@ Transform:
   m_Father: {fileID: 3154753878817971594}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2412240314384268568
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6496271218015997306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 158c9ea36bda6194892b0fb7e07e22ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8235538602946632275
 GameObject:
   m_ObjectHideFlags: 0

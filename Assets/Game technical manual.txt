@@ -15,6 +15,10 @@ the game has the usual camera and 2d light
 the object "game system" is an empty with a brain script to connect the general partso f the game together(more explanatin later), game system also has a child empty with a brain script to assist the former.
 The game ha
 
+the tutorial system:
+systeem is composed of (class:tutorial Manager) which handles when will tutorial start,end and decides if the player didnt advance for too long and soo start hinting through 
+(Class:ArrowHighlightManager) who on recieving order to highlight from his higherup tutorial manager handles who to highlight and higlight thos signs.
+
 
 //known proplems:
  exchange not finished, it need to swap colors,and object recieved are rough while line is being set up.

@@ -37,6 +37,7 @@ public class CaneraScreenSizeChangeTeller : MonoBehaviour
 				if (GameStateInformationProvider.ScreenSizeChanged != null)
 				{
 					GameStateInformationProvider.ScreenSizeChanged(new Vector2(ourHeadCameraToKeepTrackOf.pixelWidth, ourHeadCameraToKeepTrackOf.pixelHeight));
+					
 				}
 				previousScreenSize = new Vector2(ourHeadCameraToKeepTrackOf.pixelWidth, ourHeadCameraToKeepTrackOf.pixelHeight);
 			}

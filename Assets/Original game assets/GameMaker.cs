@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-public enum Needs { Food,Materials,Electronics,Mechanics };
+public enum Needs { Food,Materials,Electronics,Machines };
 public delegate void ResolutionDelegate(Vector2 resolution);
 //public delegate void ExchangeDelegate();
 
@@ -21,7 +21,7 @@ public  class GameMaker : MonoBehaviour
 	public  Sprite FoodSprite;
 	public  Sprite MaterialsSprite;                                                            //set by inspector General game data
 	public  Sprite ElectronicsSprite;
-	public Sprite MechanicsSprite;
+	public Sprite MachinesSprite;
 
 	public Sprite SmileSprite;
 	public Sprite MoneySprite;
@@ -53,7 +53,7 @@ public  class GameMaker : MonoBehaviour
 		needsAssets.Add(Needs.Food, FoodSprite);
 		needsAssets.Add(Needs.Materials, MaterialsSprite);
 		needsAssets.Add(Needs.Electronics, ElectronicsSprite);
-		needsAssets.Add(Needs.Mechanics, MechanicsSprite);
+		needsAssets.Add(Needs.Machines, MachinesSprite);
 
 		Money = MoneySprite;
 		Smile = SmileSprite;

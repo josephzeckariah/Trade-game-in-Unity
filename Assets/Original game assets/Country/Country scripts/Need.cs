@@ -26,6 +26,7 @@ public class Need : MonoBehaviour
 	public TextMeshProUGUI signWrittenWOrds;
 	public Image sighnUpperBack;
 	public GameObject metersParent;         //future use
+	public GameObject ArrowForHighlighting;
 
 
     //private memory

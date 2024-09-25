@@ -6,7 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraMovement : MonoBehaviour
 {
-    [Header("peoperies")]
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//-//////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	[Header("peoperies")]
     public float cameraMovementSpeed = 6;
 
 	[Header("Manual connections")]
@@ -19,6 +21,9 @@ public class CameraMovement : MonoBehaviour
 	Vector2 areaCameraIsConstrainedIn;
 	Vector2 worldUnitsOfBackgroundHalfed;
 
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	private void Awake()
 	{
 		ourCamera = GetComponent<Camera>();
@@ -28,7 +33,7 @@ public class CameraMovement : MonoBehaviour
 		StartFunCalculateBackgroundForConstrainr();
 		CalculateCameraAreaConstrained(new Vector2(0,0));
 
-		GameMaker.gameScreenSizeChanged += CalculateCameraAreaConstrained;
+		GameStateInformationProvider.ScreenSizeChanged += CalculateCameraAreaConstrained;
 		//StartCoroutine(AlwaysCheckForCameraChangeToReCalculateConstrains());   //check continous if camera size has changed
 
 	}
@@ -52,6 +57,7 @@ public class CameraMovement : MonoBehaviour
 	}
 	void CalculateCameraAreaConstrained(Vector2 unused)
 	{
+		
 		float cameraYSize = ourCamera.orthographicSize;
 		float cameraAspect = ourCamera.aspect;
 		float cameraXSize = cameraYSize * cameraAspect;
@@ -59,6 +65,8 @@ public class CameraMovement : MonoBehaviour
 		Vector2 cameraSize = new Vector2(cameraXSize, cameraYSize);
 		areaCameraIsConstrainedIn = new Vector2(worldUnitsOfBackgroundHalfed.x - cameraSize.x, worldUnitsOfBackgroundHalfed.y - cameraSize.y);
 	}
+
+
 	IEnumerator AlwaysCheckForCameraChangeToReCalculateConstrains()
 	{
 	
@@ -73,6 +81,9 @@ public class CameraMovement : MonoBehaviour
 			yield return new WaitForSecondsRealtime(1f);
 		}
 	}
+
+
+	//S///////////////////////////////////////////////////////////     Vamera movement       /////////////////////////////////////////////////////////////
 	void ContinousCalculateCameraMovementFromMousePosition()
     {
 		Vector3 mousePostionInViewPort = ourCamera.ScreenToViewportPoint(Input.mousePosition);

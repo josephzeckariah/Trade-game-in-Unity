@@ -129,7 +129,7 @@ public class ImaginationSignShower : MonoBehaviour
 		}
 		//show specific need content:
 		//add to timer of general signs
-		switch(MouseExchangeManager.informationCurrentExchange.typeOfExchange)
+		switch(GameStateInformationProvider.informationCurrentExchange.typeOfExchange)
 		{
 			case (Needs.Food):
 				ShowSignInARandomLocation(ListOfFoodSigns[ Random.Range(0,ListOfFoodSigns.Count-1) ]);
@@ -140,7 +140,7 @@ public class ImaginationSignShower : MonoBehaviour
 			case (Needs.Electronics):
 				ShowSignInARandomLocation(ListOfElectronicsSigns[Random.Range(0, ListOfElectronicsSigns.Count - 1)]);
 				break;
-			case (Needs.Mechanics):
+			case (Needs.Machines):
 				ShowSignInARandomLocation(ListOfMechanicsSigns[Random.Range(0, ListOfMechanicsSigns.Count - 1)]);
 				break;
 		}

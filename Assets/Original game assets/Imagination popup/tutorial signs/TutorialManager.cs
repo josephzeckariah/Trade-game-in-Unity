@@ -37,7 +37,8 @@ public class TutorialManager : MonoBehaviour
 
 		GameStateInformationProvider.OpeningScreenClosed += StartWorkers;
 
-		GameStateInformationProvider.anEchangeEnded += GetIfExchangeHasEnded;
+		GameStateInformationProvider.anEchangeEnded += NoExchangeSucessCheckeGetIfExchangeHasEnded;
+		GameStateInformationProvider.anEchangeEnded += GetForTheHighlighterTellTutorialIfAnExchangeEnded;
 
 	}
 	//S///////////////////////////////////////////////////////////     Start       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,12 +47,14 @@ public class TutorialManager : MonoBehaviour
 		StartCoroutine(WorkerToStartCountThenStartTutorial());
 		StartCoroutine(WorkerToAlwaysCheckeIfExchangeDidntStartOrEndForAWhile(timeWaitedBeforeAnnouncingItsExchangeStateDidntChangeForTooLong));
 		StartCoroutine(WorkerToDecideIfNoExchangeWasCompletedForTooLong(timeBetweenChecks, timeWaitedBeforeDecidingNoExchangewasMadeForAWhile));
+		StartCoroutine(WorkerToConnectTheFactsAndDecideWhatToHighlight(timeBetweenChecks));
 
 	}
 	            IEnumerator WorkerToStartCountThenStartTutorial()
 	{
 		yield return new WaitForSecondsRealtime(timeBeforeTutorialStart);
-		//start  //send to sign to make tutorial signs
+		
+		tutorialHasStarted = true;
 	}
 
 	//OA///////////////////////////////////////////////////////////     Always cycle      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -110,13 +113,12 @@ public class TutorialManager : MonoBehaviour
 
 
 
-
 	//S//////////////////////////////////////////////////// Worker to decide if no exchange completed for a while     /////////////////////////////////////////////////////////////
-	void GetIfExchangeHasEnded(Needs needOfExchange)
+	void NoExchangeSucessCheckeGetIfExchangeHasEnded(Needs needOfExchange)
 	{
-		anExchangeEnded = true;
+		NoExchangeSucessCheckerKnowlageanExchangeEnded = true;
 	}  //provides if exchange ended to worker below
-	bool anExchangeEnded;
+	bool NoExchangeSucessCheckerKnowlageanExchangeEnded;
 
 	IEnumerator WorkerToDecideIfNoExchangeWasCompletedForTooLong(float timeBetweenChecks ,float timeBeforeTheyDecideThatItsTooLongWithoughtAnExchange)
 	{
@@ -132,11 +134,11 @@ public class TutorialManager : MonoBehaviour
 				NoExchangeEndedForTooLong = true;
 			}
 			//////////////////////////////
-			 if (anExchangeEnded == true)
+			 if (NoExchangeSucessCheckerKnowlageanExchangeEnded == true)
 			{
 				noExchangeCompletedTimer = 0;
 				NoExchangeEndedForTooLong = false;
-				anExchangeEnded = false;
+				NoExchangeSucessCheckerKnowlageanExchangeEnded = false;
 			}
 			/////////////////////////////////////////////////////////////
 			noExchangeCompletedTimer += timeBetweenChecks;
@@ -147,63 +149,116 @@ public class TutorialManager : MonoBehaviour
 
 
 	//S////////////////////////////////////////////////////    Final Action Decider     ///////////////////////////////////////////////////////////// decides highlight based on information by previous ienuemrators
-	IEnumerator WorkerToConnectTheFactsAndDecideWhatToHighlight()
+	IEnumerator WorkerToConnectTheFactsAndDecideWhatToHighlight(float TimeBetweenChecks)
 	{
 		/////////////////////////////////////////////////////////////time before tutorial start
 		while (true) 
 		{
 			if (tutorialHasStarted)
 			{
-				StartCoroutine(HighlightingTillTutorialEnds());
+				StartCoroutine(HighlightingTillTutorialEnds(TimeBetweenChecks));
 				break;
 			}
-			yield return null;
+			yield return new WaitForSecondsRealtime(TimeBetweenChecks);
 		}
 
 		}
-		IEnumerator HighlightingTillTutorialEnds()
+
+	///////////////////////////////////////////////////////////// time after tutorail starts
+
+		
+	      IEnumerator HighlightingTillTutorialEnds(float TimeBetweenChecks)
 		{
 		while (tutorialHasStarted)
 		{
 
-			Debug.Log("Highlight all");
-			Debug.Log("Highlight some");
-			Debug.Log("Highlight nothing");
 
 			if (NoExchangeStartedForAwhile)
 			{
-				Debug.Log("Highlight all");
+				yield return StartCoroutine(HighlightBecauseNoTutorialHasSTarted(timeBetweenChecks));
 			}
 			else if (ExchanheHeldForRooLong)
 			{
-				Debug.Log("Highlight some");
-			}
+				yield return StartCoroutine(HighlightBecauseSignHeldForTooLong(timeBetweenChecks));
 
+			}
 			if (NoExchangeEndedForTooLong) //check if to go to highlight till exchangeend cycle
 			{
-				yield return StartCoroutine(HighlightingTillAnExchangesGetsEnded());
+				yield return StartCoroutine(HighlightingTillAnExchangesGetsEnded(TimeBetweenChecks));
 			}
 
+			yield return new WaitForSecondsRealtime(TimeBetweenChecks);
 		}
 
 		
-		///////////////////////////////////////////////////////////// end
 	}
-	            IEnumerator HighlightingTillAnExchangesGetsEnded()
+	            IEnumerator HighlightBecauseNoTutorialHasSTarted(float TimeBetweenChecks)
 	{
-		while (true) //no exchange ended
+		
+		ourSignArrowHighlighter.HighlightAll();
+		while (true)
 		{
-			/*//if(State = starting exchange){
-				ourSignArrowHighlighter all;
-			}
-			else if(state = end exchange)
+			if(NoExchangeStartedForAwhile == false)
 			{
-				 highlightsome of other need
-			}*/
-			yield return new WaitForSecondsRealtime(1);
+				ourSignArrowHighlighter.StopAllHighlight();
+				break;
+			}
+
+			yield return new WaitForSecondsRealtime(TimeBetweenChecks);
 		}
+
+	}
+	            IEnumerator HighlightBecauseSignHeldForTooLong(float TimeBetweenChecks)
+	{
+		
+		ourSignArrowHighlighter.StopAllHighlight();
+		ourSignArrowHighlighter.HighlightSome();
+		while (true)
+		{
+			if (ExchanheHeldForRooLong == false)
+			{
+				ourSignArrowHighlighter.StopAllHighlight();
+				break;
+			}
+
+			yield return new WaitForSecondsRealtime(TimeBetweenChecks);
+		}
+
 	}
 
+	            IEnumerator HighlightingTillAnExchangesGetsEnded(float TimeBetweenChecks)
+	{
+		SignFullHighlighterKnowlageIfAnExchangeEnded = false;
+
+		while (true) //no exchange ended
+		{
+			if(GameStateInformationProvider.currentExchangeState== ExchangeMakingState.LookingToStart ){
+				
+				ourSignArrowHighlighter.HighlightAll();
+			}
+			else if(GameStateInformationProvider.currentExchangeState == ExchangeMakingState.LookingToEnd)
+			{
+				
+				ourSignArrowHighlighter.StopAllHighlight();
+				ourSignArrowHighlighter.HighlightSome();
+			}
+
+			if(SignFullHighlighterKnowlageIfAnExchangeEnded == true)
+			{
+				ourSignArrowHighlighter.StopAllHighlight();
+				SignFullHighlighterKnowlageIfAnExchangeEnded = false;
+				NoExchangeEndedForTooLong = false;
+				break;
+			}
+
+			yield return new WaitForSecondsRealtime(TimeBetweenChecks);
+		}
+	}
+	                        void GetForTheHighlighterTellTutorialIfAnExchangeEnded(Needs needOfExchange)
+	{
+		SignFullHighlighterKnowlageIfAnExchangeEnded = true;
+	}
+	                         bool SignFullHighlighterKnowlageIfAnExchangeEnded;
 
 
 }
