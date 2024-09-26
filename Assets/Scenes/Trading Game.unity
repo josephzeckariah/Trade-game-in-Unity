@@ -1511,7 +1511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079a9391c2a1d444a818a18577a36419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signsToShowTHeirArrows: []
 --- !u!1 &1754816796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,17 +1592,22 @@ MonoBehaviour:
   - {fileID: 6531276282123197935, guid: 2390cc7ae20627946905201518720a78, type: 3}
   - {fileID: 8036774171777595905, guid: 24b922134f36f124baafbe8611361988, type: 3}
   - {fileID: 4380652884257165748, guid: 8fdd9ab2dd8b28d4ca5a16f89662d13e, type: 3}
+  listOfTutorialSigns: []
   ListOfFoodSigns:
   - {fileID: 6505878274853002629, guid: 07088b9ebd0d28943946a3943960b7a3, type: 3}
+  - {fileID: 6942637976610133181, guid: 90d8c424b44a7d14f89cf82b6e4d65e8, type: 3}
+  - {fileID: 8435313601907611139, guid: 8e34ded54e4b72b46b1b63f79b6fc055, type: 3}
   ListOfMaterialseSigns:
   - {fileID: 7023355419381861842, guid: 30e0518432a7966439101d3765497dc4, type: 3}
   - {fileID: 4302351185702133206, guid: 731188edd33560e4492691750cdab182, type: 3}
   - {fileID: 5447387355385872786, guid: 23613b70f6daf5945adfb45a6a60a34c, type: 3}
   ListOfElectronicsSigns:
-  - {fileID: 886674345211727002, guid: 5dad9235152e23a4a8be08b0ecdd5c7c, type: 3}
+  - {fileID: 3683761069695609629, guid: 831182381c9fd89499edd4653b584784, type: 3}
   - {fileID: 6627474715823183398, guid: eeff907385ff4c54bab39c6ed67f90ad, type: 3}
   - {fileID: 9026783447396988454, guid: 93aa3df9bb9f56b46b508866c009218f, type: 3}
-  ListOfMechanicsSigns: []
+  ListOfMechanicsSigns:
+  - {fileID: 6931631990557090571, guid: 435109c048a84c2488a7ef0ae36fc1a0, type: 3}
+  - {fileID: 7745150067888882731, guid: 72815b51e2fa30b4e83509e5a06f9b02, type: 3}
   ourCanvasToDrawIN: {fileID: 773929688}
 --- !u!1 &1863765370
 GameObject:

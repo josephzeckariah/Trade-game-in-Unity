@@ -752,7 +752,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 815.94, y: 638.6}
+  m_SizeDelta: {x: 793.49963, y: 604.8563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9156822401130169672
 CanvasRenderer:
@@ -805,4 +805,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ourHeadTechnicalDrawer: {fileID: 0}
-  ourCanvasRectTransform: {fileID: 0}
+  ourCanvasWeAreDrawOn: {fileID: 0}

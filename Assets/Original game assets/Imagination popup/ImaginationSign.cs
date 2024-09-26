@@ -27,7 +27,7 @@ public class ImaginationSign : MonoBehaviour
 	//OA///////////////////////////////////////////////////////////     Ocational actions      /////////////////////////////////////////////////////////////
 	public void OnXButtonClick()
     {
-
+		ourHeadTeEchnicalDrawer.SubWorkerMessageSignIsGoingToLeave(this);
         Destroy(gameObject);
     }
 }

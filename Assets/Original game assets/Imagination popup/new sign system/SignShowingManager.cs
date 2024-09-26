@@ -8,9 +8,12 @@ public class SignShowingManager : MonoBehaviour
 	////////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	///////////////////////////////////////////////////////////////manual connection
+	[Header("Signs to place")]
 	public OpeningSign openningScreenSign;
 
 	public List<ImaginationSign> ListOfGeneralSigns = new List<ImaginationSign>();
+
+	public List<ImaginationSign> listOfTutorialSigns = new List<ImaginationSign>();
 
 	public List<ImaginationSign> ListOfFoodSigns = new List<ImaginationSign>();
 	public List<ImaginationSign> ListOfMaterialseSigns = new List<ImaginationSign>();
@@ -49,7 +52,7 @@ public class SignShowingManager : MonoBehaviour
 		ourSignDrawer = this.GetComponentInChildren<SignTechnikalDrawer>();
 		ourSignDrawer.ourCanvasToDrawOn = ourCanvasToDrawIN;
 		ourSignDrawer.ourheadManager = this;
-		ourSignDrawer.HigherUpOrderStartWork();
+		ourSignDrawer.HigherUpOrderInitalize();
 	}
 	        void SubStartShowOpeningScreen()
 	{
@@ -64,6 +67,7 @@ public class SignShowingManager : MonoBehaviour
 	}
 
 	//OA///////////////////////////////////////////////////////////     Ocational Cycle      /////////////////////////////////////////////////////////////
+	float generalSignTimer = 0;
 	IEnumerator CycleToSpawnGeneralSigns(float timeBetweenSignSpawns)
 	{
 		///////////////////////////////////////////////////////////// Keep a memory of a mirror list and the spawn repeatTimer 
@@ -78,28 +82,29 @@ public class SignShowingManager : MonoBehaviour
 		///////////////
 		while (true)
 		{
-			///////////////////////////////////////////////////////////// repeat list if finished
-			if (listOfSignsWeAreYetToMake.Count == 0) 
-			{
-				listOfSignsWeAreYetToMake = SubIenumMakeAMirrorList(ListOfGeneralSigns);
-			}
-			///////////////////////////////////////////////////////////// decrease time
-			signTimer -= Time.deltaTime;
-
-			///////////////////////////////////////////////////////////// iff timer is done thsi cycle
-			if (signTimer < 0)
-			{
-				ourSignDrawer.MakeSignInARandomLocation(listOfSignsWeAreYetToMake[0]);
-				listOfSignsWeAreYetToMake.RemoveAt(0);
-				signTimer = timeBetweenSignSpawns;
-			}
-
-			///////////////////////////////////////////////////////////// repeat
+			AdvanceTimerANdIfItsTimeSpawnAGenralSign(listOfSignsWeAreYetToMake,timeBetweenSignSpawns);
 			yield return null;
 		}
 
 	}
-	
+	         void AdvanceTimerANdIfItsTimeSpawnAGenralSign(List<ImaginationSign> listOfSignsWeAreYetToMake,float timeBetweenSpawns)
+	{
+		///////////////////////////////////////////////////////////// repeat list if finished
+		if (listOfSignsWeAreYetToMake.Count == 0)
+		{
+			listOfSignsWeAreYetToMake = SubIenumMakeAMirrorList(ListOfGeneralSigns);
+		}
+		///////////////////////////////////////////////////////////// decrease time
+		generalSignTimer -= Time.deltaTime;
+
+		///////////////////////////////////////////////////////////// iff timer is done thsi cycle
+		if (generalSignTimer < 0)
+		{
+			ourSignDrawer.MakeSignInARandomLocation(listOfSignsWeAreYetToMake[0]);
+			listOfSignsWeAreYetToMake.RemoveAt(0);
+			generalSignTimer = timeBetweenSpawns;
+		}
+	}
 	              List<ImaginationSign> SubIenumMakeAMirrorList(List<ImaginationSign> listOfSigns)
 	{
 		List<ImaginationSign> listOfSignsWeAreYetToMake = new List<ImaginationSign>();
@@ -110,7 +115,8 @@ public class SignShowingManager : MonoBehaviour
 		return listOfSignsWeAreYetToMake;
 	}
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Make a need sign when an exhcange is completed
+
+	//S///////////////////////////////////////////////////////////     Make a need sign when an exhcange is completed       ///////////////////////////////////////////////////////////// 
 	////////////////////////////////////////////////////////////////       private mithod memory
 	List<ImaginationSign> ListOfFoodSignsYetToBeMade = new List<ImaginationSign>();
 	List<ImaginationSign> ListOfMaterialseSignsYetToBeMade = new List<ImaginationSign>();
@@ -162,5 +168,12 @@ public class SignShowingManager : MonoBehaviour
 
 		ourSignDrawer.MakeSignInARandomLocation(mirrorListOfSigns[0]);
 		mirrorListOfSigns.RemoveAt(0);
+		generalSignTimer += 4;
+	}
+
+	/////////////////////////////////////////////////////////////
+	public void SubWorkerMessageSignWasSuccefullyMade()
+	{
+		
 	}
 }
