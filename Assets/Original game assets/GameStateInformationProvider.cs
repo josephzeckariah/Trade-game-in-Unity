@@ -26,7 +26,12 @@ public static class GameStateInformationProvider
 	public static ExchangeDelegatee anEchangeEnded;
 	public static ExchangeDelegatee anEchangeStarted;
 
+	public static int numberOfExchangesCompleted;
+
 	public static ExchangeMakingState currentExchangeState;
 	public static exchangeToBeCompletedInformation informationCurrentExchange;
 
+	//S///////////////////////////////////////////////////////////     tutorial     /////////////////////////////////////////////////////////////
+	public static EmptyFun TutorialStarted;
+	public static EmptyFun TutorialEnded;
 }

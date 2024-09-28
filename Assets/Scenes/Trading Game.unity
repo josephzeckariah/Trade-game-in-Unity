@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d76d5f16d3fb764786c88835d75444f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeTutorialStart: 1
+  timeBeforeTutorialStart: 12
   timeWaitedBeforeAnnouncingItsExchangeStateDidntChangeForTooLong: 18
   timeWaitedBeforeDecidingNoExchangewasMadeForAWhile: 40
 --- !u!1 &872909295
@@ -1592,7 +1592,13 @@ MonoBehaviour:
   - {fileID: 6531276282123197935, guid: 2390cc7ae20627946905201518720a78, type: 3}
   - {fileID: 8036774171777595905, guid: 24b922134f36f124baafbe8611361988, type: 3}
   - {fileID: 4380652884257165748, guid: 8fdd9ab2dd8b28d4ca5a16f89662d13e, type: 3}
-  listOfTutorialSigns: []
+  - {fileID: 5412641527501838267, guid: 59d2a64e700fa3949938afe630113427, type: 3}
+  - {fileID: 2749833790972170000, guid: b8e7af7e820a8bc42bf27f396a9b23d3, type: 3}
+  - {fileID: 1038157626365102144, guid: f9dba7744ff3a6647b840d434b2d20f4, type: 3}
+  - {fileID: 8237474721458622275, guid: 76693077e0745c947a1d6b87edf83814, type: 3}
+  listOfTutorialSigns:
+  - {fileID: 3865703142019397937, guid: 72bfda318eeb46145ac6a11d3bdd16b7, type: 3}
+  - {fileID: 5752580220011470334, guid: 4161aeb8916e63842aa17ccbdf143782, type: 3}
   ListOfFoodSigns:
   - {fileID: 6505878274853002629, guid: 07088b9ebd0d28943946a3943960b7a3, type: 3}
   - {fileID: 6942637976610133181, guid: 90d8c424b44a7d14f89cf82b6e4d65e8, type: 3}

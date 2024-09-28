@@ -44,17 +44,33 @@ public class TutorialManager : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     Start       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void StartWorkers()
 	{
-		StartCoroutine(WorkerToStartCountThenStartTutorial());
+		StartCoroutine(WorkerToStartCountThenStartTutorialAndCeckForEnd());
 		StartCoroutine(WorkerToAlwaysCheckeIfExchangeDidntStartOrEndForAWhile(timeWaitedBeforeAnnouncingItsExchangeStateDidntChangeForTooLong));
 		StartCoroutine(WorkerToDecideIfNoExchangeWasCompletedForTooLong(timeBetweenChecks, timeWaitedBeforeDecidingNoExchangewasMadeForAWhile));
 		StartCoroutine(WorkerToConnectTheFactsAndDecideWhatToHighlight(timeBetweenChecks));
 
 	}
-	            IEnumerator WorkerToStartCountThenStartTutorial()
+	            IEnumerator WorkerToStartCountThenStartTutorialAndCeckForEnd()
 	{
 		yield return new WaitForSecondsRealtime(timeBeforeTutorialStart);
 		
 		tutorialHasStarted = true;
+		GameStateInformationProvider.TutorialStarted();
+
+		StartCoroutine(SubIenumWorkerToCheckIfTutorialShouldEnd());
+	}
+	                         IEnumerator SubIenumWorkerToCheckIfTutorialShouldEnd()
+	{
+		while (true)
+		{
+			if(GameStateInformationProvider.numberOfExchangesCompleted >= 3)
+			{
+				GameStateInformationProvider.TutorialEnded();
+				break;
+
+			}
+			yield return new WaitForSecondsRealtime(timeBetweenChecks);
+		}
 	}
 
 	//OA///////////////////////////////////////////////////////////     Always cycle      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////

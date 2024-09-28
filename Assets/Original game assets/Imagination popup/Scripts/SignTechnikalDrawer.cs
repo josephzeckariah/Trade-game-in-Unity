@@ -21,6 +21,7 @@ public class SignTechnikalDrawer : MonoBehaviour
 	Dictionary<ImaginationSign, Vector2> listOfMadeSignsDImensionsLeft = new Dictionary<ImaginationSign, Vector2>();
 	Dictionary<ImaginationSign, Vector2> listOfMadeSignsDImensionsButton = new Dictionary<ImaginationSign, Vector2>();
 	Dictionary<ImaginationSign, Vector2> listOfMadeSignsDImensionsRight = new Dictionary<ImaginationSign, Vector2>();
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,8 +30,27 @@ public class SignTechnikalDrawer : MonoBehaviour
 	{
 		ourCanvasRectTransform = ourCanvasToDrawOn.GetComponent<RectTransform>();
 	}
-	/////////////////////////////////////////////////////////////   MakeInRandom    /////////////////////////////////////////////////////////////
-	public void MakeSignInARandomLocation(ImaginationSign signToShow)
+
+
+	//S///////////////////////////////////////////////////////////     Make tutorial Signs       /////////////////////////////////////////////////////////////
+	public void MakeTutorialSign(ImaginationSign SignThatWondDisapear)
+	{
+		ImaginationSign newSign = MakeSignInARandomLocation(SignThatWondDisapear);
+		newSign.NormalSignInitalize();
+	}
+
+
+	/////////////////////////////////////////////////////////////   Make normal sign    /////////////////////////////////////////////////////////////
+	public void MakeNormalSignSign(ImaginationSign SignThatWondDisapear)
+	{
+		ImaginationSign newSign = MakeSignInARandomLocation(SignThatWondDisapear);
+		newSign.NormalSignInitalize();
+		ourheadManager.SubWorkerMessageSignWasSuccefullyMade(newSign);
+	}
+
+
+	 /////////////////////////////////////////////////////////////////////////////////////////   MakeInRandom    /////////////////////////////////////////////////////////////
+	        ImaginationSign MakeSignInARandomLocation(ImaginationSign signToShow)
 	{
 		///////////////////////////////////////////////////////////// make sign
 		ImaginationSign spawnedSign = SubFunSignFabricator(signToShow);                                           //make sign
@@ -110,17 +130,18 @@ public class SignTechnikalDrawer : MonoBehaviour
 					break;
 			}*/
 
-		TryToPlaceSignAndDestrouItIfYouTryTooMantTimes(spawnedSign, transofrmOfNewSign, pecentageOfSignOfCanvas, 15);
+		TryToPlaceSignAndDestrouItIfYouTryTooMantTimes( spawnedSign, transofrmOfNewSign, pecentageOfSignOfCanvas, 15);
+		return spawnedSign;
 	}                                         //         <<<--------------------------------------------------------------
 
-	     void TryToPlaceSignAndDestrouItIfYouTryTooMantTimes(ImaginationSign singToPositon, RectTransform transformOfSign, Vector2 PecrentageOfSignToCanvas,int numberOfTimesToTry)
+	           void TryToPlaceSignAndDestrouItIfYouTryTooMantTimes( ImaginationSign singToPositon, RectTransform transformOfSign, Vector2 PecrentageOfSignToCanvas,int numberOfTimesToTry)
 	{
 		int numberOfTimesWeTriedToPlaceSign = 0;
 
 		bool SignHasBeenPlaceWell = false;
 		while (SignHasBeenPlaceWell == false)
 		{
-			SignHasBeenPlaceWell = TryToPlaceThisSignRandomlyAndIfItsWrondReturnFalse(singToPositon, transformOfSign, PecrentageOfSignToCanvas);
+			SignHasBeenPlaceWell = TryToPlaceThisSignRandomlyAndIfItsWrondReturnFalse( singToPositon, transformOfSign, PecrentageOfSignToCanvas);
 			if (SignHasBeenPlaceWell)
 			{
 				transformOfSign.anchoredPosition3D = Vector3.zero;
@@ -133,13 +154,13 @@ public class SignTechnikalDrawer : MonoBehaviour
 
 			if (numberOfTimesWeTriedToPlaceSign > numberOfTimesToTry)
 			{
-				Destroy(singToPositon);
+				Destroy(singToPositon.gameObject);				
 				break;
 			}
 		}
 	}
 
-	            bool TryToPlaceThisSignRandomlyAndIfItsWrondReturnFalse(ImaginationSign singToPositon,RectTransform transformOfSign,Vector2 PecrentageOfSignToCanvas)
+	                 bool TryToPlaceThisSignRandomlyAndIfItsWrondReturnFalse(ImaginationSign singToPositon,RectTransform transformOfSign,Vector2 PecrentageOfSignToCanvas)
 	{
 		screenLocation whereToPLaceSign = (screenLocation)Random.Range(0, 3);             //randomly pick a (right,button,lift)then randomly place sign in it
 		switch (whereToPLaceSign)
@@ -202,7 +223,7 @@ public class SignTechnikalDrawer : MonoBehaviour
 		}
 		return false;
 	}
-	                     bool checkLane(Vector2 rangeOfMainSign, Dictionary<ImaginationSign,Vector2> listOfPReviousSigns)
+	                          bool checkLane(Vector2 rangeOfMainSign, Dictionary<ImaginationSign,Vector2> listOfPReviousSigns)
 	{
 		foreach (Vector2 pixelRangeOfPReviouslyLaidSigns in listOfPReviousSigns.Values)
 		{
@@ -246,18 +267,20 @@ public class SignTechnikalDrawer : MonoBehaviour
 	}
 
 
-	     ImaginationSign SubFunSignFabricator(ImaginationSign signToFabricate)
+	         ImaginationSign SubFunSignFabricator(ImaginationSign signToFabricate)
 	{
 		ImaginationSign spawnedSign = Instantiate(signToFabricate, ourCanvasToDrawOn.transform);
-
-
 		spawnedSign.ourHeadTeEchnicalDrawer = this;
 		
 
+		//InformOurHeadManagerThatWeHaveMadeThisSignSuccesfully(signToFabricate);
 
 		return spawnedSign;
 	}
-
+	               void InformOurHeadManagerThatWeHaveMadeThisSignSuccesfully(ImaginationSign signMade)
+	{
+		ourheadManager.SubWorkerMessageSignWasSuccefullyMade(signMade);
+	}
 
 	/////////////////////////////////////////////////////////////  Make opening in middle      /////////////////////////////////////////////////////////////
 
@@ -284,22 +307,16 @@ public class SignTechnikalDrawer : MonoBehaviour
 
 	/////////////////////////////////////////////////////////////    Sign Making and destoying information      /////////////////////////////////////////////////////////////
 
-	private void Update()
-	{
-		Debug.Log("listOfMadeSignsDImensionsLeft.Count) is "+listOfMadeSignsDImensionsLeft.Count);
-		Debug.Log("listOfMadeSignsDImensionsButton.Count) is " + listOfMadeSignsDImensionsButton.Count);
-		Debug.Log("listOfMadeSignsDImensionsRight.Count) is " + listOfMadeSignsDImensionsRight.Count);
-	}
-	void InformOurHeadManagerThatWeHaveMadeThisSignSuccesfully(ImaginationSign signMade)
-	{
 
-	}
+	
 	//I///////////////////////////////////////////////////////////     On signdestoyed      /////////////////////////////////////////////////////////////
 	public void SubWorkerMessageSignIsGoingToLeave(ImaginationSign signThatWillBeLeaving)
 	{
 		CheckIfSignRemovedIsHThisLane(signThatWillBeLeaving, listOfMadeSignsDImensionsLeft);
 		CheckIfSignRemovedIsHThisLane(signThatWillBeLeaving, listOfMadeSignsDImensionsButton);
 		CheckIfSignRemovedIsHThisLane(signThatWillBeLeaving, listOfMadeSignsDImensionsRight);
+		Debug.Log("Drawerrecieved that "+ signThatWillBeLeaving+" is leaving.");
+		ourheadManager.SubWorkerMessageSignIsGoingToLeave(signThatWillBeLeaving);
 	}
 	           void CheckIfSignRemovedIsHThisLane(ImaginationSign signThatWillBeLeaving, Dictionary<ImaginationSign, Vector2> laneList)
 	{

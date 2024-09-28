@@ -128,7 +128,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 
 			GoFRomLookingToEndBackToLookingTOStart();
 
-			GameMaker.numberofExchangesCompleted += 1;
+			GameStateInformationProvider.numberOfExchangesCompleted += 1;
 			
 			if (GameStateInformationProvider.anEchangeEnded != null)
 			{

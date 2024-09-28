@@ -37,7 +37,8 @@ public class NeedValueAssighnerWorker : MonoBehaviour
 
 			foreach (var keyValueInCopiedList in copyOfCOuntiesList)
 			{
-				choosenCountry.ourCountriesNeedsAndTheirValue[keyValueInCopiedList.Key] = Random.Range(-1, 2);        //give a negatve ,0,positive to each need in each country
+				int randomValue = Random.Range(0, 2);
+				choosenCountry.ourCountriesNeedsAndTheirValue[keyValueInCopiedList.Key] = randomValue == 0 ? -1 : 1;        //give a negatve ,0,positive to each need in each country
 			}
 
 			if (choosenNeeds.Count < 2)         //if needs are less than 2 then dont try to ballance stop

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SignShowingManager : MonoBehaviour
+public class SignShowingManager : MonoBehaviour  //the script job is to decide when to spawn signs then it sends the sign to its subwroker the (SignTecknicalDrawer) to draw it on screen
+												 //this takes the signs given in inspector and continously spawns genral signs through //////General sign spawner///// or when exchagne completes 
+												 //spawns a need specific sing through the  //////Make a need sign when an exhcange is completed //////
 {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +29,9 @@ public class SignShowingManager : MonoBehaviour
 	SignTechnikalDrawer ourSignDrawer;
 
 	/////////////////////////////////////////////////////////////    //memory
-	 //List<ImaginationSign> ListOfMadeSigns = new List<ImaginationSign>();
+	List<ImaginationSign> signsMadeAndAreOnScreen = new List<ImaginationSign>();
+	/////////////////////////////////////////////////////////////
+	float timeBetweenSignSpawn = 5f;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////        Actions       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,7 +44,11 @@ public class SignShowingManager : MonoBehaviour
 		GameStateInformationProvider.GameStarted += HigherUpOrderToStartWork;
 		GameStateInformationProvider.OpeningScreenClosed += OnOpeningScreenClosed;
 		GameStateInformationProvider.anEchangeEnded += MakeANeedSpecificSignAsAnExchangeWasComplete;
+		GameStateInformationProvider.TutorialStarted += TutorialStartedReaction;
+		GameStateInformationProvider.TutorialEnded += SignManagerREcievedThatTutorialEnd;
 	}
+
+
 	/////////////////////////////////////////////////////////////       start       /////////////////////////////////////////////////////////////
 	 void HigherUpOrderToStartWork()                                                    //         <<<--------------------------------------------------------------
 	{
@@ -58,15 +66,20 @@ public class SignShowingManager : MonoBehaviour
 	{
 		ourSignDrawer.MakeOpeningSignInMiddle(openningScreenSign);
 	}
+	
 
 
-	//OA///////////////////////////////////////////////////////////     Ocational actions      /////////////////////////////////////////////////////////////
+
+	//OA///////////////////////////////////////////////////////////     On opening screen closed    /////////////////////////////////////////////////////////////
 	void OnOpeningScreenClosed()                                                         //         <<<-------------------------------------------------------------- 
 	{
-		StartCoroutine(CycleToSpawnGeneralSigns(5f));
+		StartCoroutine(CycleToSpawnGeneralSigns(timeBetweenSignSpawn));
 	}
 
-	//OA///////////////////////////////////////////////////////////     Ocational Cycle      /////////////////////////////////////////////////////////////
+
+
+
+	//OA///////////////////////////////////////////////////////////     General sign spawner      /////////////////////////////////////////////////////////////
 	float generalSignTimer = 0;
 	IEnumerator CycleToSpawnGeneralSigns(float timeBetweenSignSpawns)
 	{
@@ -82,25 +95,27 @@ public class SignShowingManager : MonoBehaviour
 		///////////////
 		while (true)
 		{
-			AdvanceTimerANdIfItsTimeSpawnAGenralSign(listOfSignsWeAreYetToMake,timeBetweenSignSpawns);
+			AdvanceTimerANdIfItsTimeSpawnAGenralSign(ref listOfSignsWeAreYetToMake,timeBetweenSignSpawns);
 			yield return null;
 		}
 
 	}
-	         void AdvanceTimerANdIfItsTimeSpawnAGenralSign(List<ImaginationSign> listOfSignsWeAreYetToMake,float timeBetweenSpawns)
+	         void AdvanceTimerANdIfItsTimeSpawnAGenralSign(ref List<ImaginationSign> listOfSignsWeAreYetToMake,float timeBetweenSpawns)
 	{
 		///////////////////////////////////////////////////////////// repeat list if finished
 		if (listOfSignsWeAreYetToMake.Count == 0)
 		{
 			listOfSignsWeAreYetToMake = SubIenumMakeAMirrorList(ListOfGeneralSigns);
+			
 		}
+		
 		///////////////////////////////////////////////////////////// decrease time
 		generalSignTimer -= Time.deltaTime;
 
 		///////////////////////////////////////////////////////////// iff timer is done thsi cycle
 		if (generalSignTimer < 0)
 		{
-			ourSignDrawer.MakeSignInARandomLocation(listOfSignsWeAreYetToMake[0]);
+			ourSignDrawer.MakeNormalSignSign(listOfSignsWeAreYetToMake[0]);
 			listOfSignsWeAreYetToMake.RemoveAt(0);
 			generalSignTimer = timeBetweenSpawns;
 		}
@@ -112,12 +127,15 @@ public class SignShowingManager : MonoBehaviour
 		{
 			listOfSignsWeAreYetToMake.Add(Sign);
 		}
+	
 		return listOfSignsWeAreYetToMake;
 	}
 
 
+
+
+
 	//S///////////////////////////////////////////////////////////     Make a need sign when an exhcange is completed       ///////////////////////////////////////////////////////////// 
-	////////////////////////////////////////////////////////////////       private mithod memory
 	List<ImaginationSign> ListOfFoodSignsYetToBeMade = new List<ImaginationSign>();
 	List<ImaginationSign> ListOfMaterialseSignsYetToBeMade = new List<ImaginationSign>();
 	List<ImaginationSign> ListOfElectronicsSignsYetToBeMade = new List<ImaginationSign>();
@@ -166,14 +184,63 @@ public class SignShowingManager : MonoBehaviour
 		}
 		/////////////////////////////////////////////////////////////
 
-		ourSignDrawer.MakeSignInARandomLocation(mirrorListOfSigns[0]);
+		ourSignDrawer.MakeNormalSignSign(mirrorListOfSigns[0]);
 		mirrorListOfSigns.RemoveAt(0);
 		generalSignTimer += 4;
 	}
 
-	/////////////////////////////////////////////////////////////
-	public void SubWorkerMessageSignWasSuccefullyMade()
+
+
+
+	//OA///////////////////////////////////////////////////////////     Tutorial start reaction      /////////////////////////////////////////////////////////////
+	List<ImaginationSign> tutorialSignsMadeAndAreOnScreen = new List<ImaginationSign>();
+	void TutorialStartedReaction()                                          //         <<<-------------------------------------------------------------- 
 	{
+		foreach(ImaginationSign tutorialSign in listOfTutorialSigns)
+		{
+			ourSignDrawer.MakeTutorialSign(tutorialSign);		
+		}
+		/////////////////////////////////////////////////////////////
+		generalSignTimer += 999;
+	}
+	public void SubWorkerMessageTutorialSignSuccefullyMade(ImaginationSign signMade)
+	{
+		tutorialSignsMadeAndAreOnScreen.Add(signMade);
+	}
+
+	//OA///////////////////////////////////////////////////////////     Tutorial End reaction      /////////////////////////////////////////////////////////////
+	void TutorialEndReaction()
+	{
+		foreach (ImaginationSign tutorialSign in tutorialSignsMadeAndAreOnScreen)
+		{
+			Destroy(tutorialSign);
+		}
+		tutorialSignsMadeAndAreOnScreen.Clear();
+		/////////////////////////////////////////////////////////////
+		generalSignTimer = timeBetweenSignSpawn;
+	}
+	void SignManagerREcievedThatTutorialEnd()
+	{
+		Debug.Log("SignManagerREcievedThatTutorialEnd");
+	}
+
+
+
+	//S///////////////////////////////////////////////////////////     SubWorker messages       /////////////////////////////////////////////////////////////
+	public void SubWorkerMessageSignWasSuccefullyMade(ImaginationSign signThatWasMade)
+	{
+		signsMadeAndAreOnScreen.Add(signThatWasMade);
+		
+		foreach(ImaginationSign sing in signsMadeAndAreOnScreen)
+		{
+			Debug.Log("list is now "+sing.name);
+		}
+	}
+	public void SubWorkerMessageSignIsGoingToLeave(ImaginationSign signThatWillLeave)
+	{
+		Debug.Log("removed");
+		signsMadeAndAreOnScreen.Remove(signThatWillLeave);
 		
 	}
+
 }
