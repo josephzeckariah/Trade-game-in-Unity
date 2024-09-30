@@ -5,17 +5,31 @@ using UnityEngine;
 
 public class MouseCountryHoverTeller : MonoBehaviour
 {
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//-//////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	GameMaker ourGameMaker;
 
 	List<Country> countriesToCheckIfEntered = new List<Country>();
 	List<Country> countriesToCheckIfExited = new List<Country>();
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//I///////////////////////////////////////////////////////////     Initalize       /////////////////////////////////////////////////////////////
 	private void Awake()
 	{
-		SubAwakeCopyCountryListFromBigBossGameMaker();
+		GameStateInformationProvider.NormalGameStart += StartTellingHover;
 	}
-	void SubAwakeCopyCountryListFromBigBossGameMaker()
+
+	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
+	void StartTellingHover()
+	{
+		SubAwakeCopyCountryListFromBigBossGameMaker();                        //         <<<--------------------------------------------------------------
+		StartCoroutine(ContinousCheckForMouseHover());
+	}
+	//S///////////////////////////////////////////////////////////     Know countries to work with       /////////////////////////////////////////////////////////////
+	                void SubAwakeCopyCountryListFromBigBossGameMaker()
 	{
 		ourGameMaker = GameObject.FindAnyObjectByType<GameMaker>();
 		foreach (Country countryToADd in ourGameMaker.countriesUsedInGame)
@@ -25,20 +39,28 @@ public class MouseCountryHoverTeller : MonoBehaviour
 	}
 
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	void Update()
-    {
-        Vector3 mousePositionInWOrldSPace = Camera.main.ScreenToWorldPoint( Input.mousePosition);
-        Vector3 mousePositionInWOrldSPaceCorrected = new Vector3(mousePositionInWOrldSPace.x, mousePositionInWOrldSPace.y, 0);
+	//S///////////////////////////////////////////////////////////     Continous Tell if hovered      /////////////////////////////////////////////////////////////
+	                IEnumerator ContinousCheckForMouseHover()
+	{
+		yield return null;  //a wait to avoid glitches.
 
 
-		UpdateContinousCheckCountriesIfMouseEntered(mousePositionInWOrldSPaceCorrected);
-		UpdateContinousCheckCountriesIfMouseExited(mousePositionInWOrldSPaceCorrected);
+		while (true)
+		{
+			Vector3 mousePositionInWOrldSPace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector3 mousePositionInWOrldSPaceCorrected = new Vector3(mousePositionInWOrldSPace.x, mousePositionInWOrldSPace.y, 0);
 
 
+			UpdateContinousCheckCountriesIfMouseEntered(mousePositionInWOrldSPaceCorrected);
+			UpdateContinousCheckCountriesIfMouseExited(mousePositionInWOrldSPaceCorrected);
+
+			yield return null;
+		}
+	
 	}
 
-	void UpdateContinousCheckCountriesIfMouseEntered(Vector3 mousePositionOnMap)
+
+	                            void UpdateContinousCheckCountriesIfMouseEntered(Vector3 mousePositionOnMap)
 	{
 		List<Country> countriesEntered = new List<Country>();
 		foreach (Country countryToCheck in countriesToCheckIfEntered)
@@ -56,7 +78,7 @@ public class MouseCountryHoverTeller : MonoBehaviour
 			countriesToCheckIfExited.Add(countryEnterd);
 		}
 	}	
-	void UpdateContinousCheckCountriesIfMouseExited(Vector3 mousePositionOnMap)
+	                            void UpdateContinousCheckCountriesIfMouseExited(Vector3 mousePositionOnMap)
 	{
 		List<Country> countriesExited = new List<Country>();
 		foreach (Country countryToCheck in countriesToCheckIfExited)

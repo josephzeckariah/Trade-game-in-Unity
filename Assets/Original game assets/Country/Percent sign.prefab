@@ -338,6 +338,7 @@ MonoBehaviour:
   sighnMeter: {fileID: 3539297376872268670}
   sighnNumberPercent: {fileID: 2497131763338065959}
   signWrittenWOrds: {fileID: 5489344185670586933}
+  signCountryName: {fileID: 6202349670553148637}
   sighnUpperBack: {fileID: 612501372485386138}
   metersParent: {fileID: 675761573141748221}
   ArrowForHighlighting: {fileID: 6496271218015997306}
@@ -962,8 +963,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.078, y: 0.656}
-  m_SizeDelta: {x: 1.7761, y: 0.2728}
+  m_AnchoredPosition: {x: 1.199, y: 0.64735}
+  m_SizeDelta: {x: 1.9021, y: 0.2947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7418845345942561286
 CanvasRenderer:
@@ -1002,8 +1003,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286482176
-  m_fontColor: {r: 0, g: 0.5283019, b: 0.49528304, a: 1}
+    rgba: 4282796065
+  m_fontColor: {r: 0.1294945, g: 0.2830189, b: 0.27278394, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1020,7 +1021,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.2
+  m_fontSize: 0.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1137,8 +1138,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281633279
-  m_fontColor: {r: 1, g: 0.53683674, b: 0.2028302, a: 1}
+    rgba: 4290690750
+  m_fontColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1272,8 +1273,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278209516
-  m_fontColor: {r: 0.9245283, g: 0.29469344, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

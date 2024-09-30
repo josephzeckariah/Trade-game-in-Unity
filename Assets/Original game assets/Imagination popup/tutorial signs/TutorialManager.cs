@@ -35,7 +35,7 @@ public class TutorialManager : MonoBehaviour
 	{
 		ourSignArrowHighlighter = this.GetComponentInChildren<TutorialArrowManager>();
 
-		GameStateInformationProvider.OpeningScreenClosed += StartWorkers;
+		GameStateInformationProvider.NormalGameStart += StartWorkers;
 
 		GameStateInformationProvider.anEchangeEnded += NoExchangeSucessCheckeGetIfExchangeHasEnded;
 		GameStateInformationProvider.anEchangeEnded += GetForTheHighlighterTellTutorialIfAnExchangeEnded;

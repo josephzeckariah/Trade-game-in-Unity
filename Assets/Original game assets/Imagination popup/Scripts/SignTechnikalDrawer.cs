@@ -36,7 +36,8 @@ public class SignTechnikalDrawer : MonoBehaviour
 	public void MakeTutorialSign(ImaginationSign SignThatWondDisapear)
 	{
 		ImaginationSign newSign = MakeSignInARandomLocation(SignThatWondDisapear);
-		newSign.NormalSignInitalize();
+		newSign.TutoriallSignInitalize();
+		ourheadManager.SubWorkerMessageSignWasSuccefullyMade(newSign);
 	}
 
 
@@ -55,7 +56,7 @@ public class SignTechnikalDrawer : MonoBehaviour
 		///////////////////////////////////////////////////////////// make sign
 		ImaginationSign spawnedSign = SubFunSignFabricator(signToShow);                                           //make sign
 		RectTransform transofrmOfNewSign = spawnedSign.gameObject.GetComponent<RectTransform>();
-		Vector2 pecentageOfSignOfCanvas = new Vector2((transofrmOfNewSign.sizeDelta.x / 2) / ourCanvasRectTransform.sizeDelta.x, (transofrmOfNewSign.sizeDelta.y / 2) / ourCanvasRectTransform.sizeDelta.y);
+		Vector2 pecentageOfSignOfCanvas = new Vector2(((transofrmOfNewSign.sizeDelta.x / 2)*transofrmOfNewSign.localScale.x) / ourCanvasRectTransform.sizeDelta.x, ((transofrmOfNewSign.sizeDelta.y / 2)* transofrmOfNewSign.localScale.y)  / ourCanvasRectTransform.sizeDelta.y);
 
 		/////////////////////////////////////////////////////////////
 		/*	int numberOfTimesPostionWasReconsidered = 0;                            //check position reconsideration itiration
@@ -185,7 +186,7 @@ public class SignTechnikalDrawer : MonoBehaviour
 		{
 			case screenLocation.left:
 				int positionOfSignInVectorLeft = (int)(ourCanvasRectTransform.sizeDelta.y * transformOfSign.anchorMin.y);          //save dimension occupied
-				Vector2 pixelRangeOccupiedBySignLeft = new Vector2(positionOfSignInVectorLeft - (transformOfSign.sizeDelta.y / 2), positionOfSignInVectorLeft + (transformOfSign.sizeDelta.y / 2));
+				Vector2 pixelRangeOccupiedBySignLeft = new Vector2(positionOfSignInVectorLeft - ((transformOfSign.sizeDelta.y* transformOfSign.localScale.y) / 2), positionOfSignInVectorLeft + ((transformOfSign.sizeDelta.y * transformOfSign.localScale.y) / 2));
 
 				if (!checkLane(pixelRangeOccupiedBySignLeft, listOfMadeSignsDImensionsLeft))
 				{
@@ -198,7 +199,7 @@ public class SignTechnikalDrawer : MonoBehaviour
 
 			case screenLocation.button:
 				int positionOfSignInVectorButton = (int)(ourCanvasRectTransform.sizeDelta.x * transformOfSign.anchorMin.x);          //save dimension occupied
-				Vector2 pixelRangeOccupiedBySignButton = new Vector2(positionOfSignInVectorButton - (transformOfSign.sizeDelta.x / 2), positionOfSignInVectorButton + (transformOfSign.sizeDelta.x / 2));
+				Vector2 pixelRangeOccupiedBySignButton = new Vector2(positionOfSignInVectorButton - ((transformOfSign.sizeDelta.x * transformOfSign.localScale.x) / 2), positionOfSignInVectorButton + ((transformOfSign.sizeDelta.x * transformOfSign.localScale.x) / 2));
 
 				//check current sign with privoius sings for collisions
 				if (!checkLane(pixelRangeOccupiedBySignButton, listOfMadeSignsDImensionsButton))
@@ -211,7 +212,7 @@ public class SignTechnikalDrawer : MonoBehaviour
 
 			case screenLocation.right:
 				int positionOfSignInVectorRight = (int)(ourCanvasRectTransform.sizeDelta.y * transformOfSign.anchorMin.y);          //save dimension occupied
-				Vector2 pixelRangeOccupiedBySignRight = new Vector2(positionOfSignInVectorRight - (transformOfSign.sizeDelta.y / 2), positionOfSignInVectorRight + (transformOfSign.sizeDelta.y / 2));
+				Vector2 pixelRangeOccupiedBySignRight = new Vector2(positionOfSignInVectorRight - ((transformOfSign.sizeDelta.y * transformOfSign.localScale.y) / 2), positionOfSignInVectorRight + ((transformOfSign.sizeDelta.y * transformOfSign.localScale.y) / 2));
 
 				if (!checkLane(pixelRangeOccupiedBySignRight, listOfMadeSignsDImensionsRight))
 				{
@@ -277,32 +278,7 @@ public class SignTechnikalDrawer : MonoBehaviour
 
 		return spawnedSign;
 	}
-	               void InformOurHeadManagerThatWeHaveMadeThisSignSuccesfully(ImaginationSign signMade)
-	{
-		ourheadManager.SubWorkerMessageSignWasSuccefullyMade(signMade);
-	}
 
-	/////////////////////////////////////////////////////////////  Make opening in middle      /////////////////////////////////////////////////////////////
-
-	public void MakeOpeningSignInMiddle(OpeningSign openingSign)
-	{
-		/////////////////////////////////////////////////////////////        Make sign
-		OpeningSign spawnedSign  = Instantiate(openingSign, ourCanvasToDrawOn.transform);
-		RectTransform transofrmOfNewSign = spawnedSign.gameObject.GetComponent<RectTransform>();
-
-
-		/////////////////////////////////////////////////////////////       Position Sign and achor
-		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
-
-		/////////////////////////////////////////////////////////////      initalize sign
-		openingSign.ourHeadTechnicalDrawer = this;
-		openingSign.ourCanvasWeAreDrawOn = ourCanvasToDrawOn;
-		
-		
-		
-	}                                              //         <<<--------------------------------------------------------------
 
 
 	/////////////////////////////////////////////////////////////    Sign Making and destoying information      /////////////////////////////////////////////////////////////
@@ -315,7 +291,6 @@ public class SignTechnikalDrawer : MonoBehaviour
 		CheckIfSignRemovedIsHThisLane(signThatWillBeLeaving, listOfMadeSignsDImensionsLeft);
 		CheckIfSignRemovedIsHThisLane(signThatWillBeLeaving, listOfMadeSignsDImensionsButton);
 		CheckIfSignRemovedIsHThisLane(signThatWillBeLeaving, listOfMadeSignsDImensionsRight);
-		Debug.Log("Drawerrecieved that "+ signThatWillBeLeaving+" is leaving.");
 		ourheadManager.SubWorkerMessageSignIsGoingToLeave(signThatWillBeLeaving);
 	}
 	           void CheckIfSignRemovedIsHThisLane(ImaginationSign signThatWillBeLeaving, Dictionary<ImaginationSign, Vector2> laneList)

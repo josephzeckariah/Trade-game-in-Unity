@@ -6,12 +6,14 @@ using UnityEngine;
 
 
 public enum Needs { Food,Materials,Electronics,Machines };
-public delegate void ResolutionDelegate(Vector2 resolution);
-//public delegate void ExchangeDelegate();
+
 
 
 public  class GameMaker : MonoBehaviour
 {
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//-//////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	[Header("Manual properits")]
 	public List<Needs> needsUsedInGame ;
 	public List<Country> countriesUsedInGame;
@@ -35,14 +37,16 @@ public  class GameMaker : MonoBehaviour
 	NeedValueAssighnerWorker ourNeedValueAssighnerWorker;
 	SignShowingManager ourSignManager;
 
-	//events	
-	public static ResolutionDelegate gameScreenSizeChanged;
-	//public static ExchangeDelegate anEchangeStarted;
-	//public static ExchangeDelegate anEchangeEnded;
 
 	public static bool tutorialIsOn = false;
 
 	public static int numberofExchangesCompleted = 0;
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//I///////////////////////////////////////////////////////////     Initalize       /////////////////////////////////////////////////////////////
 	void Awake()
 	{
 		ourNeedValueAssighnerWorker = this.GetComponentInChildren<NeedValueAssighnerWorker>();
@@ -58,27 +62,38 @@ public  class GameMaker : MonoBehaviour
 		Money = MoneySprite;
 		Smile = SmileSprite;
 
-		
+		GameStateInformationProvider.anEchangeEnded += CheckForEndGame;
+		GameStateInformationProvider.NormalGameStart += StartNormalGame;
 	}
+
+
+
+	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
 	private void Start()
 	{
-		//StartCoroutine(AlwaysCeckForSCreenSizeChange());
-
-		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue();
-		SubAwakeTellEachCountryToMakeThierSigns();
-				
-		if (GameStateInformationProvider.GameStarted != null)
-		{
-			GameStateInformationProvider.GameStarted();                        //         -------------------------------------------------------->>>
-		}
+		GameStateInformationProvider.GameStarted();                                          //         -------------------------------------------------------->>>
 	}
-	void TellAssighningWorkerToAssighnEachCountryItsNeedVAlue()
+
+
+
+
+
+	//S///////////////////////////////////////////////////////////     Normal game start     /////////////////////////////////////////////////////////////
+
+	void StartNormalGame()                                                             //         <<<--------------------------------------------------------------
+	{
+		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue();
+
+		SubAwakeTellEachCountryToMakeThierSigns();
+
+	}
+	                   void TellAssighningWorkerToAssighnEachCountryItsNeedVAlue()
 	{
 
-		ourNeedValueAssighnerWorker.AssighnChoosenNeedsValueToChoosenCountries(needsUsedInGame,countriesUsedInGame );
+		ourNeedValueAssighnerWorker.AssighnChoosenNeedsValueToChoosenCountries(needsUsedInGame, countriesUsedInGame);
 	}
-	
-	void SubAwakeTellEachCountryToMakeThierSigns()
+
+	                   void SubAwakeTellEachCountryToMakeThierSigns()
 	{
 		foreach (Country countryToTellToSTart in countriesUsedInGame)
 		{
@@ -86,26 +101,47 @@ public  class GameMaker : MonoBehaviour
 		}
 	}
 
-	
 
 
-	//still unfinished
-	/*IEnumerator AlwaysCeckForSCreenSizeChange()
+
+
+
+	//S///////////////////////////////////////////////////////////     Game end check       /////////////////////////////////////////////////////////////
+	void CheckForEndGame(Needs unUsed)
 	{
-		Vector2 previousScreenSize = new Vector2( Camera.main.pixelWidth, Camera.main.pixelHeight );
-		while (true)
+		if (ReturnTrueIfAllSignInGameIs100())
 		{
-			if(Camera.main.pixelWidth != previousScreenSize.x || Camera.main.pixelHeight!= previousScreenSize.y)
+			if(GameStateInformationProvider.GameEnded != null)
 			{
-				
-				if(gameScreenSizeChanged != null)
-				{
-					gameScreenSizeChanged(new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight));
-				}
-				previousScreenSize = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
+				GameStateInformationProvider.GameEnded();
 			}
-			yield return new WaitForSecondsRealtime(0.2f);
+			
 		}
-	}*/
+	}
+	               bool ReturnTrueIfAllSignInGameIs100()
+	{
+		foreach (Country country in countriesUsedInGame)
+		{
+			foreach (Need sign in country.ourCountriesSigns)
+			{
+				if (sign.currentSignValue != 100)
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Z))
+		{
+			if (GameStateInformationProvider.GameEnded != null)
+			{
+				GameStateInformationProvider.GameEnded();
+			}
+		}
+	}
 }
 

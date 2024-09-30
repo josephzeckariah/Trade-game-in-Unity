@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 71f1eb7cf43d1dc4097d9fa2fa901576
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - canvasToDrawON: {instanceID: 0}
+  - openingUi: {fileID: 9156822401130169675, guid: 3fa91cb846ab1fe4a840281c4e0cefe8, type: 3}
+  - endingUi: {fileID: 377361858230779887, guid: db05d97cf04b36146aaf83eba663c711, type: 3}
+  - creditsUi: {fileID: 582046387433038904, guid: 360fe0e77623d3c448d629f31f66dbbc, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
