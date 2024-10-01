@@ -29,21 +29,42 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+
+
 	//I///////////////////////////////////////////////////////////     Initalize       /////////////////////////////////////////////////////////////
 	private void Awake() 
 	{
 		ourExchangeMaker = GetComponentInChildren<ExchangeMaker>();
+
+		GameStateInformationProvider.NormalGameStart += StartExchangeMakingCycle;
+		GameStateInformationProvider.GameEnded += StopExchangeMakingCycle;
 	}
-	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
-	private void Start()
+	
+
+
+
+	//I///////////////////////////////////////////////////////////     Primary Start and Stop       /////////////////////////////////////////////////////////////
+	void StartExchangeMakingCycle()
 	{
 		ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange());  //upoun start be in (waiting to select first sign) state
+	}
+	void StopExchangeMakingCycle()
+	{
+		if (exchangeObjectBeingHeld != null)
+		{
+			exchangeObjectBeingHeld.ForighnOrderCancelLine();
+		}
 
-
+		StopCoroutine(ourLookingToStartExchangeCoroutine);
+		StopCoroutine(ourLookingToStartExchangeCoroutine);
 	}
 
 
 
+
+
+
+	//I///////////////////////////////////////////////////////////     2 Ienumerators for the 2 Choosing phases       /////////////////////////////////////////////////////////////
 
 	IEnumerator ContinousCheckForStartingAnExchange()
 	{
@@ -68,11 +89,15 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		}
 	}
 
-	void SubIenumCheckInputToCancelExchangeCreation()
+	               void SubIenumCheckInputToCancelExchangeCreation()
 	{
 		if (Input.GetKeyUp(KeyCode.Mouse1))
 		{
-			exchangeObjectBeingHeld.ForighnOrderCancelLine();
+			if(exchangeObjectBeingHeld != null)
+			{
+				exchangeObjectBeingHeld.ForighnOrderCancelLine();
+			}
+			
 			//GameObject.Destroy(exchangeObjectBeingHeld); 
 
 			GoFRomLookingToEndBackToLookingTOStart();
@@ -82,8 +107,8 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 
 
 
-	delegate void actionsTakesANeed(Need sighnHit,Need optionalNeedSelected);
-	void SubIenumCheckInputToSelectASign(actionsTakesANeed actionToDoUpounNeedHit,Need optionalNeedForChecking)
+	               delegate void actionsTakesANeed(Need sighnHit,Need optionalNeedSelected);
+	               void SubIenumCheckInputToSelectASign(actionsTakesANeed actionToDoUpounNeedHit,Need optionalNeedForChecking)
 	{
 		if (Input.GetKeyUp(KeyCode.Mouse0))
 		{
@@ -98,10 +123,24 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 				}
 			}
 		}
+
+		/*if (Input.touchCount >0)
+		{
+			Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.touches[0].position), Camera.main.transform.forward);
+			RaycastHit hitInfo = new RaycastHit();
+
+			if (Physics.Raycast(ray, out hitInfo))
+			{
+				if (hitInfo.collider.gameObject.TryGetComponent<Need>(out Need needOfSighnHit))
+				{
+					actionToDoUpounNeedHit(needOfSighnHit, optionalNeedForChecking);
+				}
+			}
+		}*/
 	}
 	 
 
-	void FunMod_CheckSighnToStartExchange(Need sighnHit,Need wontbeUsed)
+	                            void FunMod_CheckSighnToStartExchange(Need sighnHit,Need wontbeUsed)
 	{
 		if (sighnHit.currentSignValue != 100)
 		{
@@ -112,7 +151,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 			GoFromLookingToSTartToLookingToEnd(sighnHit);
 		}
 	}
-	void FunMod_CheckSighnToCompleteExchange(Need sighnHit,Need secondSignHit)
+	                            void FunMod_CheckSighnToCompleteExchange(Need sighnHit,Need secondSignHit)
 	{
 		bool theExchangeIsNotWithTheSameSign = !sighnHit.Equals(secondSignHit);
 		bool ValuesOfTwoSignsAreNotBothGreaterOrSmallerThan100 = Mathf.Sign(100-sighnHit.currentSignValue) != Mathf.Sign(100-secondSignHit.currentSignValue);
@@ -137,7 +176,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		}
 	}
 
-	void GoFromLookingToSTartToLookingToEnd(Need sighHit)
+	                                       void GoFromLookingToSTartToLookingToEnd(Need sighHit)
 	{
 		StopCoroutine(ourLookingToStartExchangeCoroutine);           // stop current cycle 
 		ourLookingToEndExchangeCoroutine = StartCoroutine(ContinousCheckForCompletingAnExchange(sighHit)); //and start next phase
@@ -153,7 +192,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		}
 
 	}
-	void GoFRomLookingToEndBackToLookingTOStart()
+	                                        void GoFRomLookingToEndBackToLookingTOStart()
 	{
 		StopCoroutine(ourLookingToEndExchangeCoroutine); // stop current cycle 
 
@@ -163,5 +202,10 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		GameStateInformationProvider.currentExchangeState = ExchangeMakingState.LookingToStart;
 	}
 
+
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////       End         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//End///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5287860504217137198}
   - component: {fileID: 5287860504217137197}
   - component: {fileID: 3925079986857763522}
+  - component: {fileID: 5690284724405031164}
   m_Layer: 5
   m_Name: Transparent backgound
   m_TagString: Untagged
@@ -90,3 +91,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ourCanvasToFitIn: {fileID: 0}
+--- !u!114 &5690284724405031164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287860504217137195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e989f2b6b000c8c4085d4fe52e782a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ourUiChangeManager: {fileID: 0}

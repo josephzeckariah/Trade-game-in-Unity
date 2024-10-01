@@ -41,5 +41,11 @@ public class FitToScreenBehaviour : MonoBehaviour
 
 
 
+	//OA///////////////////////////////////////////////////////////     On destory      /////////////////////////////////////////////////////////////
+	private void OnDestroy()
+	{
+		GameStateInformationProvider.ScreenSizeChanged -= RepoSitionOpeningSign;
+	}
+
 
 }

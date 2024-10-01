@@ -12,19 +12,19 @@ public class UiChangeManager : MonoBehaviour
 	public Canvas canvasToDrawON;
 	
 	[Header("Asset refrence")]
-	public GameObject openingUi;
-	public GameObject endingUi;
-	public GameObject creditsUi;
+	public UiScreen openingUi;
+	public UiScreen endingUi;
+	public UiScreen creditsUi;
 
 	[Header("Manual connection")]
-	public GameObject transparentBackground;
+	public UiScreen transparentBackground;
 
 	/////////////////////////////////////////////////////////////           Memory
-	GameObject openingUiCreated;
-	GameObject endingUiCreated;
-	GameObject creditsUiCreated;
+	UiScreen openingUiCreated;
+	UiScreen endingUiCreated;
+	UiScreen creditsUiCreated;
 
-	GameObject transparentBackgroundCreated;
+	UiScreen transparentBackgroundCreated;
 
 
 
@@ -38,23 +38,41 @@ public class UiChangeManager : MonoBehaviour
 
 	private void Awake()
 	{
-		GameStateInformationProvider.GameStarted += GameStartReaction;
+		GameStateInformationProvider.GameInitalize += GameStartReaction;
 		GameStateInformationProvider.GameEnded += GameEndReaction;
-		GameStateInformationProvider.NormalGameStart += InGameStartReaction;
 	}
 
 
+	//S///////////////////////////////////////////////////////////     Main Sub make screen mithod      /////////////////////////////////////////////////////////////
+	void MakeScreen(UiScreen screenToMake, ref UiScreen refrenceToMadeScreen)
+	{
+		/////////////////////////////////////////////////////////////        Make sign
+		refrenceToMadeScreen = Instantiate(screenToMake, canvasToDrawON.transform);
+		refrenceToMadeScreen.ourUiChangeManager = this;
+
+		RectTransform transofrmOfNewSign = refrenceToMadeScreen.gameObject.GetComponent<RectTransform>();
+
+
+		/////////////////////////////////////////////////////////////       Position Sign and achor
+		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
+
+	}
 
 
 	//I///////////////////////////////////////////////////////////     Game Start       /////////////////////////////////////////////////////////////
 
 	void GameStartReaction()                                                                            //         <<<--------------------------------------------------------------
 	{
-		MakeTransparentBackgoundFirstTime();
-		MakeOpeningSign();
+		MakeScreen(transparentBackground, ref transparentBackgroundCreated);
+		MakeScreen(openingUi,ref openingUiCreated);
+
+		/*MakeTransparentBackgoundFirstTime();
+		MakeOpeningSign();*/
 	}
 
-	               void MakeTransparentBackgoundFirstTime()
+	/*               void MakeTransparentBackgoundFirstTime()
 	{
 		transparentBackgroundCreated = Instantiate(transparentBackground, canvasToDrawON.transform);
 		//transparentBackgroundCreated.GetComponent<TransparentBcgroundBehaviour>().ourCanvasToFitIn = canvasToDrawON;
@@ -77,19 +95,23 @@ public class UiChangeManager : MonoBehaviour
 	//	spawnedSign.ourHeadTechnicalDrawer = this;
 		//spawnedSign.ourCanvasWeAreDrawOn = canvasToDrawON;
 
-	}
+	}*/
 
-
-
-
+	
 
 	//S///////////////////////////////////////////////////////////     In game Start        /////////////////////////////////////////////////////////////
 
-	void InGameStartReaction()                                                               //         <<<--------------------------------------------------------------
+	public void NormalStartButtonClicked()
 	{
 		Destroy(openingUiCreated.gameObject);
-	    transparentBackgroundCreated.gameObject.SetActive(false);
+		transparentBackgroundCreated.gameObject.SetActive(false);
+
+		if (GameStateInformationProvider.NormalGameStart != null)
+		{
+			GameStateInformationProvider.NormalGameStart();                             //       ------------------------------------------------>>>
+		}	
 	}
+
 
 
 
@@ -97,48 +119,34 @@ public class UiChangeManager : MonoBehaviour
 
 	//I///////////////////////////////////////////////////////////     Game End       /////////////////////////////////////////////////////////////
 
-	void GameEndReaction()
+	void GameEndReaction()                                                     //         <<<--------------------------------------------------------------
 	{
-		transparentBackgroundCreated.SetActive(true);
-		MoveFromEndScreenToCreditScreen();//MakeEndingSign();
+		transparentBackgroundCreated.gameObject.SetActive(true);
+		MakeScreen(endingUi,ref endingUiCreated);
+
+		//MakeEndingSign();
 	}
-	           void MakeEndingSign()
+	
+
+
+
+	//I///////////////////////////////////////////////////////////     Move From End Screen To CreditScreen       /////////////////////////////////////////////////////////////
+	public void MoveFromEndScreenToCreditScreen()
 	{
-		/////////////////////////////////////////////////////////////        Make sign
-		endingUiCreated = Instantiate(endingUi, canvasToDrawON.transform);
-		RectTransform transofrmOfNewSign = endingUiCreated.gameObject.GetComponent<RectTransform>();
-
-
-		/////////////////////////////////////////////////////////////       Position Sign and achor
-		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
-
-		/////////////////////////////////////////////////////////////      initalize sign
-		//	spawnedSign.ourHeadTechnicalDrawer = this;
-		//spawnedSign.ourCanvasWeAreDrawOn = canvasToDrawON;
-
+		Destroy(endingUiCreated.gameObject);
+		MakeScreen(creditsUi,ref creditsUiCreated);
 	}
 
 
 
-	//I///////////////////////////////////////////////////////////     Game End       /////////////////////////////////////////////////////////////
-	void MoveFromEndScreenToCreditScreen()
+	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
+
+	public void MoveFromCreditScreenBackToStartScreenWithExplainer()
 	{
-		//Destroy(endingUiCreated.gameObject);
-		MakeCreditSigns();
+		Destroy(creditsUiCreated.gameObject);
+		//gameRefresh
+		MakeScreen(openingUi, ref openingUiCreated);
+		//makescreen explainer
 	}
-	                void MakeCreditSigns()
-	{
-		/////////////////////////////////////////////////////////////        Make sign
-		creditsUiCreated = Instantiate(creditsUi, canvasToDrawON.transform);
-		RectTransform transofrmOfNewSign = creditsUiCreated.gameObject.GetComponent<RectTransform>();
 
-
-		/////////////////////////////////////////////////////////////       Position Sign and achor
-		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
-
-	}
 }

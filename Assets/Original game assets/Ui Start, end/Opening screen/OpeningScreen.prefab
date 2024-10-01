@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7924528, g: 0.59168637, b: 0.39248842, a: 1}
+  m_Color: {r: 0, g: 0.73562217, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -509,9 +509,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 84373610680405567}
-        m_TargetAssemblyTypeName: OpeningSign, Assembly-CSharp
-        m_MethodName: OnClickingStartNormalButton
+      - m_Target: {fileID: 6737601296216542765}
+        m_TargetAssemblyTypeName: UiScreen, Assembly-CSharp
+        m_MethodName: OpeningScreenStartButtonButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1008,7 +1008,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3471760570415680997}
-  - component: {fileID: 84373610680405567}
+  - component: {fileID: 6737601296216542765}
+  - component: {fileID: 6059109834699956798}
   m_Layer: 5
   m_Name: OpeningScreen
   m_TagString: Untagged
@@ -1038,7 +1039,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 782.8, y: 656.8}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &84373610680405567
+--- !u!114 &6737601296216542765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1047,9 +1048,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 6647638733856207586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67a58df0e99de840a6ee31b185ad3d0, type: 3}
+  m_Script: {fileID: 11500000, guid: e989f2b6b000c8c4085d4fe52e782a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ourUiChangeManager: {fileID: 0}
+--- !u!114 &6059109834699956798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6647638733856207586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fefe4076a9bc9849a23ff4fe62c1e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ourCanvasToFitIn: {fileID: 0}
 --- !u!1 &6867457488613821075
 GameObject:
   m_ObjectHideFlags: 0

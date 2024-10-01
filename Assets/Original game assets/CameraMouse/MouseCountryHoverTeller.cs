@@ -13,6 +13,7 @@ public class MouseCountryHoverTeller : MonoBehaviour
 	List<Country> countriesToCheckIfEntered = new List<Country>();
 	List<Country> countriesToCheckIfExited = new List<Country>();
 
+	Coroutine ourHoverTellingCycle;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,16 +21,24 @@ public class MouseCountryHoverTeller : MonoBehaviour
 	private void Awake()
 	{
 		GameStateInformationProvider.NormalGameStart += StartTellingHover;
+		GameStateInformationProvider.GameEnded += StopTellingHover;
 	}
 
 	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
 	void StartTellingHover()
 	{
 		SubAwakeCopyCountryListFromBigBossGameMaker();                        //         <<<--------------------------------------------------------------
-		StartCoroutine(ContinousCheckForMouseHover());
+		ourHoverTellingCycle = StartCoroutine(ContinousCheckForMouseHover());
 	}
+	/////////////////////////////////////////////////////////////
+	
+	void StopTellingHover()
+	{
+		StopCoroutine(ourHoverTellingCycle);
+	}
+
 	//S///////////////////////////////////////////////////////////     Know countries to work with       /////////////////////////////////////////////////////////////
-	                void SubAwakeCopyCountryListFromBigBossGameMaker()
+	void SubAwakeCopyCountryListFromBigBossGameMaker()
 	{
 		ourGameMaker = GameObject.FindAnyObjectByType<GameMaker>();
 		foreach (Country countryToADd in ourGameMaker.countriesUsedInGame)

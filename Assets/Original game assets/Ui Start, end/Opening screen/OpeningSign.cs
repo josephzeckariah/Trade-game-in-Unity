@@ -18,7 +18,7 @@ public class OpeningSign : MonoBehaviour
 	/*private void Awake()
 	{
 		GameStateInformationProvider.ScreenSizeChanged += RepoSitionOpeningSign;
-		//GameStateInformationProvider.GameStarted += OnGameStart;
+		//GameStateInformationProvider.GameInitalize += OnGameStart;
 	}
 
 	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
@@ -41,13 +41,13 @@ public class OpeningSign : MonoBehaviour
 	public void OnClickingStartNormalButton()
 	{
 		//ourHeadTechnicalDrawer.ourheadManager.ForignOrderOpeningSCreenClosed();
-		if(GameStateInformationProvider.NormalGameStart != null)
+		/*if(GameStateInformationProvider.NormalGameStart != null)
 		{
 			GameStateInformationProvider.NormalGameStart();                             //       ------------------------------------------------>>>
-		}
+		}*/
 		
 		//GameStateInformationProvider.ScreenSizeChanged -= RepoSitionOpeningSign;
-	//	GameStateInformationProvider.GameStarted -= OnGameStart;
+	//	GameStateInformationProvider.GameInitalize -= OnGameStart;
 		//Destroy(gameObject);
 	}
 

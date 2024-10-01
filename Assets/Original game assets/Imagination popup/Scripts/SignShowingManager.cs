@@ -33,6 +33,11 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	/////////////////////////////////////////////////////////////
 	float timeBetweenSignSpawn = 9f;
 
+	/////////////////////////////////////////////////////////////
+	Coroutine ourGeneralSignCycle;
+
+
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////        Actions       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,15 +46,17 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	/////////////////////////////////////////////////////////////     Set Reactions      /////////////////////////////////////////////////////////////
 	private void Awake()
 	{
-		GameStateInformationProvider.GameStarted += HigherUpOrderToStartWork;
-		GameStateInformationProvider.NormalGameStart += OnOpeningScreenClosed;
+		GameStateInformationProvider.GameInitalize += HigherUpOrderToStartWork;
+		GameStateInformationProvider.NormalGameStart += OnGameInitalize;
 		GameStateInformationProvider.anEchangeEnded += MakeANeedSpecificSignAsAnExchangeWasComplete;
 		GameStateInformationProvider.TutorialStarted += TutorialStartTrigger;
 		GameStateInformationProvider.TutorialEnded += TutorialEndReaction;
+		GameStateInformationProvider.GameEnded += OnGameEnded;
+;
 	}
 
 
-	/////////////////////////////////////////////////////////////       start       /////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////       Initalize      /////////////////////////////////////////////////////////////
 	 void HigherUpOrderToStartWork()                                                    //         <<<--------------------------------------------------------------
 	{
 		SubStartInitalize();
@@ -66,13 +73,21 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 
 
 
-	//OA///////////////////////////////////////////////////////////     On opening screen closed    /////////////////////////////////////////////////////////////
-	void OnOpeningScreenClosed()                                                         //         <<<-------------------------------------------------------------- 
+	//OA///////////////////////////////////////////////////////////     On Game Start and End    /////////////////////////////////////////////////////////////
+	void OnGameInitalize()                                                         //         <<<-------------------------------------------------------------- 
 	{
-		StartCoroutine(CycleToSpawnGeneralSigns(timeBetweenSignSpawn));
+		ourGeneralSignCycle =StartCoroutine(CycleToSpawnGeneralSigns(timeBetweenSignSpawn));
 	}
 
+	void OnGameEnded()
+	{
+		StopCoroutine(ourGeneralSignCycle);
 
+		foreach(ImaginationSign SignToDestoy in signsMadeAndAreOnScreen)
+		{
+			Destroy(SignToDestoy.gameObject);
+		}
+	}
 
 
 	//OA///////////////////////////////////////////////////////////     General sign spawner      /////////////////////////////////////////////////////////////
@@ -182,7 +197,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 
 		ourSignDrawer.MakeNormalSignSign(mirrorListOfSigns[0]);
 		mirrorListOfSigns.RemoveAt(0);
-		generalSignTimer = (timeBetweenSignSpawn/2) - ((generalSignTimer / timeBetweenSignSpawn) * (timeBetweenSignSpawn / 2));//(generalSignTimer/timeBetweenSignSpawn) * timeBetweenSignSpawn ;
+		generalSignTimer = (timeBetweenSignSpawn/2) + ((generalSignTimer / timeBetweenSignSpawn) * (timeBetweenSignSpawn / 2));//(generalSignTimer/timeBetweenSignSpawn) * timeBetweenSignSpawn ;
 	}
 
 

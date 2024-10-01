@@ -15,7 +15,7 @@ public class CaneraScreenSizeChangeTeller : MonoBehaviour
 	private void Awake()
 	{
 		ourHeadCameraToKeepTrackOf = GetComponentInParent<Camera>();
-		GameStateInformationProvider.GameStarted += StartWorkingToKeepTrackOfCameraChange;
+		GameStateInformationProvider.GameInitalize += StartWorkingToKeepTrackOfCameraChange;
 	}
 
 	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////

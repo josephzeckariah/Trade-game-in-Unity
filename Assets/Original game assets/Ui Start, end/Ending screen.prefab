@@ -513,13 +513,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5909125473544254392}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 7715768214319404831}
+        m_TargetAssemblyTypeName: UiScreen, Assembly-CSharp
+        m_MethodName: EndingScreenContinueButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1022,7 +1022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4498653622382677183}
-  - component: {fileID: 2722810144802084671}
+  - component: {fileID: 7715768214319404831}
   m_Layer: 5
   m_Name: Ending screen
   m_TagString: Untagged
@@ -1051,7 +1051,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 782.8, y: 656.8}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2722810144802084671
+--- !u!114 &7715768214319404831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e989f2b6b000c8c4085d4fe52e782a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ourChangeManager: {fileID: 0}
+  ourUiChangeManager: {fileID: 0}
 --- !u!1 &9092368171868940239
 GameObject:
   m_ObjectHideFlags: 0

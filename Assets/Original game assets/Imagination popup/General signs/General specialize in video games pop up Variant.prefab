@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018313, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Name
-      value: General specialize in video games pop up
+      value: General specialize in video games pop up Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018318, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Pivot.x

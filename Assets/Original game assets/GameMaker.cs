@@ -71,7 +71,7 @@ public  class GameMaker : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
 	private void Start()
 	{
-		GameStateInformationProvider.GameStarted();                                          //         -------------------------------------------------------->>>
+		GameStateInformationProvider.GameInitalize();                                          //         -------------------------------------------------------->>>
 	}
 
 
