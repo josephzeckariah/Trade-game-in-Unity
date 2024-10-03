@@ -28,6 +28,8 @@ public class MouseCountryHoverTeller : MonoBehaviour
 	void StartTellingHover()
 	{
 		SubAwakeCopyCountryListFromBigBossGameMaker();                        //         <<<--------------------------------------------------------------
+
+
 		ourHoverTellingCycle = StartCoroutine(ContinousCheckForMouseHover());
 	}
 	/////////////////////////////////////////////////////////////

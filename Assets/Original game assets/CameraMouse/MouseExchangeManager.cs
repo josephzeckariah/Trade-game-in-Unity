@@ -22,7 +22,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	Coroutine ourLookingToStartExchangeCoroutine;    //the coroutines memorized so that they may be stoped if needed
 	Coroutine ourLookingToEndExchangeCoroutine;
 
-
+	List<Exchange> ourExchangesCreated = new List<Exchange>();
 	
 	
 
@@ -37,7 +37,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		ourExchangeMaker = GetComponentInChildren<ExchangeMaker>();
 
 		GameStateInformationProvider.NormalGameStart += StartExchangeMakingCycle;
-		GameStateInformationProvider.GameEnded += StopExchangeMakingCycle;
+		GameStateInformationProvider.GameEnded += ClearAndStopExchangeMakingCycle;
 	}
 	
 
@@ -48,7 +48,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	{
 		ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange());  //upoun start be in (waiting to select first sign) state
 	}
-	void StopExchangeMakingCycle()
+	void ClearAndStopExchangeMakingCycle()
 	{
 		if (exchangeObjectBeingHeld != null)
 		{
@@ -57,6 +57,12 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 
 		StopCoroutine(ourLookingToStartExchangeCoroutine);
 		StopCoroutine(ourLookingToStartExchangeCoroutine);
+
+		foreach (Exchange exchange in ourExchangesCreated)
+		{
+			exchange.ForighnOrderCancelLine();
+		}
+		ourExchangesCreated.Clear();
 	}
 
 
@@ -165,6 +171,8 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		{
 			exchangeObjectBeingHeld.GetComponent<Exchange>().ForighnOrderCompleteExchangeOnThisSign(sighnHit);
 
+			ourExchangesCreated.Add(exchangeObjectBeingHeld);
+
 			GoFRomLookingToEndBackToLookingTOStart();
 
 			GameStateInformationProvider.numberOfExchangesCompleted += 1;
@@ -197,6 +205,8 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		StopCoroutine(ourLookingToEndExchangeCoroutine); // stop current cycle 
 
 		ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange()); //and start next phase
+
+		exchangeObjectBeingHeld = null;
 
 		/////////////////////////////////////////////////////////////  signals
 		GameStateInformationProvider.currentExchangeState = ExchangeMakingState.LookingToStart;

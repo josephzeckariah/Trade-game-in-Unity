@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -64,6 +65,7 @@ public  class GameMaker : MonoBehaviour
 
 		GameStateInformationProvider.anEchangeEnded += CheckForEndGame;
 		GameStateInformationProvider.NormalGameStart += StartNormalGame;
+		GameStateInformationProvider.GameEnded += OnGameEnd;
 	}
 
 
@@ -81,12 +83,14 @@ public  class GameMaker : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     Normal game start     /////////////////////////////////////////////////////////////
 
 	void StartNormalGame()                                                             //         <<<--------------------------------------------------------------
-	{
+	{	
+
 		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue();
 
 		SubAwakeTellEachCountryToMakeThierSigns();
 
 	}
+	                  
 	                   void TellAssighningWorkerToAssighnEachCountryItsNeedVAlue()
 	{
 
@@ -104,6 +108,30 @@ public  class GameMaker : MonoBehaviour
 
 
 
+	void OnGameEnd()
+	{
+		IfThereIsAPreviousltMadeGameClearIt();
+	}
+	                  void IfThereIsAPreviousltMadeGameClearIt()
+	{
+		foreach (Country country in countriesUsedInGame)
+		{
+			country.ourCountriesNeedsAndTheirValue.Clear();
+
+			if (country.ourmainSign != null)
+			{
+				Destroy(country.ourmainSign.gameObject);
+			}
+
+
+			foreach (Need sign in country.ourCountriesSigns)
+			{
+				Destroy(sign.gameObject);
+			}
+
+			country.ourCountriesSigns.Clear();
+		}
+	}
 
 
 	//S///////////////////////////////////////////////////////////     Game end check       /////////////////////////////////////////////////////////////

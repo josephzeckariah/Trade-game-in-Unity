@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -50,7 +48,7 @@ public class CameraMovement : MonoBehaviour
 	void StartFunCalculateBackgroundForConstrainr()
 	{
 		Sprite backgroundSprite = backgroundImage.sprite;
-		Vector2 imagePixelSize = backgroundSprite.texture.Size();
+		Vector2 imagePixelSize = new Vector2( backgroundSprite.texture.width, backgroundSprite.texture.height) ;
 		float pixelPerUnitOfBackGRound = backgroundSprite.pixelsPerUnit;
 
 		worldUnitsOfBackgroundHalfed = (imagePixelSize / pixelPerUnitOfBackGRound) / 2;

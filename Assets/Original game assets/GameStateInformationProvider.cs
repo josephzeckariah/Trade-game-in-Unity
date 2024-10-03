@@ -7,6 +7,7 @@ using UnityEngine;
 public delegate void EmptyFun();
 public delegate void Vector2Fun(Vector2 vec2);
 public delegate void ExchangeDelegatee(Needs needOfExchange);
+public delegate void LanguageDelegate(LanguagesInGame languageUsed);
 
 public struct exchangeToBeCompletedInformation { public Needs typeOfExchange; public bool otherToCompletExchangeIsMoreTHan100; }
 public enum ExchangeMakingState { LookingToStart, LookingToEnd }
@@ -21,8 +22,16 @@ public static class GameStateInformationProvider
     public static EmptyFun GameInitalize;
 
 	public static EmptyFun GameEnded;
+
+
+	//I///////////////////////////////////////////////////////////     Language change       /////////////////////////////////////////////////////////////
+	public static LanguageDelegate LanguageChanged;
+	public static LanguagesInGame currentLanguageSelected= LanguagesInGame.English;
+
+
 	//S///////////////////////////////////////////////////////////     Signs      /////////////////////////////////////////////////////////////
 	public static EmptyFun NormalGameStart;
+
 
 	//S///////////////////////////////////////////////////////////     Exchange     /////////////////////////////////////////////////////////////
 	public static ExchangeDelegatee anEchangeEnded;

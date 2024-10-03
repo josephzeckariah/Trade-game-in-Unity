@@ -36,6 +36,7 @@ public class TutorialManager : MonoBehaviour
 		ourSignArrowHighlighter = this.GetComponentInChildren<TutorialArrowManager>();
 
 		GameStateInformationProvider.NormalGameStart += StartWorkers;
+		GameStateInformationProvider.GameEnded += OnGameEnd;
 
 		GameStateInformationProvider.anEchangeEnded += NoExchangeSucessCheckeGetIfExchangeHasEnded;
 		GameStateInformationProvider.anEchangeEnded += GetForTheHighlighterTellTutorialIfAnExchangeEnded;
@@ -72,6 +73,25 @@ public class TutorialManager : MonoBehaviour
 			yield return new WaitForSecondsRealtime(timeBetweenChecks);
 		}
 	}
+
+
+
+
+	//S///////////////////////////////////////////////////////////     OnGameEnd       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	void OnGameEnd()
+	{
+		this.StopAllCoroutines();
+		tutorialHasStarted = false;
+		NoExchangeStartedForAwhile = false;
+		ExchanheHeldForRooLong = false;
+		NoExchangeEndedForTooLong = false;
+
+		
+	}
+
+
+
+
 
 	//OA///////////////////////////////////////////////////////////     Always cycle      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

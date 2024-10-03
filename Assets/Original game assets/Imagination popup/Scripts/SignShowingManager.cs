@@ -41,7 +41,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////////////        Actions       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+	
 
 	/////////////////////////////////////////////////////////////     Set Reactions      /////////////////////////////////////////////////////////////
 	private void Awake()
@@ -82,11 +82,27 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	void OnGameEnded()
 	{
 		StopCoroutine(ourGeneralSignCycle);
-
-		foreach(ImaginationSign SignToDestoy in signsMadeAndAreOnScreen)
+		List<ImaginationSign> mirrorlist = new List<ImaginationSign>();
+		foreach (ImaginationSign sign in signsMadeAndAreOnScreen)
 		{
-			Destroy(SignToDestoy.gameObject);
+			mirrorlist.Add(sign);
 		}
+		foreach(ImaginationSign SignToDestoy in mirrorlist)
+		{
+			SignToDestoy.OnXButtonClick();
+		}
+		signsMadeAndAreOnScreen.Clear();
+		mirrorlist.Clear();
+		foreach (ImaginationSign sign in tutorialSignsMadeAndAreOnScreen)
+		{
+			mirrorlist.Add(sign);
+		}
+		foreach (ImaginationSign SignToDestoy in mirrorlist)
+		{
+			SignToDestoy.OnXButtonClick();
+		}
+		tutorialSignsMadeAndAreOnScreen.Clear();
+		mirrorlist.Clear();
 	}
 
 
@@ -215,7 +231,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 		foreach (ImaginationSign tutorialSign in listOfTutorialSigns)
 		{
 			ourSignDrawer.MakeTutorialSign(tutorialSign);	
-			yield return new WaitForSecondsRealtime(4f);
+			yield return new WaitForSecondsRealtime(5f);
 		}
 	
 		
