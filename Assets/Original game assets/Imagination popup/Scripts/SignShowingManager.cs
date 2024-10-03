@@ -228,13 +228,16 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	{
 		generalSignTimer += 999;
 		/////////////////////////////////////////////////////////////
-		foreach (ImaginationSign tutorialSign in listOfTutorialSigns)
-		{
-			ourSignDrawer.MakeTutorialSign(tutorialSign);	
-			yield return new WaitForSecondsRealtime(5f);
-		}
-	
-		
+		  ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[0]);
+
+		yield return new WaitForSecondsRealtime(6f);
+
+		tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
+		/////////////////////////////////////////////////////////////
+		ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[1]);
+		yield return new WaitForSecondsRealtime(5f);
+		ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[2]);
+
 	}
 	public void SubWorkerMessageTutorialSignSuccefullyMade(ImaginationSign signMade)
 	{

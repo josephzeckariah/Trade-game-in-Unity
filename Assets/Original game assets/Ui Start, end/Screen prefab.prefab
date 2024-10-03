@@ -47,7 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4916405292899905645}
   - component: {fileID: 1807268371615055842}
-  - component: {fileID: 8448610045552653239}
+  - component: {fileID: 3178835396704535520}
   m_Layer: 5
   m_Name: Screen prefab
   m_TagString: Untagged
@@ -74,7 +74,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 782.8, y: 656.8}
+  m_SizeDelta: {x: 818.07, y: 656.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807268371615055842
 MonoBehaviour:
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ourCanvasToFitIn: {fileID: 0}
---- !u!114 &8448610045552653239
+--- !u!114 &3178835396704535520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,9 +98,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2906395701310377834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67a58df0e99de840a6ee31b185ad3d0, type: 3}
+  m_Script: {fileID: 11500000, guid: e989f2b6b000c8c4085d4fe52e782a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ourUiChangeManager: {fileID: 0}
 --- !u!1 &4307766779569990493
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1.0534, y: 0}
   m_SizeDelta: {x: 450, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6929336062009628386
@@ -208,7 +209,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b17cdfe3622ef16468cc287c7ce92c45, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -339,7 +340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8448610045552653239}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: OpeningSign, Assembly-CSharp
         m_MethodName: OnClickingStartNormalButton
         m_Mode: 1

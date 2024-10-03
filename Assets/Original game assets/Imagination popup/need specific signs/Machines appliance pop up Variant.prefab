@@ -181,19 +181,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 31a507991c1896a4ab8cece1f5d8acd2, type: 3}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 108.7209
+      value: 95.4165
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 87.0337
+      value: 64.1205
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -15.3798
+      value: -14.5956
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 28.0191
+      value: 33.5627
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_text
@@ -202,11 +202,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_fontSize
-      value: 10.4
+      value: 9.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+      propertyPath: m_margin.w
+      value: 0.78816414
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018313, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Name
-      value: Machines appliance pop up
+      value: Machines appliance pop up Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018318, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Pivot.x
@@ -299,3 +303,43 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8244099652782256715, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
   m_PrefabInstance: {fileID: 5444737735009549108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6280187861374591623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+  m_PrefabInstance: {fileID: 5444737735009549108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9188966236264559420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6280187861374591623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+--- !u!114 &233239738396311777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6280187861374591623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Home machine for everyone like ( fridge, vacum cleaner ,microwave,
+    air conditioner....).
+  ArabicText: "\u0622\u0644\u0627\u062A \u0645\u0646\u0632\u0644\u064A\u0629 \u0644\u0644\u062C\u0645\u064A\u0639
+    \u0645\u062B\u0644 (\u0627\u0644\u062B\u0644\u0627\u062C\u0629\u060C \u0627\u0644\u0645\u0643\u0646\u0633\u0629
+    \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0626\u064A\u0629\u060C \u0627\u0644\u0645\u064A\u0643\u0631\u0648\u0648\u064A\u0641\u060C
+    \u0645\u0643\u064A\u0641 \u0627\u0644\u0647\u0648\u0627\u0621....)."
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}

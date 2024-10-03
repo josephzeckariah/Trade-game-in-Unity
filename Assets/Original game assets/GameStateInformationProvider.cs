@@ -21,6 +21,7 @@ public static class GameStateInformationProvider
 	public static Vector2Fun ScreenSizeChanged;	
     public static EmptyFun GameInitalize;
 
+	public static EmptyFun AllSigns100;
 	public static EmptyFun GameEnded;
 
 
@@ -45,4 +46,8 @@ public static class GameStateInformationProvider
 	//S///////////////////////////////////////////////////////////     tutorial     /////////////////////////////////////////////////////////////
 	public static EmptyFun TutorialStarted;
 	public static EmptyFun TutorialEnded;
+
+	//I///////////////////////////////////////////////////////////     Camera      /////////////////////////////////////////////////////////////
+
+	public static EmptyFun ZoomStarted;
 }

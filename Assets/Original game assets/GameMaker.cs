@@ -137,11 +137,11 @@ public  class GameMaker : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     Game end check       /////////////////////////////////////////////////////////////
 	void CheckForEndGame(Needs unUsed)
 	{
-		if (ReturnTrueIfAllSignInGameIs100())
+		if (true)//ReturnTrueIfAllSignInGameIs100())
 		{
-			if(GameStateInformationProvider.GameEnded != null)
+			if(GameStateInformationProvider.AllSigns100 != null)
 			{
-				GameStateInformationProvider.GameEnded();
+				GameStateInformationProvider.AllSigns100();
 			}
 			
 		}

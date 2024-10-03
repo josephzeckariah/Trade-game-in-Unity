@@ -12,12 +12,14 @@ public class CameraMovement : MonoBehaviour
 	[Header("Manual connections")]
 	public SpriteRenderer backgroundImage;
 
-    //auto connections
-    Camera ourCamera;
+	///////////////////////////////////////////////////////////// Auto connections
+	Camera ourCamera;
 
 	//private memory
 	Vector2 areaCameraIsConstrainedIn;
 	Vector2 worldUnitsOfBackgroundHalfed;
+
+	Coroutine ourMouseOnEdgeCameraMovement;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +27,11 @@ public class CameraMovement : MonoBehaviour
 	private void Awake()
 	{
 		ourCamera = GetComponent<Camera>();
+
+		GameStateInformationProvider.NormalGameStart += OnGameStart;
+		GameStateInformationProvider.AllSigns100 += OnAllSigns100;
 	}
+	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
 	private void Start()
 	{
 		StartFunCalculateBackgroundForConstrainr();
@@ -36,26 +42,17 @@ public class CameraMovement : MonoBehaviour
 
 	}
 
-	void Update()
-    {
-		ContinousCalculateCameraMovementFromMousePosition();
-
-		
-
-
-	}
-
-	void StartFunCalculateBackgroundForConstrainr()
+	                  void StartFunCalculateBackgroundForConstrainr()
 	{
 		Sprite backgroundSprite = backgroundImage.sprite;
-		Vector2 imagePixelSize = new Vector2( backgroundSprite.texture.width, backgroundSprite.texture.height) ;
+		Vector2 imagePixelSize = new Vector2(backgroundSprite.texture.width, backgroundSprite.texture.height);
 		float pixelPerUnitOfBackGRound = backgroundSprite.pixelsPerUnit;
 
 		worldUnitsOfBackgroundHalfed = (imagePixelSize / pixelPerUnitOfBackGRound) / 2;
 	}
-	void CalculateCameraAreaConstrained(Vector2 unused)
+	                  void CalculateCameraAreaConstrained(Vector2 unused)
 	{
-		
+
 		float cameraYSize = ourCamera.orthographicSize;
 		float cameraAspect = ourCamera.aspect;
 		float cameraXSize = cameraYSize * cameraAspect;
@@ -65,25 +62,43 @@ public class CameraMovement : MonoBehaviour
 	}
 
 
-	IEnumerator AlwaysCheckForCameraChangeToReCalculateConstrains()
+
+
+	//S///////////////////////////////////////////////////////////     Always       /////////////////////////////////////////////////////////////
+	void OnGameStart()
 	{
-	
-		float aspectSizeOfCamera = ourCamera.aspect;
-		while (true)
+		ourCamera.orthographicSize = 5f;
+		ourMouseOnEdgeCameraMovement = StartCoroutine(MoveCameraIfOnEdgeOfScreen());
+	}
+	void OnAllSigns100()
+	{
+		StopCoroutine(ourMouseOnEdgeCameraMovement);
+		StartCoroutine(EndAnimation());
+	}
+
+	               IEnumerator MoveCameraIfOnEdgeOfScreen()
+	{
+		while(true)
 		{
-			if (ourCamera.aspect != aspectSizeOfCamera)   //if camera size has changed
-			{
-			//	CalculateCameraAreaConstrained();        //recalculate constrains
-				aspectSizeOfCamera = ourCamera.aspect;
-			}
-			yield return new WaitForSecondsRealtime(1f);
+			ContinousCalculateCameraMovementFromMousePosition();
+			yield return null;
 		}
 	}
 
-
-	//S///////////////////////////////////////////////////////////     Vamera movement       /////////////////////////////////////////////////////////////
-	void ContinousCalculateCameraMovementFromMousePosition()
+	void Update()
     {
+		
+
+		/*if (Input.GetKeyDown(KeyCode.Space))
+		{
+			StartCoroutine( EndAnimation());
+		}*/
+
+	}
+
+
+	                     void ContinousCalculateCameraMovementFromMousePosition()
+	{
 		Vector3 mousePostionInViewPort = ourCamera.ScreenToViewportPoint(Input.mousePosition);
 		Vector3 translateAmount = new Vector3();
 		//Get the y axis Movemeent and save it translateAmount variable
@@ -130,8 +145,200 @@ public class CameraMovement : MonoBehaviour
 
 
 		//the move action
-		ourCamera.transform.Translate(translateAmount * Time.deltaTime* cameraMovementSpeed, Space.Self);
+		ourCamera.transform.Translate(translateAmount * Time.deltaTime * cameraMovementSpeed, Space.Self);
 
-		
+
 	}
+
+
+
+
+
+	//S///////////////////////////////////////////////////////////     End aniamtion      /////////////////////////////////////////////////////////////
+
+	IEnumerator EndAnimation()
+	{
+		//Disable movemnt
+		yield return StartCoroutine(MoveToward(this.transform, new Vector3(5,-1,0),0.5f));
+
+	
+		if (GameStateInformationProvider.ZoomStarted != null)
+		{
+			GameStateInformationProvider.ZoomStarted();
+		}                     //         -------------------------------------------------------->>>
+
+		yield return ZoomCamera(ourCamera, 8,8);
+
+		if (GameStateInformationProvider.GameEnded != null)
+		{
+			GameStateInformationProvider.GameEnded();
+		}                      //         -------------------------------------------------------->>>
+	}                                               //         -------------------------------------------------------->>>
+
+
+	IEnumerator MoveToward(Transform objectToMove,Vector3 targetLocation,float speed)
+	{
+		Vector3 direction = targetLocation - objectToMove.position;
+
+
+
+		while (ReturnTrueIfPointIsBeforeTheOtherOnTheDirection(objectToMove.position, direction, targetLocation))
+		{
+
+
+			objectToMove.position += new Vector3(direction.x * speed, direction.y * speed, 0f) * Time.deltaTime;
+
+			yield return null;
+		}
+
+	}
+	                     bool ReturnTrueIfPointIsBeforeTheOtherOnTheDirection(Vector3 pointToCheck, Vector3 direction, Vector3 pointToCheckIfAfter)
+	{
+		bool xIsOk = true;                                          //onlu works in 2d
+		bool YIsOk = true;
+		float numberOfZeroComparison = 0.2f;
+		if (direction.x < numberOfZeroComparison && direction.x > -numberOfZeroComparison)
+		{
+			if (direction.y > 0f)
+			{
+				if (pointToCheck.y < pointToCheckIfAfter.y)
+				{
+					return true;
+
+				}
+				else if (pointToCheck.y > pointToCheckIfAfter.y)
+				{
+					return false;
+				}
+			}
+			else if (direction.y < 0f)
+			{
+				if (pointToCheck.y > pointToCheckIfAfter.y)
+				{
+					return true;
+
+				}
+				else if (pointToCheck.y < pointToCheckIfAfter.y)
+				{
+					return false;
+				}
+			}
+
+			else if (direction.x > 0f)
+			{
+				if (pointToCheck.x < pointToCheckIfAfter.x)
+				{
+					xIsOk = true;
+				}
+				else
+				{
+					xIsOk = false;
+				}
+			}
+			else if (direction.x < 0f)
+			{
+				if (pointToCheck.x > pointToCheckIfAfter.x)
+				{
+					xIsOk = true;
+				}
+				else
+				{
+					xIsOk = false;
+				}
+			}
+		}
+
+
+
+		if (direction.y < numberOfZeroComparison && direction.y > -numberOfZeroComparison)
+		{
+			if (direction.x > 0f)
+			{
+				if (pointToCheck.x < pointToCheckIfAfter.x)
+				{
+					return true;
+
+				}
+				else if (pointToCheck.x > pointToCheckIfAfter.x)
+				{
+					return false;
+				}
+			}
+			else if (direction.x < 0f)
+			{
+				if (pointToCheck.x > pointToCheckIfAfter.x)
+				{
+					return true;
+
+				}
+				else if (pointToCheck.x < pointToCheckIfAfter.x)
+				{
+					return false;
+				}
+			}
+		}
+		else if (direction.y > 0f)
+		{
+			if (pointToCheck.y < pointToCheckIfAfter.y)
+			{
+				YIsOk = true;
+			}
+			else
+			{
+				YIsOk = false;
+			}
+		}
+		else if (direction.y < 0f)
+		{
+			if (pointToCheck.y > pointToCheckIfAfter.y)
+			{
+				YIsOk = true;
+			}
+			else
+			{
+				YIsOk = false;
+			}
+		}
+
+
+
+		if (xIsOk && YIsOk)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+	           IEnumerator ZoomCamera(Camera orthographiccameraToZoom,float amountToGoTo,float timeTakenToGo)
+	{
+		bool CameraIsSmallerThanTarget = orthographiccameraToZoom.orthographicSize < amountToGoTo;
+
+		float DiferenceInAmount = amountToGoTo - orthographiccameraToZoom.orthographicSize;
+
+		if (CameraIsSmallerThanTarget)
+		{
+			while (orthographiccameraToZoom.orthographicSize < amountToGoTo)
+			{
+				orthographiccameraToZoom.orthographicSize += (DiferenceInAmount/timeTakenToGo) * Time.deltaTime;
+
+				yield return null;
+			}
+		}
+		else if (!CameraIsSmallerThanTarget)
+		{
+			while (orthographiccameraToZoom.orthographicSize > amountToGoTo)
+			{
+				orthographiccameraToZoom.orthographicSize += (DiferenceInAmount / timeTakenToGo) * Time.deltaTime;
+
+				yield return null;
+			}
+		}
+	
+	}
+
 }

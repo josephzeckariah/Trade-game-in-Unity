@@ -15,6 +15,7 @@ public class UiChangeManager : MonoBehaviour
 	public UiScreen openingUi;
 	public UiScreen endingUi;
 	public UiScreen creditsUi;
+	public UiScreen endingAnimationUi;
 
 	[Header("Manual connection")]
 	public UiScreen transparentBackground;
@@ -23,6 +24,7 @@ public class UiChangeManager : MonoBehaviour
 	UiScreen openingUiCreated;
 	UiScreen endingUiCreated;
 	UiScreen creditsUiCreated;
+	UiScreen endingAnimationUiCreated;
 
 	UiScreen transparentBackgroundCreated;
 
@@ -40,11 +42,12 @@ public class UiChangeManager : MonoBehaviour
 	{
 		GameStateInformationProvider.GameInitalize += GameStartReaction;
 		GameStateInformationProvider.GameEnded += GameEndReaction;
+		GameStateInformationProvider.ZoomStarted += ShowEndingAnimationScreen;
 	}
 
 
 	//S///////////////////////////////////////////////////////////     Main Sub make screen mithod      /////////////////////////////////////////////////////////////
-	void MakeScreen(UiScreen screenToMake, ref UiScreen refrenceToMadeScreen)
+	                   void MakeScreen(UiScreen screenToMake, ref UiScreen refrenceToMadeScreen)
 	{
 		/////////////////////////////////////////////////////////////        Make sign
 		refrenceToMadeScreen = Instantiate(screenToMake, canvasToDrawON.transform);
@@ -68,36 +71,9 @@ public class UiChangeManager : MonoBehaviour
 		MakeScreen(transparentBackground, ref transparentBackgroundCreated);
 		MakeScreen(openingUi,ref openingUiCreated);
 
-		/*MakeTransparentBackgoundFirstTime();
-		MakeOpeningSign();*/
 	}
 
-	/*               void MakeTransparentBackgoundFirstTime()
-	{
-		transparentBackgroundCreated = Instantiate(transparentBackground, canvasToDrawON.transform);
-		//transparentBackgroundCreated.GetComponent<TransparentBcgroundBehaviour>().ourCanvasToFitIn = canvasToDrawON;
-	}
-	               void MakeOpeningSign()
-	{
-		/////////////////////////////////////////////////////////////        Make sign
-		openingUiCreated = Instantiate(openingUi, canvasToDrawON.transform);
 
-		
-		RectTransform transofrmOfNewSign = openingUiCreated.gameObject.GetComponent<RectTransform>();
-
-
-		/////////////////////////////////////////////////////////////       Position Sign and achor
-		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
-
-		/////////////////////////////////////////////////////////////      initalize sign
-	//	spawnedSign.ourHeadTechnicalDrawer = this;
-		//spawnedSign.ourCanvasWeAreDrawOn = canvasToDrawON;
-
-	}*/
-
-	
 
 	//S///////////////////////////////////////////////////////////     In game Start        /////////////////////////////////////////////////////////////
 
@@ -114,13 +90,18 @@ public class UiChangeManager : MonoBehaviour
 
 
 
+	//S///////////////////////////////////////////////////////////     Show end animation       /////////////////////////////////////////////////////////////
 
-
+	void ShowEndingAnimationScreen()                                                                   //         <<<--------------------------------------------------------------
+	{
+		 MakeScreen(endingAnimationUi, ref endingAnimationUiCreated);
+	}
 
 	//I///////////////////////////////////////////////////////////     Game End       /////////////////////////////////////////////////////////////
 
 	void GameEndReaction()                                                     //         <<<--------------------------------------------------------------
 	{
+		Destroy(endingAnimationUiCreated.gameObject);
 		transparentBackgroundCreated.gameObject.SetActive(true);
 		MakeScreen(endingUi,ref endingUiCreated);
 

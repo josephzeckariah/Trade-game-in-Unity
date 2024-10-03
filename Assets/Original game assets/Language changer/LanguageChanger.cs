@@ -59,12 +59,14 @@ public class LanguageChanger : MonoBehaviour
 				ourTMProToChange.isRightToLeftText = false;
 				ourTMProToChange.font = EnglishFont;
 				ourTMProToChange.text = EnglishText;
+				ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Left;
 				break;
 			case LanguagesInGame.Arabic:
 			
 				ourTMProToChange.font = ArabicFont;
 			ourTMProToChange.text = ArabicText;
 				ourArabicFixerTMPRO.FixArabicText();
+				ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Right;
 			break;
 		}
 

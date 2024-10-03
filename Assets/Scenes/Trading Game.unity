@@ -1586,6 +1586,7 @@ MonoBehaviour:
   openingUi: {fileID: 6737601296216542765, guid: e2dd323bd9314f94ba4d4e057d570387, type: 3}
   endingUi: {fileID: 7715768214319404831, guid: 22cbd4c832539144f86d107a83e47b32, type: 3}
   creditsUi: {fileID: 1897960805496846441, guid: 360fe0e77623d3c448d629f31f66dbbc, type: 3}
+  endingAnimationUi: {fileID: 6249125209776147077, guid: b36241cb6379acd4a9156ef61a896add, type: 3}
   transparentBackground: {fileID: 5690284724405031164, guid: 8333498f237b3174aaff5446f52784d5, type: 3}
 --- !u!1 &1223119995
 GameObject:
@@ -2173,8 +2174,10 @@ MonoBehaviour:
   - {fileID: 1311703900778013672, guid: dee648a4c06038e478da0b5282cab85d, type: 3}
   - {fileID: 8036898301015862722, guid: 47ef1315f668d5d4491d44542815bb6f, type: 3}
   listOfTutorialSigns:
+  - {fileID: 1454115088682194547, guid: 96b8a8fbb9bc70743a8c6e27c5a9f0a4, type: 3}
   - {fileID: 3865703142019397937, guid: 72bfda318eeb46145ac6a11d3bdd16b7, type: 3}
-  - {fileID: 5752580220011470334, guid: 4161aeb8916e63842aa17ccbdf143782, type: 3}
+  - {fileID: 888395248087575030, guid: 6e7520ab936c4024a939c0bc92b74ea5, type: 3}
+  - {fileID: 4419220907290353267, guid: 9aa20299680213b4288cef4043333d98, type: 3}
   ListOfFoodSigns:
   - {fileID: 6505878274853002629, guid: 07088b9ebd0d28943946a3943960b7a3, type: 3}
   - {fileID: 6942637976610133181, guid: 90d8c424b44a7d14f89cf82b6e4d65e8, type: 3}
