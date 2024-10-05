@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_fontSize
-      value: 15.7
+      value: 16.1
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_margin.w
@@ -184,6 +184,6 @@ MonoBehaviour:
   EnglishText: Big sign shows overall happines of each country.
   ArabicText: "\u0644\u0644\u0627\u0641\u062A\u0629 \u0627\u0644\u0643\u0628\u064A\u0631\u0629
     \u062A\u0648\u062D\u064A \u0628\u0645\u062F\u064A \u0627\u0644\u0633\u0639\u0627\u062F\u0629
-    \u0641\u064A \u0627\u0644\u062F\u0648\u0644\u0629."
+    \u0641\u064A \u0643\u0644 \u0627\u0644\u062F\u0648\u0644\u0629."
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}

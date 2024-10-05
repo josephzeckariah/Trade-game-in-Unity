@@ -43,7 +43,7 @@ public class MouseCountryHoverTeller : MonoBehaviour
 	void SubAwakeCopyCountryListFromBigBossGameMaker()
 	{
 		ourGameMaker = GameObject.FindAnyObjectByType<GameMaker>();
-		foreach (Country countryToADd in ourGameMaker.countriesUsedInGame)
+		foreach (Country countryToADd in ourGameMaker.countriesUsedInMainGame) //////////////////////////////
 		{
 			countriesToCheckIfEntered.Add(countryToADd);
 		}

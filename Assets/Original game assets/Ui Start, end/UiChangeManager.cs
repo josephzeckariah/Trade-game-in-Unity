@@ -14,8 +14,9 @@ public class UiChangeManager : MonoBehaviour
 	[Header("Asset refrence")]
 	public UiScreen openingUi;
 	public UiScreen endingUi;
-	public UiScreen creditsUi;
+	public CreditScreen creditsUi;
 	public UiScreen endingAnimationUi;
+	public UiScreen IntroScreennUi;
 
 	[Header("Manual connection")]
 	public UiScreen transparentBackground;
@@ -23,8 +24,9 @@ public class UiChangeManager : MonoBehaviour
 	/////////////////////////////////////////////////////////////           Memory
 	UiScreen openingUiCreated;
 	UiScreen endingUiCreated;
-	UiScreen creditsUiCreated;
+	CreditScreen creditsUiCreated;
 	UiScreen endingAnimationUiCreated;
+	UiScreen IntroScreennUiCreated;
 
 	UiScreen transparentBackgroundCreated;
 
@@ -46,8 +48,8 @@ public class UiChangeManager : MonoBehaviour
 	}
 
 
-	//S///////////////////////////////////////////////////////////     Main Sub make screen mithod      /////////////////////////////////////////////////////////////
-	                   void MakeScreen(UiScreen screenToMake, ref UiScreen refrenceToMadeScreen)
+	               //S///////////////////////////////////////////////////////////     Main Sub make screen mithod      /////////////////////////////////////////////////////////////
+	                   void MakeScreen(UiScreen screenToMake,ref  UiScreen refrenceToMadeScreen)
 	{
 		/////////////////////////////////////////////////////////////        Make sign
 		refrenceToMadeScreen = Instantiate(screenToMake, canvasToDrawON.transform);
@@ -61,7 +63,26 @@ public class UiChangeManager : MonoBehaviour
 		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
 		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
 
+
 	}
+	                   void MakeScreen(CreditScreen screenToMake, ref CreditScreen refrenceToMadeScreen)
+	{
+		/////////////////////////////////////////////////////////////        Make sign
+		refrenceToMadeScreen = Instantiate(screenToMake, canvasToDrawON.transform);
+		refrenceToMadeScreen.ourUiChangeManager = this;
+
+		RectTransform transofrmOfNewSign = refrenceToMadeScreen.gameObject.GetComponent<RectTransform>();
+
+
+		/////////////////////////////////////////////////////////////       Position Sign and achor
+		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
+
+
+	}
+
+
 
 
 	//I///////////////////////////////////////////////////////////     Game Start       /////////////////////////////////////////////////////////////
@@ -69,26 +90,31 @@ public class UiChangeManager : MonoBehaviour
 	void GameStartReaction()                                                                            //         <<<--------------------------------------------------------------
 	{
 		MakeScreen(transparentBackground, ref transparentBackgroundCreated);
-		MakeScreen(openingUi,ref openingUiCreated);
-
+		MakeScreen(openingUi, ref openingUiCreated);
 	}
 
 
 
-	//S///////////////////////////////////////////////////////////     In game Start        /////////////////////////////////////////////////////////////
+	//S///////////////////////////////////////////////////////////     opening screen buttons reactions        /////////////////////////////////////////////////////////////
 
 	public void NormalStartButtonClicked()
 	{
 		Destroy(openingUiCreated.gameObject);
+		MakeScreen(IntroScreennUi, ref IntroScreennUiCreated);
+	}
+
+	//S///////////////////////////////////////////////////////////     intro start       /////////////////////////////////////////////////////////////
+
+	public void IntroEnded()
+	{
+		Destroy(IntroScreennUiCreated.gameObject);
 		transparentBackgroundCreated.gameObject.SetActive(false);
 
 		if (GameStateInformationProvider.NormalGameStart != null)
 		{
 			GameStateInformationProvider.NormalGameStart();                             //       ------------------------------------------------>>>
-		}	
+		}
 	}
-
-
 
 	//S///////////////////////////////////////////////////////////     Show end animation       /////////////////////////////////////////////////////////////
 
@@ -97,13 +123,25 @@ public class UiChangeManager : MonoBehaviour
 		 MakeScreen(endingAnimationUi, ref endingAnimationUiCreated);
 	}
 
+
+	public void MoveFromStartScreenToCreditScreen()
+	{
+		Destroy(openingUiCreated.gameObject);
+		MakeScreen(creditsUi, ref creditsUiCreated);
+		creditsUiCreated.creditScreenType = CreditScreenType.openingCredit;
+	}
+
+
+
+	//ng= button
+
 	//I///////////////////////////////////////////////////////////     Game End       /////////////////////////////////////////////////////////////
 
 	void GameEndReaction()                                                     //         <<<--------------------------------------------------------------
 	{
 		Destroy(endingAnimationUiCreated.gameObject);
 		transparentBackgroundCreated.gameObject.SetActive(true);
-		MakeScreen(endingUi,ref endingUiCreated);
+		MakeScreen(endingUi, ref endingUiCreated);
 
 		//MakeEndingSign();
 	}
@@ -111,16 +149,17 @@ public class UiChangeManager : MonoBehaviour
 
 
 
-	//I///////////////////////////////////////////////////////////     Move From End Screen To CreditScreen       /////////////////////////////////////////////////////////////
+	//I///////////////////////////////////////////////////////////    Open Credits       /////////////////////////////////////////////////////////////
 	public void MoveFromEndScreenToCreditScreen()
 	{
 		Destroy(endingUiCreated.gameObject);
 		MakeScreen(creditsUi,ref creditsUiCreated);
+		creditsUiCreated.creditScreenType = CreditScreenType.EndCredit;
 	}
 
+	
 
-
-	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
+	//S///////////////////////////////////////////////////////////     exit credit       /////////////////////////////////////////////////////////////
 
 	public void MoveFromCreditScreenBackToStartScreenWithExplainer()
 	{
@@ -128,6 +167,12 @@ public class UiChangeManager : MonoBehaviour
 		//gameRefresh
 		MakeScreen(openingUi, ref openingUiCreated);
 		//makescreen explainer
+	}
+	public void MoveFromCreditScreenBackToStartScreenWithoutAnyExplaner()
+	{
+		Destroy(creditsUiCreated.gameObject);
+		MakeScreen(openingUi, ref openingUiCreated);
+		
 	}
 
 }

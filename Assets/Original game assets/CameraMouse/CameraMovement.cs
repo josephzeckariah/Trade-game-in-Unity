@@ -84,19 +84,6 @@ public class CameraMovement : MonoBehaviour
 			yield return null;
 		}
 	}
-
-	void Update()
-    {
-		
-
-		/*if (Input.GetKeyDown(KeyCode.Space))
-		{
-			StartCoroutine( EndAnimation());
-		}*/
-
-	}
-
-
 	                     void ContinousCalculateCameraMovementFromMousePosition()
 	{
 		Vector3 mousePostionInViewPort = ourCamera.ScreenToViewportPoint(Input.mousePosition);
@@ -151,12 +138,9 @@ public class CameraMovement : MonoBehaviour
 	}
 
 
-
-
-
 	//S///////////////////////////////////////////////////////////     End aniamtion      /////////////////////////////////////////////////////////////
 
-	IEnumerator EndAnimation()
+	            IEnumerator EndAnimation()
 	{
 		//Disable movemnt
 		yield return StartCoroutine(MoveToward(this.transform, new Vector3(5,-1,0),0.5f));
@@ -176,7 +160,7 @@ public class CameraMovement : MonoBehaviour
 	}                                               //         -------------------------------------------------------->>>
 
 
-	IEnumerator MoveToward(Transform objectToMove,Vector3 targetLocation,float speed)
+	                   IEnumerator MoveToward(Transform objectToMove,Vector3 targetLocation,float speed)
 	{
 		Vector3 direction = targetLocation - objectToMove.position;
 
@@ -192,7 +176,7 @@ public class CameraMovement : MonoBehaviour
 		}
 
 	}
-	                     bool ReturnTrueIfPointIsBeforeTheOtherOnTheDirection(Vector3 pointToCheck, Vector3 direction, Vector3 pointToCheckIfAfter)
+	                           bool ReturnTrueIfPointIsBeforeTheOtherOnTheDirection(Vector3 pointToCheck, Vector3 direction, Vector3 pointToCheckIfAfter)
 	{
 		bool xIsOk = true;                                          //onlu works in 2d
 		bool YIsOk = true;
@@ -314,7 +298,7 @@ public class CameraMovement : MonoBehaviour
 
 	}
 
-	           IEnumerator ZoomCamera(Camera orthographiccameraToZoom,float amountToGoTo,float timeTakenToGo)
+	                    IEnumerator ZoomCamera(Camera orthographiccameraToZoom,float amountToGoTo,float timeTakenToGo)
 	{
 		bool CameraIsSmallerThanTarget = orthographiccameraToZoom.orthographicSize < amountToGoTo;
 

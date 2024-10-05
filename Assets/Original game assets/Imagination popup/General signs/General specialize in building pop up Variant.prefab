@@ -105,27 +105,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e050f2776e3e48440af69412be7c698f, type: 3}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 119.0705
+      value: 129.6656
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 71.7043
+      value: 53.0716
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.8981
+      value: 0.3994
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 28.9101
+      value: 32.746204
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_text
-      value: Some will specializ in building and trade it.
+      value: Some will specialize in building and trade with it.
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_fontSize
-      value: 12.25
+      value: 12.55
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018313, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Name
@@ -217,6 +217,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+--- !u!1 &4490759287562482820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+  m_PrefabInstance: {fileID: 2520410840220953911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6479000602936127134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490759287562482820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Some will specialize in building and trade with it.
+  ArabicText: " \u0633\u064A\u062A\u062E\u0635\u0635 \u0627\u0644\u0628\u0639\u0636
+    \u0641\u064A \u0627\u0644\u0628\u0646\u0627\u0621 \u0648 \u0627\u0644\u0639\u0645\u0627\u0631\u0629
+    \u0648 \u064A\u062A\u0627\u062C\u0631\u0648\u0646 \u0628\u0647\u0627."
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
+--- !u!114 &8793458048872162262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490759287562482820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
 --- !u!224 &5805879593351520124 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8244099652782256715, guid: e4c09824739000e409949df3bc92e6c7, type: 3}

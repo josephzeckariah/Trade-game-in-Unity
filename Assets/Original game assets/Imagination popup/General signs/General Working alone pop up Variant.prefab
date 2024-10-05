@@ -397,11 +397,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950496404711026, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 41.5
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 2064950496404711026, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.4
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: 2064950496404711027, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Sprite
@@ -409,19 +409,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 0b0d28ec3273dd44998f2eaa35429506, type: 3}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 126.0528
+      value: 135.3647
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 78.123
+      value: 60.7545
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -6.7138
+      value: -0.9502
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25.7008
+      value: 34.3848
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_text
@@ -429,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_fontSize
-      value: 13.65
+      value: 13.25
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018313, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Name
@@ -521,6 +521,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+--- !u!1 &513008557549546620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+  m_PrefabInstance: {fileID: 1996993603156751823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2954126272071041972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513008557549546620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+--- !u!114 &3525700864110160711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513008557549546620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Living alone ,it's alot of work to make all the things we need.
+  ArabicText: "  \u0625\u0646 \u0639\u0627\u0634 \u0623\u062D\u062F \u0628\u0645\u0641\u0631\u062F\u0629
+    \u0633\u064A\u0637\u0631\u0623\u0646 \u0627\u0644\u0639\u0645\u0644 \u0643\u062B\u064A\u0631\u0622
+    \u0644\u0644\u062D\u0635\u0648\u0644 \u0639\u0644\u0649 \u0643\u0644 \u0627\u0644\u0623\u0634\u064A\u0627\u0621
+    \u0627\u0644\u062A\u064A \u064A\u062D\u062A\u0627\u062C\u0647\u0627. "
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!224 &7628627098330154884 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8244099652782256715, guid: e4c09824739000e409949df3bc92e6c7, type: 3}

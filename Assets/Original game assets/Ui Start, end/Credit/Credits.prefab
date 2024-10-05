@@ -150,7 +150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5324370073297542330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1250,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2934317665611641471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2355,7 +2355,8 @@ PrefabInstance:
       value: "Icons and photos made by: ( freepik ,macrovector ,catkuro ,Eucaly p,surang
         ,wahyu_t,alimasykurm, frimufilms , senivpetro, aleksandarlittlewolf, studiogstock,
         azerbaijan_stockers. lalawidi, Fajriah Robiatul Adawiah,alimasykurm, jcomp,
-        brgfx, master1305, wanicon, rawpixel.com,Uniconlabs),\n hugethanks to freepik."
+        brgfx, master1305, wanicon, rawpixel.com,Uniconlabs, monkik),\n hugethanks
+        to freepik."
       objectReference: {fileID: 0}
     - target: {fileID: 730001289100536846, guid: 90a1e7c4b02c05b48a50790f31be4680, type: 3}
       propertyPath: m_fontSize

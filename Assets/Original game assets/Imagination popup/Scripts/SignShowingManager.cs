@@ -230,7 +230,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 		/////////////////////////////////////////////////////////////
 		  ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[0]);
 
-		yield return new WaitForSecondsRealtime(6f);
+		yield return new WaitForSecondsRealtime(8f);
 
 		tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
 		/////////////////////////////////////////////////////////////
@@ -257,11 +257,28 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 		{
 
 			tutorialSign.OnXButtonClick();
-		}	
+		}
+
+		StartCoroutine(MakeTutorialGoalSignThenWaitBeforeReturningGeneralSigns());
+	}
+
+	                          IEnumerator MakeTutorialGoalSignThenWaitBeforeReturningGeneralSigns()
+	{
+		ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[3]);
+		yield return new WaitForSecondsRealtime(6f);
+		tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
+
 		/////////////////////////////////////////////////////////////
 		generalSignTimer = timeBetweenSignSpawn;
 	}
-	void Update()
+
+
+
+
+
+
+
+	void Update()                                       ////////////////////////////////////////////
 	{
 		if (Input.GetKeyDown(KeyCode.A))
 		{
@@ -282,11 +299,6 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 			case SignType.Tutorial:
 				tutorialSignsMadeAndAreOnScreen.Add(signThatWasMade);
 				break;
-		}
-			
-			foreach (ImaginationSign sing in signsMadeAndAreOnScreen)
-		{
-			Debug.Log("list is now "+sing.name);
 		}
 	}
 	public void SubWorkerMessageSignIsGoingToLeave(ImaginationSign signThatWillLeave)

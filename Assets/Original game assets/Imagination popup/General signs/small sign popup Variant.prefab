@@ -29,39 +29,39 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cac9413f5e4cf4d43ab2326c91693fa3, type: 3}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 141.5003
+      value: 130.4772
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 92.8398
+      value: 87.6524
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.397
+      value: 1.4936
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 23.3189
+      value: 25.912617
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_text
-      value: small signs show amount of goods avalable in each country
+      value: small signs show amount of goods avalable in each country.
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_fontSize
-      value: 17.8
+      value: 16.1
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_margin.w
-      value: -2.7554626
+      value: -0.485981
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_margin.x
-      value: 5.3130646
+      value: 0.4499054
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_margin.z
-      value: 9.417374
+      value: 0.66368103
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018313, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Name
@@ -165,3 +165,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+--- !u!1 &2561239619901964742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+  m_PrefabInstance: {fileID: 4549607953127348341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1189400442152740535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561239619901964742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+--- !u!114 &1533718566149880879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561239619901964742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: small signs show amount of goods avalable in each country.
+  ArabicText: " \u062A\u0638\u0647\u0631\u0627\u0644\u0644\u0627\u0641\u062A\u0627\u062A
+    \u0627\u0644\u0635\u063A\u064A\u0631\u0629 \u0643\u0645\u064A\u0629 \u0627\u0644\u0628\u0636\u0627\u0626\u0639
+    \u0627\u0644\u0645\u062A\u0648\u0641\u0631\u0629 \u0641\u064A \u0643\u0644 \u0628\u0644\u062F. "
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}

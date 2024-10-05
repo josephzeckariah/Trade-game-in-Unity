@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1727842364883054051, guid: eeff907385ff4c54bab39c6ed67f90ad, type: 3}
       propertyPath: m_fontSize
-      value: 14.5
+      value: 14.8
       objectReference: {fileID: 0}
     - target: {fileID: 6988024689658858311, guid: eeff907385ff4c54bab39c6ed67f90ad, type: 3}
       propertyPath: m_SizeDelta.x
@@ -237,6 +237,44 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 78d26d0950c5b3348a6376296b4935a6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeff907385ff4c54bab39c6ed67f90ad, type: 3}
+--- !u!1 &3550685757121662433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1727842364883054049, guid: eeff907385ff4c54bab39c6ed67f90ad, type: 3}
+  m_PrefabInstance: {fileID: 2791130727477878784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1527960209821777284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550685757121662433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+--- !u!114 &5640489365546069326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550685757121662433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Modern technology products are highly traded.
+  ArabicText: "\u064A\u062A\u0645 \u062A\u062F\u0627\u0648\u0644 \u0645\u0646\u062A\u062C\u0627\u062A
+    \u0627\u0644\u062A\u0643\u0646\u0648\u0644\u0648\u062C\u064A\u0627 \u0627\u0644\u062D\u062F\u064A\u062B\u0629
+    \u0628\u0634\u0643\u0644 \u0643\u0628\u064A\u0631."
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!224 &6883277728185591321 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8735371410939250201, guid: eeff907385ff4c54bab39c6ed67f90ad, type: 3}

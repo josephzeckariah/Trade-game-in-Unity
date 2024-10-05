@@ -276,7 +276,6 @@ public class NeedValueAssighnerWorker : MonoBehaviour
 			foreach(Country countryWeWillItsVAlue in ourDistributionOfeachNeedToEachCountry.Keys)         //finaly sen each country its assighned value;
 			{
 				countryWeWillItsVAlue.ourCountriesNeedsAndTheirValue[needToAssighnItsNumbers] = 100+ourDistributionOfeachNeedToEachCountry[countryWeWillItsVAlue];
-				Debug.Log(countryWeWillItsVAlue + " will have a value of " + 100+ourDistributionOfeachNeedToEachCountry[countryWeWillItsVAlue] +" in "+ needToAssighnItsNumbers);
 			}
 
 		}

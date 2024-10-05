@@ -17,7 +17,8 @@ public  class GameMaker : MonoBehaviour
 
 	[Header("Manual properits")]
 	public List<Needs> needsUsedInGame ;
-	public List<Country> countriesUsedInGame;
+	public List<Country> countriesUsedInMainGame;
+	public List<Country> countriesUsedInNewGamePlus;
 
 	[Header("Manual connections")]
 	public  GameObject needSighnTemplateSHowInspector;
@@ -85,21 +86,21 @@ public  class GameMaker : MonoBehaviour
 	void StartNormalGame()                                                             //         <<<--------------------------------------------------------------
 	{	
 
-		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue();
+		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue(countriesUsedInMainGame);
 
-		SubAwakeTellEachCountryToMakeThierSigns();
+		SubAwakeTellEachCountryToMakeThierSigns(countriesUsedInMainGame);
 
 	}
 	                  
-	                   void TellAssighningWorkerToAssighnEachCountryItsNeedVAlue()
+	                   void TellAssighningWorkerToAssighnEachCountryItsNeedVAlue(List<Country> countriesUsedInThisGame)
 	{
 
-		ourNeedValueAssighnerWorker.AssighnChoosenNeedsValueToChoosenCountries(needsUsedInGame, countriesUsedInGame);
+		ourNeedValueAssighnerWorker.AssighnChoosenNeedsValueToChoosenCountries(needsUsedInGame, countriesUsedInThisGame);
 	}
 
-	                   void SubAwakeTellEachCountryToMakeThierSigns()
+	                   void SubAwakeTellEachCountryToMakeThierSigns(List<Country> countriesUsedInThisGame)
 	{
-		foreach (Country countryToTellToSTart in countriesUsedInGame)
+		foreach (Country countryToTellToSTart in countriesUsedInThisGame)
 		{
 			countryToTellToSTart.ForighnOrderByGameMakerToStartMakingSigns();
 		}
@@ -114,7 +115,7 @@ public  class GameMaker : MonoBehaviour
 	}
 	                  void IfThereIsAPreviousltMadeGameClearIt()
 	{
-		foreach (Country country in countriesUsedInGame)
+		foreach (Country country in countriesUsedInMainGame)
 		{
 			country.ourCountriesNeedsAndTheirValue.Clear();
 
@@ -137,7 +138,7 @@ public  class GameMaker : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     Game end check       /////////////////////////////////////////////////////////////
 	void CheckForEndGame(Needs unUsed)
 	{
-		if (true)//ReturnTrueIfAllSignInGameIs100())
+		if (ReturnTrueIfAllSignInGameIs100())
 		{
 			if(GameStateInformationProvider.AllSigns100 != null)
 			{
@@ -148,7 +149,7 @@ public  class GameMaker : MonoBehaviour
 	}
 	               bool ReturnTrueIfAllSignInGameIs100()
 	{
-		foreach (Country country in countriesUsedInGame)
+		foreach (Country country in countriesUsedInMainGame)
 		{
 			foreach (Need sign in country.ourCountriesSigns)
 			{
@@ -165,9 +166,9 @@ public  class GameMaker : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Z))
 		{
-			if (GameStateInformationProvider.GameEnded != null)
+			if (GameStateInformationProvider.AllSigns100 != null)
 			{
-				GameStateInformationProvider.GameEnded();
+				GameStateInformationProvider.AllSigns100();
 			}
 		}
 	}

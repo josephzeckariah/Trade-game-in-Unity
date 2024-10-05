@@ -56,7 +56,11 @@ public class TutorialManager : MonoBehaviour
 		yield return new WaitForSecondsRealtime(timeBeforeTutorialStart);
 		
 		tutorialHasStarted = true;
-		GameStateInformationProvider.TutorialStarted();
+		if (GameStateInformationProvider.TutorialStarted != null)
+		{
+			GameStateInformationProvider.TutorialStarted();
+		}
+		
 
 		StartCoroutine(SubIenumWorkerToCheckIfTutorialShouldEnd());
 	}

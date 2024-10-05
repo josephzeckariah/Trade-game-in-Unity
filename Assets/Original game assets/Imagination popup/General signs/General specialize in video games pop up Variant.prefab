@@ -181,19 +181,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cdead83697158ac40bf711d972aafcb1, type: 3}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 119.74
+      value: 119.3892
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 64.762
+      value: 38.5121
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4
+      value: -4.1754
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 32.381
+      value: 45.506
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_text
@@ -201,7 +201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_fontSize
-      value: 10.75
+      value: 10.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+      propertyPath: m_margin.w
+      value: -0.5729599
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497249018313, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_Name
@@ -298,3 +302,41 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8244099652782256715, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
   m_PrefabInstance: {fileID: 4800613369650004380}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6788923437044832303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+  m_PrefabInstance: {fileID: 4800613369650004380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4384074221925428142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788923437044832303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Some will specizlize in making video games and trade with it.
+  ArabicText: " \u0633\u0648\u0641 \u064A\u062A\u062E\u0635\u0635 \u0627\u0644\u0628\u0639\u0636
+    \u0641\u064A \u0635\u0646\u0639 \u0623\u0644\u0639\u0627\u0628 \u0627\u0644\u0641\u064A\u062F\u064A\u0648
+    \u064A\u062A\u0627\u062C\u0631\u0648\u0646 \u0628\u0647\u0627."
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
+--- !u!114 &6775162983874811772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788923437044832303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: Some will specizlize in making video games and trade with it.
+  ShowTashkeel: 0
+  UseHinduNumbers: 0

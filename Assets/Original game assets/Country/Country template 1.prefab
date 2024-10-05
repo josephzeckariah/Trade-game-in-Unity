@@ -48,6 +48,7 @@ MonoBehaviour:
   colorOfCountrysProduction: {r: 1, g: 1, b: 1, a: 1}
   thisCountriesArea: {fileID: 8408626420236741732}
   ourmainSign: {fileID: 0}
+  ourCountriesSigns: []
 --- !u!1 &8408626420236741732
 GameObject:
   m_ObjectHideFlags: 0

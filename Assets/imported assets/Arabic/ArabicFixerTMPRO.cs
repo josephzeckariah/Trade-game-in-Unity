@@ -35,7 +35,7 @@ public class ArabicFixerTMPRO : MonoBehaviour
         fixedText = tmpTextComponent.text;
         isInitilized = true;
 
-        FixArabicText();
+       // FixArabicText();
 	}
 
     private void GetRectTransformParents(List<RectTransform> rectTransforms)

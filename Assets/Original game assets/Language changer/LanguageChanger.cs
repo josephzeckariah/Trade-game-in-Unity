@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public enum LanguagesInGame { English, Arabic }
@@ -56,7 +55,6 @@ public class LanguageChanger : MonoBehaviour
 		switch (languageToChangeInto)
 		{
 			case LanguagesInGame.English:
-				ourTMProToChange.isRightToLeftText = false;
 				ourTMProToChange.font = EnglishFont;
 				ourTMProToChange.text = EnglishText;
 				ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Left;
