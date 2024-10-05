@@ -36,7 +36,7 @@ public class TutorialManager : MonoBehaviour
 		ourSignArrowHighlighter = this.GetComponentInChildren<TutorialArrowManager>();
 
 		GameStateInformationProvider.NormalGameStart += StartWorkers;
-		GameStateInformationProvider.GameEnded += OnGameEnd;
+		GameStateInformationProvider.AllSigns100 += OnGameEnd;
 
 		GameStateInformationProvider.anEchangeEnded += NoExchangeSucessCheckeGetIfExchangeHasEnded;
 		GameStateInformationProvider.anEchangeEnded += GetForTheHighlighterTellTutorialIfAnExchangeEnded;
@@ -54,7 +54,6 @@ public class TutorialManager : MonoBehaviour
 	            IEnumerator WorkerToStartCountThenStartTutorialAndCeckForEnd()
 	{
 		yield return new WaitForSecondsRealtime(timeBeforeTutorialStart);
-		
 		tutorialHasStarted = true;
 		if (GameStateInformationProvider.TutorialStarted != null)
 		{

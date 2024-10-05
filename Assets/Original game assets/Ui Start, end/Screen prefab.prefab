@@ -47,7 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4916405292899905645}
   - component: {fileID: 1807268371615055842}
-  - component: {fileID: 3178835396704535520}
+  - component: {fileID: 4127130615532657238}
   m_Layer: 5
   m_Name: Screen prefab
   m_TagString: Untagged
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ourCanvasToFitIn: {fileID: 0}
---- !u!114 &3178835396704535520
+--- !u!114 &4127130615532657238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.1
+  m_fontSize: 47.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -15.587318, y: 0, z: 13.554176, w: -52.861336}
+  m_margin: {x: 0.43442535, y: 0, z: 2.4621964, w: 0.13362885}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

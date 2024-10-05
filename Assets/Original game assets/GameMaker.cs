@@ -67,6 +67,8 @@ public  class GameMaker : MonoBehaviour
 		GameStateInformationProvider.anEchangeEnded += CheckForEndGame;
 		GameStateInformationProvider.NormalGameStart += StartNormalGame;
 		GameStateInformationProvider.GameEnded += OnGameEnd;
+
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 	}
 
 
@@ -164,6 +166,7 @@ public  class GameMaker : MonoBehaviour
 
 	private void Update()
 	{
+
 		if (Input.GetKeyDown(KeyCode.Z))
 		{
 			if (GameStateInformationProvider.AllSigns100 != null)
@@ -171,6 +174,7 @@ public  class GameMaker : MonoBehaviour
 				GameStateInformationProvider.AllSigns100();
 			}
 		}
+
 	}
 }
 

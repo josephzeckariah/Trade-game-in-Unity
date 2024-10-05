@@ -24,6 +24,14 @@ PrefabInstance:
       value: Ending animation screen Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3319635241807557335, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319635241807557335, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319635241807557335, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_SizeDelta.x
       value: 450
       objectReference: {fileID: 0}
@@ -37,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3319635241807557335, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4916405292899905645, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_Pivot.x

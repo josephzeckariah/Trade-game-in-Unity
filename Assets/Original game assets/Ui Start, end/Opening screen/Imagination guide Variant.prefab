@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 6650850908483104023, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3491248499852894695}
+      objectReference: {fileID: 2677555582548670545}
     - target: {fileID: 6650850908483104023, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: IntroEndButtonCLicked
@@ -145,11 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_text
-      value: Remeber, use your imagination to have fun.
+      value: Remeber, use your imagination to learn and have fun.
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_fontSize
-      value: 28.45
+      value: 27.25
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_margin.w
@@ -233,9 +233,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
---- !u!114 &3491248499852894695 stripped
+--- !u!114 &2677555582548670545 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3178835396704535520, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4127130615532657238, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
   m_PrefabInstance: {fileID: 2048599001512272391}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -280,6 +280,7 @@ MonoBehaviour:
   fixedText: 
   ShowTashkeel: 0
   UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
 --- !u!1 &4621401689406247491 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6650850908800872516, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
@@ -297,9 +298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnglishText: Remeber, use your imagination to have fun.
+  EnglishText: Remeber, use your imagination to learn and have fun.
   ArabicText: "\u062A\u0630\u0643\u0631, \u0627\u0633\u062A\u062E\u062F\u0627\u0645
-    \u0645\u062E\u064A\u0644\u062A\u0643 \u0644\u0643\u064A \u062A\u0633\u062A\u0645\u062A\u0639."
+    \u0645\u062E\u064A\u0644\u062A\u0643 \u0644\u0643\u064A \u062A\u062A\u0639\u0644\u0645
+    \u0648 \u062A\u0633\u062A\u0645\u062A\u0639."
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!114 &2131886032
@@ -317,3 +319,4 @@ MonoBehaviour:
   fixedText: 
   ShowTashkeel: 0
   UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0

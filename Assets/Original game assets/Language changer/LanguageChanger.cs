@@ -63,8 +63,8 @@ public class LanguageChanger : MonoBehaviour
 			
 				ourTMProToChange.font = ArabicFont;
 			ourTMProToChange.text = ArabicText;
-				ourArabicFixerTMPRO.FixArabicText();
 				ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Right;
+				ourArabicFixerTMPRO.FixArabicText();
 			break;
 		}
 

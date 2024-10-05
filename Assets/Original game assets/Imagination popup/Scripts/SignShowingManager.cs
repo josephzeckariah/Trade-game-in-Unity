@@ -47,11 +47,11 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	private void Awake()
 	{
 		GameStateInformationProvider.GameInitalize += HigherUpOrderToStartWork;
-		GameStateInformationProvider.NormalGameStart += OnGameInitalize;
+		GameStateInformationProvider.NormalGameStart += OnGameStarted;
 		GameStateInformationProvider.anEchangeEnded += MakeANeedSpecificSignAsAnExchangeWasComplete;
 		GameStateInformationProvider.TutorialStarted += TutorialStartTrigger;
 		GameStateInformationProvider.TutorialEnded += TutorialEndReaction;
-		GameStateInformationProvider.GameEnded += OnGameEnded;
+		GameStateInformationProvider.AllSigns100 += OnGameEnded;
 ;
 	}
 
@@ -74,14 +74,15 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 
 
 	//OA///////////////////////////////////////////////////////////     On Game Start and End    /////////////////////////////////////////////////////////////
-	void OnGameInitalize()                                                         //         <<<-------------------------------------------------------------- 
+	void OnGameStarted()                                                         //         <<<-------------------------------------------------------------- 
 	{
+		Debug.Log("game started");
 		ourGeneralSignCycle =StartCoroutine(CycleToSpawnGeneralSigns(timeBetweenSignSpawn));
 	}
 
 	void OnGameEnded()
 	{
-		StopCoroutine(ourGeneralSignCycle);
+		StopAllCoroutines();
 		List<ImaginationSign> mirrorlist = new List<ImaginationSign>();
 		foreach (ImaginationSign sign in signsMadeAndAreOnScreen)
 		{
@@ -115,7 +116,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 		/////////////
 		List<ImaginationSign> listOfSignsWeAreYetToMake = SubIenumMakeAMirrorList(ListOfGeneralSigns);
 
-		float signTimer = timeBetweenSignSpawns;
+		generalSignTimer = 2f;
 
 		/////////////////////////////////////////////////////////////        Cycle
 		//////////////////////////
@@ -275,16 +276,6 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 
 
 
-
-
-
-	void Update()                                       ////////////////////////////////////////////
-	{
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			TutorialEndReaction();
-		}
-	}
 
 
 

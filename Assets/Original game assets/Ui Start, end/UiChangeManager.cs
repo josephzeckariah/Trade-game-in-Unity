@@ -17,6 +17,7 @@ public class UiChangeManager : MonoBehaviour
 	public CreditScreen creditsUi;
 	public UiScreen endingAnimationUi;
 	public UiScreen IntroScreennUi;
+	public LanguageChoosingScreen languageChoosingUi;
 
 	[Header("Manual connection")]
 	public UiScreen transparentBackground;
@@ -27,6 +28,8 @@ public class UiChangeManager : MonoBehaviour
 	CreditScreen creditsUiCreated;
 	UiScreen endingAnimationUiCreated;
 	UiScreen IntroScreennUiCreated;
+	LanguageChoosingScreen languageChoosingUiCreated;
+
 
 	UiScreen transparentBackgroundCreated;
 
@@ -81,7 +84,22 @@ public class UiChangeManager : MonoBehaviour
 
 
 	}
+	                   void MakeScreen(LanguageChoosingScreen screenToMake, ref LanguageChoosingScreen refrenceToMadeScreen)
+	{
+		/////////////////////////////////////////////////////////////        Make sign
+		refrenceToMadeScreen = Instantiate(screenToMake, canvasToDrawON.transform);
+		refrenceToMadeScreen.ourUiChangeManager = this;
 
+		RectTransform transofrmOfNewSign = refrenceToMadeScreen.gameObject.GetComponent<RectTransform>();
+
+
+		/////////////////////////////////////////////////////////////       Position Sign and achor
+		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
+
+
+	}
 
 
 
@@ -90,9 +108,19 @@ public class UiChangeManager : MonoBehaviour
 	void GameStartReaction()                                                                            //         <<<--------------------------------------------------------------
 	{
 		MakeScreen(transparentBackground, ref transparentBackgroundCreated);
-		MakeScreen(openingUi, ref openingUiCreated);
+		MakeScreen(languageChoosingUi, ref languageChoosingUiCreated);
+
+		/*MakeScreen(transparentBackground, ref transparentBackgroundCreated);
+		MakeScreen(openingUi, ref openingUiCreated);*/
 	}
 
+	///////////////////////////////////////////////////////////// language buttons
+	public void AnyLanguageBUttonWasClicked()
+	{
+		Destroy(languageChoosingUiCreated.gameObject);
+
+		MakeScreen(openingUi, ref openingUiCreated);
+	}
 
 
 	//S///////////////////////////////////////////////////////////     opening screen buttons reactions        /////////////////////////////////////////////////////////////
@@ -145,8 +173,8 @@ public class UiChangeManager : MonoBehaviour
 
 		//MakeEndingSign();
 	}
-	
 
+	
 
 
 	//I///////////////////////////////////////////////////////////    Open Credits       /////////////////////////////////////////////////////////////

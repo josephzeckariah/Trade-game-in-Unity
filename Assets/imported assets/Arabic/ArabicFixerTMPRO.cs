@@ -6,34 +6,50 @@ using System.Collections;
 
 public class ArabicFixerTMPRO : MonoBehaviour
 {
-    public string fixedText;
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//-//////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	public string fixedText;
     public bool ShowTashkeel;
     public bool UseHinduNumbers;
+    public bool worksAloneAndAutoSelfStart = false;
 
-    TextMeshProUGUI tmpTextComponent;
+	private RectTransform rectTransform;  // For Refresh on resize
+	TextMeshProUGUI tmpTextComponent;
 
     private string OldText; // For Refresh on TextChange
     private int OldFontSize; // For Refresh on Font Size Change
-    private RectTransform rectTransform;  // For Refresh on resize
+    
     private Vector2 OldDeltaSize; // For Refresh on resize
     private bool OldEnabled = false; // For Refresh on enabled change // when text ui is not active then arabic text will not trigered when the control get active
     private List<RectTransform> OldRectTransformParents = new List<RectTransform>(); // For Refresh on parent resizing
     private Vector2 OldScreenRect = new Vector2(Screen.width, Screen.height); // For Refresh on screen resizing
 
     bool isInitilized;
-    public void Awake()
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public void Awake()
     {
         GetRectTransformParents(OldRectTransformParents);
         isInitilized = false;
         tmpTextComponent = GetComponent<TextMeshProUGUI>();
-    }
+
+		rectTransform = GetComponent<RectTransform>();
+
+		fixedText = tmpTextComponent.text;
+		isInitilized = true;
+	}
 
     public void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-
-        fixedText = tmpTextComponent.text;
-        isInitilized = true;
+       if (worksAloneAndAutoSelfStart)
+        {
+			FixArabicText();
+		}
 
        // FixArabicText();
 	}

@@ -36,7 +36,6 @@ public class ImaginationSign : MonoBehaviour
 	IEnumerator SignCounterToSelfDestruct()
 	{
 		yield return new WaitForSecondsRealtime(13f);
-		Debug.Log(this.gameObject.name + " its timer is done");
 		StartCoroutine(Destroy());
 	}
 
