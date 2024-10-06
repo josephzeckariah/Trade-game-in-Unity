@@ -283,6 +283,7 @@ MonoBehaviour:
   fixedText: 
   ShowTashkeel: 0
   UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
 --- !u!114 &6097788086486448255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +301,7 @@ MonoBehaviour:
   ArabicText: "\u0645\u0631\u062D\u0628\u0622 ,\u0647\u0630\u0627 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C
     \u064A\u062D\u0627\u0648\u0644 \u062A\u0639\u0644\u064A\u0645 \u0627\u0644\u0623\u0641\u0643\u0627\u0631
     \u0627\u0644\u062A\u062C\u0627\u0631\u064A\u0629 \u0628\u0634\u0643\u0644 \u0645\u0645\u062A\u0639."
+  allighnWordsInMiddle: 0
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &2907125103615277412
@@ -1237,9 +1239,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OpeningSign, Assembly-CSharp
-        m_MethodName: OnClickingStartNormalButton
+      - m_Target: {fileID: 6448631824950202968}
+        m_TargetAssemblyTypeName: OpeningScreen, Assembly-CSharp
+        m_MethodName: OpeningSideNewGamePLusButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

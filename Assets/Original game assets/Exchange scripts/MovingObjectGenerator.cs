@@ -97,10 +97,10 @@ public class MovingObjectGenerator : MonoBehaviour
 		recievedGoodsLineInformation.lineListOfObject = ourRecievedMovingExchangeElemntCreated;
 		if(startSignIsBuying)
 		{
-			recievedGoodsLineInformation.spriteOfLineElemnts = GameMaker.needsAssets[needToSpawn];
+			recievedGoodsLineInformation.spriteOfLineElemnts = GeneralInformationProvider.needsAssets[needToSpawn];
 		}else if (!startSignIsBuying)
 		{
-			recievedGoodsLineInformation.spriteOfLineElemnts = GameMaker.Money;
+			recievedGoodsLineInformation.spriteOfLineElemnts = GeneralInformationProvider.Money;
 		}
 		//recievedGoodsLineInformation.lineStartRemover = ObjectRecievedRemover;
 
@@ -111,11 +111,11 @@ public class MovingObjectGenerator : MonoBehaviour
 		SentGoodsLineInformation.lineListOfObject = ourSentMovingExchangeElemntCreated;
 		if (startSignIsBuying)
 		{
-			SentGoodsLineInformation.spriteOfLineElemnts = GameMaker.Money; 
+			SentGoodsLineInformation.spriteOfLineElemnts = GeneralInformationProvider.Money; 
 		}
 		else if (!startSignIsBuying)
 		{
-			SentGoodsLineInformation.spriteOfLineElemnts = GameMaker.needsAssets[needToSpawn];
+			SentGoodsLineInformation.spriteOfLineElemnts = GeneralInformationProvider.needsAssets[needToSpawn];
 		}
 		//SentGoodsLineInformation.lineStartRemover = ObjectSentRemover;
 

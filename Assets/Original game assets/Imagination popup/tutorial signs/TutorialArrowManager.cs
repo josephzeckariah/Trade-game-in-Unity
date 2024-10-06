@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TutorialArrowManager : MonoBehaviour
 {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//-//////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	///////////////////////////////////////////////////////////// Auto connections
+	TutorialArowOnScreenEdgeDrawer ourTutorialArowOnScreenEdgeDrawer;
+
+
+	///////////////////////////////////////////////////////////// Memory
 	List<Need> signsToShowTHeirArrows = new List<Need>();
+	List<Need> signsThatAreCurrentlyHighlighted = new List<Need>();
+
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +24,9 @@ public class TutorialArrowManager : MonoBehaviour
 	//I///////////////////////////////////////////////////////////     Initalize       /////////////////////////////////////////////////////////////
 	private void Awake()
 	{
-		GameStateInformationProvider.NormalGameStart += OnGameStarted;
+		ourTutorialArowOnScreenEdgeDrawer = GetComponentInChildren<TutorialArowOnScreenEdgeDrawer>();
+
+		GameStateInformationProvider.AnyGameStart += OnGameStarted;
 		GameStateInformationProvider.GameEnded += OnGameEnded;
 	}
 
@@ -23,7 +35,7 @@ public class TutorialArrowManager : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     OnGameStarted       /////////////////////////////////////////////////////////////
 	private void OnGameStarted()
 	{
-		
+		Debug.Log("any game started");
 		foreach (Need need in FindObjectsOfType(typeof(Need), true))
 		{
 			signsToShowTHeirArrows.Add(need);
@@ -35,9 +47,8 @@ public class TutorialArrowManager : MonoBehaviour
 
 	private void OnGameEnded()
 	{
-
 		signsToShowTHeirArrows.Clear();
-
+		signsThatAreCurrentlyHighlighted.Clear();
 	}
 
 
@@ -53,8 +64,8 @@ public class TutorialArrowManager : MonoBehaviour
 		{
 			if(signToChange.currentSignValue != 100f && signToChange.isMainSign== false)
 			{
-				signToChange.ArrowForHighlighting.SetActive(true);
-				signToChange.ourCountryParent.ourmainSign.ArrowForHighlighting.SetActive(true);
+				StartHighlightSign(signToChange);
+				StartHighlightSign(signToChange.ourCountryParent.ourmainSign);
 			}
 			
 		}
@@ -68,8 +79,8 @@ public class TutorialArrowManager : MonoBehaviour
 
 			if (signToChange.sighnNeedType == needToHiglight && (signToHighlightIsMoreThan100 ? signToChange.currentSignValue > 100 : signToChange.currentSignValue < 100) && signToChange.isMainSign == false)
 			{
-				signToChange.ArrowForHighlighting.SetActive(true);
-				signToChange.ourCountryParent.ourmainSign.ArrowForHighlighting.SetActive(true); ;
+				StartHighlightSign(signToChange);
+				StartHighlightSign(signToChange.ourCountryParent.ourmainSign);
 			}
 
 		}
@@ -78,7 +89,45 @@ public class TutorialArrowManager : MonoBehaviour
 	{
 		foreach (Need signToChange in signsToShowTHeirArrows)
 		{
-			signToChange.ArrowForHighlighting.SetActive(false); 
+			StopHighlightSign(signToChange);
 		}
 	}
+
+
+
+	//S///////////////////////////////////////////////////////////     Sub highlight sign action       /////////////////////////////////////////////////////////////
+
+	void StartHighlightSign(Need NeedToStartHIghlight)
+	{
+		NeedToStartHIghlight.ArrowForHighlighting.SetActive(true);
+		if (!signsThatAreCurrentlyHighlighted.Contains(NeedToStartHIghlight))
+		{
+			signsThatAreCurrentlyHighlighted.Add(NeedToStartHIghlight);
+
+			ListBeenChanged(signsThatAreCurrentlyHighlighted);
+		}
+		
+	}
+
+
+	void StopHighlightSign(Need NeedToStopHIghlight)
+	{
+		NeedToStopHIghlight.ArrowForHighlighting.SetActive(false);
+		if (signsThatAreCurrentlyHighlighted.Contains(NeedToStopHIghlight))
+		{
+			signsThatAreCurrentlyHighlighted.Remove(NeedToStopHIghlight);
+
+			ListBeenChanged(signsThatAreCurrentlyHighlighted);
+		}
+
+	}
+
+
+	//S///////////////////////////////////////////////////////////     SubDown worker       /////////////////////////////////////////////////////////////
+
+	void ListBeenChanged(List<Need> newListOfHighlightSigns)
+	{
+		ourTutorialArowOnScreenEdgeDrawer.HigherUpMessageListBeenUpdated(newListOfHighlightSigns);
+	}
+
 }

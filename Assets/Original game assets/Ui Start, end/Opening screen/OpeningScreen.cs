@@ -30,6 +30,9 @@ public class OpeningScreen : UiScreen
 		ourUiChangeManager.MoveFromStartScreenToCreditScreen();
 	}
 
-
+	public void OpeningSideNewGamePLusButtonClicked()
+	{
+		ourUiChangeManager.NewGamePlusButtonClicked();
+	}
 
 }

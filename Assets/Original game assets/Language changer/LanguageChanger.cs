@@ -6,14 +6,21 @@ using UnityEngine;
 public enum LanguagesInGame { English, Arabic }
 [RequireComponent(typeof(TextMeshProUGUI))]
 [RequireComponent(typeof(ArabicFixerTMPRO))]
+
+//GameStateInformationProvider.needsNames.Add("ss", "ss");
 public class LanguageChanger : MonoBehaviour
 {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//-//////////////////////////////////////////////////////////////////////////////////////////////////       Memories       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	
+	
+	///////////////////////////////////////////////////////////// Properties
 	public string EnglishText;
 	public string ArabicText;
-	
+
+	public bool allighnWordsInMiddle;
+
+	///////////////////////////////////////////////////////////// Asset refrence
 	public TMP_FontAsset EnglishFont;
 	public TMP_FontAsset ArabicFont;
 
@@ -50,20 +57,38 @@ public class LanguageChanger : MonoBehaviour
 		}
 	}
 
-	void ChangeLanguage(LanguagesInGame languageToChangeInto)
+	public void ChangeLanguage(LanguagesInGame languageToChangeInto)
 	{
 		switch (languageToChangeInto)
 		{
 			case LanguagesInGame.English:
 				ourTMProToChange.font = EnglishFont;
 				ourTMProToChange.text = EnglishText;
-				ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Left;
+
+				if (allighnWordsInMiddle)
+				{
+					ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Center;
+				}
+				else
+				{
+					ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Left;
+				}
+				
 				break;
 			case LanguagesInGame.Arabic:
 			
 				ourTMProToChange.font = ArabicFont;
 			ourTMProToChange.text = ArabicText;
-				ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Right;
+
+				if (allighnWordsInMiddle)
+				{
+					ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Center;
+				}
+				else
+				{
+					ourTMProToChange.horizontalAlignment = HorizontalAlignmentOptions.Right;
+				}
+
 				ourArabicFixerTMPRO.FixArabicText();
 			break;
 		}

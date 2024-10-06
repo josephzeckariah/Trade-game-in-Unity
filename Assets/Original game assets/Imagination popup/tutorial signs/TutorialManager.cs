@@ -35,7 +35,7 @@ public class TutorialManager : MonoBehaviour
 	{
 		ourSignArrowHighlighter = this.GetComponentInChildren<TutorialArrowManager>();
 
-		GameStateInformationProvider.NormalGameStart += StartWorkers;
+		GameStateInformationProvider.AnyGameStart += StartWorkers;
 		GameStateInformationProvider.AllSigns100 += OnGameEnd;
 
 		GameStateInformationProvider.anEchangeEnded += NoExchangeSucessCheckeGetIfExchangeHasEnded;
@@ -214,7 +214,7 @@ public class TutorialManager : MonoBehaviour
 
 			if (NoExchangeStartedForAwhile)
 			{
-				yield return StartCoroutine(HighlightBecauseNoTutorialHasSTarted(timeBetweenChecks));
+				yield return StartCoroutine(HighlightBecauseNoExchangeHasSTarted(timeBetweenChecks));
 			}
 			else if (ExchanheHeldForRooLong)
 			{
@@ -231,7 +231,7 @@ public class TutorialManager : MonoBehaviour
 
 		
 	}
-	            IEnumerator HighlightBecauseNoTutorialHasSTarted(float TimeBetweenChecks)
+	            IEnumerator HighlightBecauseNoExchangeHasSTarted(float TimeBetweenChecks)
 	{
 		
 		ourSignArrowHighlighter.HighlightAll();

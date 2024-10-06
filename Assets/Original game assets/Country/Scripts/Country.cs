@@ -10,6 +10,7 @@ public class Country : MonoBehaviour                    //holds informatin of co
 	[Header("Properties")]
 	public Color colorOfCountrysProduction;          
 
+	public string ArabicName;
 
 
 	[Header("interpart connections")]
@@ -74,7 +75,7 @@ public class Country : MonoBehaviour                    //holds informatin of co
 		}
 		
 		
-		GameObject newSighn = Instantiate(GameMaker.needSighnTemplate, sighnPosition, Quaternion.identity);
+		GameObject newSighn = Instantiate(GeneralInformationProvider.needSighnTemplate, sighnPosition, Quaternion.identity);
 		newSighn.transform.parent = this.transform;
 
 		Need newObjectNeedComponent = newSighn.GetComponent<Need>();

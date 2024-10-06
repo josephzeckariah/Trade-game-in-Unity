@@ -20,24 +20,16 @@ public  class GameMaker : MonoBehaviour
 	public List<Country> countriesUsedInMainGame;
 	public List<Country> countriesUsedInNewGamePlus;
 
-	[Header("Manual connections")]
-	public  GameObject needSighnTemplateSHowInspector;
-	public  Sprite FoodSprite;
-	public  Sprite MaterialsSprite;                                                            //set by inspector General game data
-	public  Sprite ElectronicsSprite;
-	public Sprite MachinesSprite;
 
-	public Sprite SmileSprite;
-	public Sprite MoneySprite;
+	[HideInInspector]
+	public List<Country> countriesLoadedAccordingToGameMode;
 
-	//public memory
-	public static Sprite Smile;
-	public static Sprite Money;
-	public static Dictionary<Needs,Sprite> needsAssets = new Dictionary<Needs, Sprite>();
-	public static GameObject needSighnTemplate;
+
+
 	//auto connection
 	NeedValueAssighnerWorker ourNeedValueAssighnerWorker;
 	SignShowingManager ourSignManager;
+	GeneralInformationProvider ourGeneralInformationMaker;
 
 
 	public static bool tutorialIsOn = false;
@@ -53,20 +45,21 @@ public  class GameMaker : MonoBehaviour
 	{
 		ourNeedValueAssighnerWorker = this.GetComponentInChildren<NeedValueAssighnerWorker>();
 		ourSignManager = this.GetComponentInChildren<SignShowingManager>();
+		ourGeneralInformationMaker = this.GetComponentInChildren<GeneralInformationProvider>();
+		ourGeneralInformationMaker.AssignFacts();
 
-		needSighnTemplate = needSighnTemplateSHowInspector;
-		
-		needsAssets.Add(Needs.Food, FoodSprite);
-		needsAssets.Add(Needs.Materials, MaterialsSprite);
-		needsAssets.Add(Needs.Electronics, ElectronicsSprite);
-		needsAssets.Add(Needs.Machines, MachinesSprite);
 
-		Money = MoneySprite;
-		Smile = SmileSprite;
+		GameStateInformationProvider.NormalGameStart += UniqueReactionToStartingANormalGame;
+		GameStateInformationProvider.NewGamePlusStart += UniqueReactionToStartingANewGamePLus;
 
+		GameStateInformationProvider.NormalGameStart += anyGameStartedCaller;
+		GameStateInformationProvider.NewGamePlusStart += anyGameStartedCaller;
+
+		GameStateInformationProvider.AnyGameStart += StartGame;
 		GameStateInformationProvider.anEchangeEnded += CheckForEndGame;
-		GameStateInformationProvider.NormalGameStart += StartNormalGame;
 		GameStateInformationProvider.GameEnded += OnGameEnd;
+
+
 
 		Screen.orientation = ScreenOrientation.LandscapeLeft;
 	}
@@ -82,21 +75,37 @@ public  class GameMaker : MonoBehaviour
 
 
 
+	void anyGameStartedCaller()
+	{
+		GameStateInformationProvider.AnyGameStart();
+	}
+
+	//S///////////////////////////////////////////////////////////     Choose countriesTo be used       /////////////////////////////////////////////////////////////
+
+	void UniqueReactionToStartingANormalGame()
+	{
+		countriesLoadedAccordingToGameMode = countriesUsedInMainGame;
+		GameStateInformationProvider.currentGameType = GameStates.NormalGame;
+	}
+	void UniqueReactionToStartingANewGamePLus()
+	{
+		countriesLoadedAccordingToGameMode = countriesUsedInNewGamePlus;
+		GameStateInformationProvider.currentGameType = GameStates.NewGamePlus;
+	}
 
 	//S///////////////////////////////////////////////////////////     Normal game start     /////////////////////////////////////////////////////////////
 
-	void StartNormalGame()                                                             //         <<<--------------------------------------------------------------
-	{	
+	void StartGame()                                                             //         <<<--------------------------------------------------------------
+	{
+		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue(countriesLoadedAccordingToGameMode);
 
-		TellAssighningWorkerToAssighnEachCountryItsNeedVAlue(countriesUsedInMainGame);
-
-		SubAwakeTellEachCountryToMakeThierSigns(countriesUsedInMainGame);
+		SubAwakeTellEachCountryToMakeThierSigns(countriesLoadedAccordingToGameMode);
 
 	}
 	                  
 	                   void TellAssighningWorkerToAssighnEachCountryItsNeedVAlue(List<Country> countriesUsedInThisGame)
 	{
-
+		Debug.Log(countriesUsedInThisGame.Count);
 		ourNeedValueAssighnerWorker.AssighnChoosenNeedsValueToChoosenCountries(needsUsedInGame, countriesUsedInThisGame);
 	}
 
@@ -111,13 +120,18 @@ public  class GameMaker : MonoBehaviour
 
 
 
+
+
+
+
+	//S///////////////////////////////////////////////////////////     on game end       /////////////////////////////////////////////////////////////
 	void OnGameEnd()
 	{
 		IfThereIsAPreviousltMadeGameClearIt();
 	}
 	                  void IfThereIsAPreviousltMadeGameClearIt()
 	{
-		foreach (Country country in countriesUsedInMainGame)
+		foreach (Country country in countriesLoadedAccordingToGameMode)
 		{
 			country.ourCountriesNeedsAndTheirValue.Clear();
 
@@ -151,7 +165,7 @@ public  class GameMaker : MonoBehaviour
 	}
 	               bool ReturnTrueIfAllSignInGameIs100()
 	{
-		foreach (Country country in countriesUsedInMainGame)
+		foreach (Country country in countriesLoadedAccordingToGameMode)
 		{
 			foreach (Need sign in country.ourCountriesSigns)
 			{

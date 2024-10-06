@@ -47,7 +47,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	private void Awake()
 	{
 		GameStateInformationProvider.GameInitalize += HigherUpOrderToStartWork;
-		GameStateInformationProvider.NormalGameStart += OnGameStarted;
+		GameStateInformationProvider.AnyGameStart += OnGameStarted;
 		GameStateInformationProvider.anEchangeEnded += MakeANeedSpecificSignAsAnExchangeWasComplete;
 		GameStateInformationProvider.TutorialStarted += TutorialStartTrigger;
 		GameStateInformationProvider.TutorialEnded += TutorialEndReaction;
@@ -233,7 +233,11 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 
 		yield return new WaitForSecondsRealtime(8f);
 
-		tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
+		if(tutorialSignsMadeAndAreOnScreen[0]!= null)
+		{
+			tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
+		}
+		
 		/////////////////////////////////////////////////////////////
 		ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[1]);
 		yield return new WaitForSecondsRealtime(5f);

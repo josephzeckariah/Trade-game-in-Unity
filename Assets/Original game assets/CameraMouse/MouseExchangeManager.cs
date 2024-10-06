@@ -36,7 +36,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	{
 		ourExchangeMaker = GetComponentInChildren<ExchangeMaker>();
 
-		GameStateInformationProvider.NormalGameStart += StartExchangeMakingCycle;
+		GameStateInformationProvider.AnyGameStart += StartExchangeMakingCycle;
 		GameStateInformationProvider.GameEnded += ClearAndStopExchangeMakingCycle;
 	}
 	

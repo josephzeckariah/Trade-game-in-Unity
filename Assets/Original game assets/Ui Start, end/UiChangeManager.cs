@@ -16,7 +16,7 @@ public class UiChangeManager : MonoBehaviour
 	public UiScreen endingUi;
 	public CreditScreen creditsUi;
 	public UiScreen endingAnimationUi;
-	public UiScreen IntroScreennUi;
+	public IntroUiScreen IntroScreennUi;
 	public LanguageChoosingScreen languageChoosingUi;
 
 	[Header("Manual connection")]
@@ -27,7 +27,7 @@ public class UiChangeManager : MonoBehaviour
 	UiScreen endingUiCreated;
 	CreditScreen creditsUiCreated;
 	UiScreen endingAnimationUiCreated;
-	UiScreen IntroScreennUiCreated;
+	IntroUiScreen IntroScreennUiCreated;
 	LanguageChoosingScreen languageChoosingUiCreated;
 
 
@@ -101,6 +101,22 @@ public class UiChangeManager : MonoBehaviour
 
 	}
 
+	                   void MakeScreen(IntroUiScreen screenToMake, ref IntroUiScreen refrenceToMadeScreen)
+	{
+		/////////////////////////////////////////////////////////////        Make sign
+		refrenceToMadeScreen = Instantiate(screenToMake, canvasToDrawON.transform);
+		refrenceToMadeScreen.ourUiChangeManager = this;
+
+		RectTransform transofrmOfNewSign = refrenceToMadeScreen.gameObject.GetComponent<RectTransform>();
+
+
+		/////////////////////////////////////////////////////////////       Position Sign and achor
+		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
+
+
+	}
 
 
 	//I///////////////////////////////////////////////////////////     Game Start       /////////////////////////////////////////////////////////////
@@ -129,7 +145,16 @@ public class UiChangeManager : MonoBehaviour
 	{
 		Destroy(openingUiCreated.gameObject);
 		MakeScreen(IntroScreennUi, ref IntroScreennUiCreated);
+		IntroScreennUiCreated.willIntroduceMinGmae = true;
 	}
+
+	public void NewGamePlusButtonClicked ()
+	{
+		Destroy(openingUiCreated.gameObject);
+		MakeScreen(IntroScreennUi, ref IntroScreennUiCreated);
+		IntroScreennUiCreated.willIntroduceMinGmae = false;
+	}
+
 
 	//S///////////////////////////////////////////////////////////     intro start       /////////////////////////////////////////////////////////////
 
@@ -138,10 +163,7 @@ public class UiChangeManager : MonoBehaviour
 		Destroy(IntroScreennUiCreated.gameObject);
 		transparentBackgroundCreated.gameObject.SetActive(false);
 
-		if (GameStateInformationProvider.NormalGameStart != null)
-		{
-			GameStateInformationProvider.NormalGameStart();                             //       ------------------------------------------------>>>
-		}
+	
 	}
 
 	//S///////////////////////////////////////////////////////////     Show end animation       /////////////////////////////////////////////////////////////

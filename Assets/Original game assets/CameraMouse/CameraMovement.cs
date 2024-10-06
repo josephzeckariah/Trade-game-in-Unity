@@ -15,12 +15,13 @@ public class CameraMovement : MonoBehaviour
 	///////////////////////////////////////////////////////////// Auto connections
 	Camera ourCamera;
 
-	//private memory
+	///////////////////////////////////////////////////////////// private memory
 	Vector2 areaCameraIsConstrainedIn;
 	Vector2 worldUnitsOfBackgroundHalfed;
 
 	Coroutine ourMouseOnEdgeCameraMovement;
 
+	Vector3 CentrePointDependingGameType;            //centre point to start and endgameon
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +29,7 @@ public class CameraMovement : MonoBehaviour
 	{
 		ourCamera = GetComponent<Camera>();
 
-		GameStateInformationProvider.NormalGameStart += OnGameStart;
+		GameStateInformationProvider.AnyGameStart += OnGameStart;
 		GameStateInformationProvider.AllSigns100 += OnAllSigns100;
 	}
 	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
@@ -67,8 +68,25 @@ public class CameraMovement : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     Always       /////////////////////////////////////////////////////////////
 	void OnGameStart()
 	{
+		DecideCentrePointOfGameAndGoToIt();
+
+
 		ourCamera.orthographicSize = 5f;
 		ourMouseOnEdgeCameraMovement = StartCoroutine(MoveCameraIfOnEdgeOfScreen());
+	}
+
+	                                 void DecideCentrePointOfGameAndGoToIt()
+	{
+		if (GameStateInformationProvider.currentGameType == GameStates.NormalGame)
+		{
+			CentrePointDependingGameType = new Vector3(5, -1, -10);
+		}
+		else
+		{
+			CentrePointDependingGameType = new Vector3(-10, 1, -10);
+		}
+		this.transform.position = CentrePointDependingGameType;
+
 	}
 	void OnAllSigns100()
 	{
@@ -142,8 +160,8 @@ public class CameraMovement : MonoBehaviour
 
 	            IEnumerator EndAnimation()
 	{
-		//Disable movemnt
-		yield return StartCoroutine(MoveToward(this.transform, new Vector3(5,-1,0),0.5f));
+		
+		yield return StartCoroutine(MoveToward(this.transform, CentrePointDependingGameType, 0.5f));
 
 	
 		if (GameStateInformationProvider.ZoomStarted != null)

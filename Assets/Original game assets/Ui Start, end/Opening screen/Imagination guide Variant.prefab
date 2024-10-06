@@ -134,14 +134,14 @@ PrefabInstance:
     - target: {fileID: 6650850908483104023, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2677555582548670545}
+      objectReference: {fileID: 2674728627866279528}
     - target: {fileID: 6650850908483104023, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: IntroEndButtonCLicked
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908483104023, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UiScreen, Assembly-CSharp
+      value: IntroUiScreen, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_text
@@ -231,19 +231,28 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -41
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4127130615532657238, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
---- !u!114 &2677555582548670545 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4127130615532657238, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+--- !u!1 &3763745459005828461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2906395701310377834, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
   m_PrefabInstance: {fileID: 2048599001512272391}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &2674728627866279528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763745459005828461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e989f2b6b000c8c4085d4fe52e782a41, type: 3}
+  m_Script: {fileID: 11500000, guid: 49ff4219ae9e12f4c809f11076aa6e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ourUiChangeManager: {fileID: 0}
+  willIntroduceMinGmae: 0
 --- !u!1 &4621401689267873515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6650850908939240684, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
@@ -263,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnglishText: Ok
   ArabicText: "\u0623\u062A\u0641\u0642\u0646\u0627"
+  allighnWordsInMiddle: 0
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!114 &1899772136
@@ -302,6 +312,7 @@ MonoBehaviour:
   ArabicText: "\u062A\u0630\u0643\u0631, \u0627\u0633\u062A\u062E\u062F\u0627\u0645
     \u0645\u062E\u064A\u0644\u062A\u0643 \u0644\u0643\u064A \u062A\u062A\u0639\u0644\u0645
     \u0648 \u062A\u0633\u062A\u0645\u062A\u0639."
+  allighnWordsInMiddle: 0
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!114 &2131886032

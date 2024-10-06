@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,8 +26,8 @@ public class Need : MonoBehaviour
 	public Image sighnMeter;
 
 	public TextMeshProUGUI sighnNumberPercent;
-	public TextMeshProUGUI signWrittenWOrds;
-	public TextMeshProUGUI signCountryName;
+	public LanguageChanger signWrittenWOrds;
+	public LanguageChanger signCountryName;
 
 	public Image sighnUpperBack;
 	public GameObject metersParent;         //future use
@@ -57,11 +57,23 @@ public class Need : MonoBehaviour
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void SetAsMainSign( int initialValue)                                                                       //here is the functions to set initial data when sign is created
 	{
-		Sprite imageOfSighn = GameMaker.Smile;
-		signWrittenWOrds.text = "Satisfaction";
-		signCountryName.text = this.ourCountryParent.name;
-		this.sighnImage.sprite = imageOfSighn;                              //change image
+		////////////////////////////////////////////////////////////// change image
+		Sprite imageOfSighn = GeneralInformationProvider.Smile;
+		this.sighnImage.sprite = imageOfSighn;                              
 
+		///////////////////////////////////////////////////////////// name of sign
+		signWrittenWOrds.allighnWordsInMiddle = true;
+		signWrittenWOrds.EnglishText = "Satisfaction";
+		signWrittenWOrds.ArabicText = "ألرفاهية";
+		signWrittenWOrds.ChangeLanguage(GameStateInformationProvider.currentLanguageSelected);
+
+		signCountryName.allighnWordsInMiddle = true;
+		signCountryName.EnglishText = this.ourCountryParent.name;
+		signCountryName.ArabicText = this.ourCountryParent.ArabicName;
+		signCountryName.ChangeLanguage(GameStateInformationProvider.currentLanguageSelected);
+
+
+		/////////////////////////////////////////////////////////////
 		float valueOfCOlorDifference = 0.2f;	
 		Color colorOfSign = new Color(ourCountryParent.colorOfCountrysProduction.r - valueOfCOlorDifference, ourCountryParent.colorOfCountrysProduction.g - valueOfCOlorDifference,
 			ourCountryParent.colorOfCountrysProduction.b - valueOfCOlorDifference) ;
@@ -78,10 +90,24 @@ public class Need : MonoBehaviour
 	public void SetInitialNeedSighnData(Needs sighnType,int initialValue)
     {
 		
-		Sprite imageOfSighn = GameMaker.needsAssets[sighnType];
-		signWrittenWOrds.text = sighnType.ToString();
-		signCountryName.text = this.ourCountryParent.name;
+		Sprite imageOfSighn = GeneralInformationProvider.needsAssets[sighnType];
 		this.sighnImage.sprite = imageOfSighn;                             //change image
+
+
+
+		/////////////////////////////////////////////////////////////change name
+		signWrittenWOrds.allighnWordsInMiddle = true;
+		signWrittenWOrds.EnglishText = sighnType.ToString();
+		signWrittenWOrds.ArabicText = GeneralInformationProvider.needsNamesAndTranslation[sighnType.ToString()];
+		signWrittenWOrds.ChangeLanguage(GameStateInformationProvider.currentLanguageSelected);
+
+		signCountryName.allighnWordsInMiddle = true;
+		signCountryName.EnglishText = this.ourCountryParent.name;
+		signCountryName.ArabicText = this.ourCountryParent.ArabicName;
+		signCountryName.ChangeLanguage(GameStateInformationProvider.currentLanguageSelected);
+
+		/////////////////////////////////////////////////////////////
+		
 
 		Image sighnUpperBackToChange = this.sighnUpperBack;
 		sighnUpperBackToChange.color = ourCountryParent.colorOfCountrysProduction;     //change sign back color
