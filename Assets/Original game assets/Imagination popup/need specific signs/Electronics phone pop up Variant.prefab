@@ -222,21 +222,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
   m_PrefabInstance: {fileID: 815902433147548754}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7107181822077724782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727842364883054049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &2770265421022064187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,8 +237,25 @@ MonoBehaviour:
   EnglishText: Phones and tablets are internationally traded.
   ArabicText: "\u064A\u062A\u0645 \u062A\u062F\u0627\u0648\u0644 \u0627\u0644\u0647\u0648\u0627\u062A\u0641
     \u0648 (\u0627\u0644\u062A\u0627\u0628\u0644\u062A\u0627\u062A) \u062F\u0648\u0644\u064A\u064B\u0627."
+  allighnWordsInMiddle: 0
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
+--- !u!114 &7107181822077724782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727842364883054049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
 --- !u!224 &8735371410939250201 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8244099652782256715, guid: e4c09824739000e409949df3bc92e6c7, type: 3}

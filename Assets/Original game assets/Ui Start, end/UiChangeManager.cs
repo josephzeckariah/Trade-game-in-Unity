@@ -18,6 +18,7 @@ public class UiChangeManager : MonoBehaviour
 	public UiScreen endingAnimationUi;
 	public IntroUiScreen IntroScreennUi;
 	public LanguageChoosingScreen languageChoosingUi;
+	public UiScreen newGamePLusIntroduction;
 
 	[Header("Manual connection")]
 	public UiScreen transparentBackground;
@@ -29,6 +30,7 @@ public class UiChangeManager : MonoBehaviour
 	UiScreen endingAnimationUiCreated;
 	IntroUiScreen IntroScreennUiCreated;
 	LanguageChoosingScreen languageChoosingUiCreated;
+	UiScreen newGamePLusIntroductionCreated;
 
 
 	UiScreen transparentBackgroundCreated;
@@ -119,12 +121,27 @@ public class UiChangeManager : MonoBehaviour
 	}
 
 
+	                 //S///////////////////////////////////////////////////////////     SubFun bring ui to top       /////////////////////////////////////////////////////////////
+
+	                  void SubFunBringUiToTop(UiScreen uiToBringToTop)
+	{
+		uiToBringToTop.transform.parent = null;
+		uiToBringToTop.transform.SetParent(canvasToDrawON.transform);
+		uiToBringToTop.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
+	}
+
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//+///////////////////////////////////////////////////////////////////////////////////////////////         Game Start       ///////////////////////////
+
 	//I///////////////////////////////////////////////////////////     Game Start       /////////////////////////////////////////////////////////////
 
 	void GameStartReaction()                                                                            //         <<<--------------------------------------------------------------
 	{
 		MakeScreen(transparentBackground, ref transparentBackgroundCreated);
 		MakeScreen(languageChoosingUi, ref languageChoosingUiCreated);
+
+	
 
 		/*MakeScreen(transparentBackground, ref transparentBackgroundCreated);
 		MakeScreen(openingUi, ref openingUiCreated);*/
@@ -165,6 +182,15 @@ public class UiChangeManager : MonoBehaviour
 
 	
 	}
+
+
+
+
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//+///////////////////////////////////////////////////////////////////////////////////////////////         Game end       ///////////////////////////
+
 
 	//S///////////////////////////////////////////////////////////     Show end animation       /////////////////////////////////////////////////////////////
 
@@ -213,10 +239,15 @@ public class UiChangeManager : MonoBehaviour
 
 	public void MoveFromCreditScreenBackToStartScreenWithExplainer()
 	{
+		//if(GameStateInformationProvider.currentGameType == GameStates.NormalGame)
+		
 		Destroy(creditsUiCreated.gameObject);
-		//gameRefresh
 		MakeScreen(openingUi, ref openingUiCreated);
-		//makescreen explainer
+
+		SubFunBringUiToTop(transparentBackgroundCreated);
+
+		MakeScreen(newGamePLusIntroduction, ref newGamePLusIntroductionCreated);
+			
 	}
 	public void MoveFromCreditScreenBackToStartScreenWithoutAnyExplaner()
 	{
@@ -225,4 +256,14 @@ public class UiChangeManager : MonoBehaviour
 		
 	}
 
+
+	//S///////////////////////////////////////////////////////////     exit new game plus explainer       /////////////////////////////////////////////////////////////
+
+	public void CloseNewGamePLusIntroduction()
+	{
+		Destroy(newGamePLusIntroductionCreated.gameObject);
+
+		SubFunBringUiToTop(openingUiCreated);
+
+	}
 }

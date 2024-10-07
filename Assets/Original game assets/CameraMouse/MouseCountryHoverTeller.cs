@@ -21,7 +21,7 @@ public class MouseCountryHoverTeller : MonoBehaviour
 	private void Awake()
 	{
 		GameStateInformationProvider.AnyGameStart += StartTellingHover;
-		GameStateInformationProvider.GameEnded += StopTellingHover;
+		GameStateInformationProvider.AllSigns100 += StopTellingHover;
 	}
 
 	//S///////////////////////////////////////////////////////////     Start       /////////////////////////////////////////////////////////////
@@ -43,6 +43,9 @@ public class MouseCountryHoverTeller : MonoBehaviour
 	void SubAwakeCopyCountryListFromBigBossGameMaker()
 	{
 		ourGameMaker = GameObject.FindAnyObjectByType<GameMaker>();
+
+		countriesToCheckIfEntered.Clear();
+		countriesToCheckIfExited.Clear();
 		foreach (Country countryToADd in ourGameMaker.countriesLoadedAccordingToGameMode) //////////////////////////////
 		{
 			countriesToCheckIfEntered.Add(countryToADd);
@@ -94,7 +97,7 @@ public class MouseCountryHoverTeller : MonoBehaviour
 		List<Country> countriesExited = new List<Country>();
 		foreach (Country countryToCheck in countriesToCheckIfExited)
 		{
-			if (Vector3.Distance(countryToCheck.transform.position, mousePositionOnMap) > 5)
+			if (Vector3.Distance(countryToCheck.transform.position, mousePositionOnMap) > 6)
 			{
 				countryToCheck.ForignOrderMouseExitedHoverOverCountry();
 				countriesExited.Add(countryToCheck);

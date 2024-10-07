@@ -25,7 +25,7 @@ public class Need : MonoBehaviour
 	public Image sighnImage;
 	public Image sighnMeter;
 
-	public TextMeshProUGUI sighnNumberPercent;
+	public LanguageChanger sighnNumberPercent;
 	public LanguageChanger signWrittenWOrds;
 	public LanguageChanger signCountryName;
 
@@ -54,7 +54,7 @@ public class Need : MonoBehaviour
 
 
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//S///////////////////////////////////////////////////////////     Main sign set functions       /////////////////////////////////////////////////////////////
 	public void SetAsMainSign( int initialValue)                                                                       //here is the functions to set initial data when sign is created
 	{
 		////////////////////////////////////////////////////////////// change image
@@ -117,7 +117,11 @@ public class Need : MonoBehaviour
 
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	//S///////////////////////////////////////////////////////////     Add and Remove meters       /////////////////////////////////////////////////////////////
 
 	public void RemoveFromFirstMeterAndAddANew(float ValueToRemoveFromMetersInPositive,Color colorOfReplacedMeter)
 	{
@@ -143,7 +147,7 @@ public class Need : MonoBehaviour
 
 	}
 
-	void SubFunSetMeterPosition(GameObject meterToCHange, float valueTochangeInto)      //changes meter 
+	                       void SubFunSetMeterPosition(GameObject meterToCHange, float valueTochangeInto)      //changes meter 
     {
 		float lengthOfPreviousMeters = 0;
 
@@ -159,7 +163,7 @@ public class Need : MonoBehaviour
 		meterToCHange.transform.localPosition = new Vector3(pointToPlaceNewMeterAFterOffset, 0, 0);  //set meter position 
 	}
 
-	void SubFunSetMeterSize(GameObject meterToCHange, float valueTochangeInto)
+	                       void SubFunSetMeterSize(GameObject meterToCHange, float valueTochangeInto)
 	{
 		float meterAt100Percent = metersParent.GetComponent<RectTransform>().sizeDelta.x;  //get total length from meter parent
 		float currentMeterHight = sighnMeter.rectTransform.sizeDelta.y;
@@ -171,13 +175,19 @@ public class Need : MonoBehaviour
 	}
 
 
-	void SubFunAddSignNumber(int valueToAdd)
+	                       void SubFunAddSignNumber(int valueToAdd)
     {
 
         this.currentSignValue += valueToAdd;
-        this.sighnNumberPercent.text = currentSignValue.ToString()+"%";
+        this.sighnNumberPercent.ArabicText= currentSignValue.ToString()+"%";
+        this.sighnNumberPercent.EnglishText= currentSignValue.ToString()+"%";
+		this.sighnNumberPercent.ChangeLanguage(GameStateInformationProvider.currentLanguageSelected);
 
 	}
+
+
+
+
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void ForignOrderChangeMainSignValue(int valueTochangeInto,Color colorOfNewMeter)

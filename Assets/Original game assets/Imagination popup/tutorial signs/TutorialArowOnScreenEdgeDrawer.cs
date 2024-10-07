@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class TutorialArowOnScreenEdgeDrawer : MonoBehaviour
 
 	Vector2 worldUnitsSizeOfScreen;
 
+	Dictionary<Need, GameObject> debugDictionaryToCheckInOut = new Dictionary<Need, GameObject>();
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//+///////////////////////////////////////////////////////////////////////////////////////////////         Actions        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	private void Awake()
@@ -28,6 +30,12 @@ public class TutorialArowOnScreenEdgeDrawer : MonoBehaviour
 	public void HigherUpMessageListBeenUpdated(List<Need> newListOfHighlightSigns)
 	{
 		listOfHighlightedSigns = newListOfHighlightSigns;
+
+		debugDictionaryToCheckInOut.Clear();
+		foreach (Need h in listOfHighlightedSigns)
+		{
+			debugDictionaryToCheckInOut.Add(h, null);
+		}
 	}
 
 	void GetScreenSize()
@@ -35,6 +43,24 @@ public class TutorialArowOnScreenEdgeDrawer : MonoBehaviour
 		worldUnitsSizeOfScreen = new Vector2(ourCameraToDrawArrowOnItsEdge.orthographicSize * ourCameraToDrawArrowOnItsEdge.aspect, ourCameraToDrawArrowOnItsEdge.orthographicSize);
 	}
 
+
+	
+
+	bool CheckIfSignIsOutOfCameraView(Need signToCheck)
+	{
+		Vector3 SignPosition = signToCheck.transform.position;
+		Vector3 CameraPosition = Camera.main.transform.position;
+		Vector2 DifferenceFromCameraPosition = new Vector2(MathF.Abs(SignPosition.x - CameraPosition.x), MathF.Abs(SignPosition.y - CameraPosition.y));
+
+		if (DifferenceFromCameraPosition.x > worldUnitsSizeOfScreen.x || DifferenceFromCameraPosition.y > worldUnitsSizeOfScreen.y)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 
 }

@@ -35,7 +35,6 @@ public class TutorialArrowManager : MonoBehaviour
 	//S///////////////////////////////////////////////////////////     OnGameStarted       /////////////////////////////////////////////////////////////
 	private void OnGameStarted()
 	{
-		Debug.Log("any game started");
 		foreach (Need need in FindObjectsOfType(typeof(Need), true))
 		{
 			signsToShowTHeirArrows.Add(need);

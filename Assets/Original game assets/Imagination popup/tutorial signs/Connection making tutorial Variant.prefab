@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 62.9077
+      value: 58.1941
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 34.7271
+      value: 32.370277
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_text
@@ -146,3 +146,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+--- !u!1 &4636232201025360433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+  m_PrefabInstance: {fileID: 6701102353497672578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &316808683664423328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636232201025360433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &6670946153522179220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636232201025360433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: End Exchange at another country's sign with the same icon and opposite
+    value.
+  ArabicText: "\u0642\u0645 \u0628\u0625\u0646\u0647\u0627\u0621 \u0639\u0645\u0644\u064A\u0629
+    \u0627\u0644\u062A\u0628\u0627\u062F\u0644 \u0639\u0646\u062F \u0644\u0627\u0641\u062A\u0629
+    \u0628\u0644\u062F \u0622\u062E\u0631 \u0628\u0647\u0627 \u0646\u0641\u0633 \u0627\u0644\u0635\u0648\u0631\u0629
+    \u0648 \u0642\u064A\u0645\u0629 \u0645\u0639\u0627\u0643\u0633\u0629."
+  allighnWordsInMiddle: 0
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}

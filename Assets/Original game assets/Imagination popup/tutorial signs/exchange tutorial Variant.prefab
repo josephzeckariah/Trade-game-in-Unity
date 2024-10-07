@@ -85,7 +85,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2064950496404711026, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2064950496404711026, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.x
@@ -113,23 +113,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 122.8831
+      value: 126.2281
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 93.048
+      value: 77.7
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -10.6
+      value: 0.6298
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495152, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 23.315
+      value: 15.641
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_text
-      value: "Click on any \nnon 100% sign to start an exchange."
+      value: Click on any non 100% sign to start an exchange.
       objectReference: {fileID: 0}
     - target: {fileID: 2064950497086495153, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
       propertyPath: m_fontSize
@@ -233,6 +233,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+--- !u!1 &8765903579695465206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
+  m_PrefabInstance: {fileID: 7281919644855278405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3819789207650631707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765903579695465206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 1
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &8802479440895736727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765903579695465206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Click on any non 100% sign to start an exchange.
+  ArabicText: "\u0623\u0636\u063A\u062A \u0639\u0644\u0649 \u0623\u064A \u0644\u0627\u0641\u062A\u0629
+    \u0644\u064A\u0633\u062A \u0661\u0660\u0660% \u0644\u0628\u062F\u0621 \u062E\u0637
+    \u0627\u0644\u062A\u0628\u0627\u062F\u0644."
+  allighnWordsInMiddle: 0
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!224 &9039895075260294534 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1763928882680495811, guid: e4c09824739000e409949df3bc92e6c7, type: 3}

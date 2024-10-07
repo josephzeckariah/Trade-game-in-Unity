@@ -29,19 +29,10 @@ public class UiScreen : MonoBehaviour
 		ourUiChangeManager.MoveFromEndScreenToCreditScreen();
 	}
 
-	/*public void CreditScreenContinueButtonClicked()
+	public void NewGamePLusIntroductionOkButtonClicked()
 	{
-		switch (ifCreditScreenWhatType)
-		{
-			case CreditScreenType.EndCredit:
-				ourUiChangeManager.MoveFromCreditScreenBackToStartScreenWithExplainer();
-				break;
-			case CreditScreenType.openingCredit:
-				ourUiChangeManager.MoveFromCreditScreenBackToStartScreenWithoutAnyExplaner();
-				break;
-		}
-		
-	}*/
+		ourUiChangeManager.CloseNewGamePLusIntroduction();
+	}
 
 
 	

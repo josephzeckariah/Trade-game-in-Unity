@@ -302,21 +302,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2064950497086495155, guid: e4c09824739000e409949df3bc92e6c7, type: 3}
   m_PrefabInstance: {fileID: 4312024160696591967}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7337517192441251695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2846079979704532972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &3865444536395999631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,8 +318,25 @@ MonoBehaviour:
   ArabicText: "\u064A\u0645\u0643\u0646 \u0644\u0644\u0645\u0635\u0627\u0646\u0639
     \u0627\u0633\u062A\u064A\u0631\u0627\u062F \u0627\u0644\u0622\u0644\u0627\u062A
     \u0627\u0644\u062A\u064A \u062A\u062D\u062A\u0627\u062C\u0647\u0627."
+  allighnWordsInMiddle: 0
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
+--- !u!114 &7337517192441251695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846079979704532972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
 --- !u!224 &5314124227228013588 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8244099652782256715, guid: e4c09824739000e409949df3bc92e6c7, type: 3}

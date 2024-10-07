@@ -321,6 +321,7 @@ MonoBehaviour:
   fixedText: 
   ShowTashkeel: 0
   UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
 --- !u!114 &7076440468613883871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +337,7 @@ MonoBehaviour:
   EnglishText: Cars and vehicles for every one.
   ArabicText: "\u0627\u0644\u0633\u064A\u0627\u0631\u0627\u062A \u0648(\u0627\u0644\u0628\u0644\u062F\u0648\u0632\u0631\u0627\u062A)
     \u0644\u0645\u0646 \u064A\u0631\u064A\u062F."
+  allighnWordsInMiddle: 0
   EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!224 &4823876052239954740 stripped
