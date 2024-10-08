@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8578652950246267800}
   - component: {fileID: 6206507392594412470}
   - component: {fileID: 1371287867401967407}
+  - component: {fileID: 3509985845384999935}
+  - component: {fileID: 1549664497680624596}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -135,6 +137,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3509985845384999935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263583818336288152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &1549664497680624596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263583818336288152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: <--Back
+  ArabicText: "\u0631\u062C\u0648\u0639 "
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &469696609422296895
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +588,8 @@ GameObject:
   - component: {fileID: 582046388262422767}
   - component: {fileID: 582046388262422761}
   - component: {fileID: 582046388262422766}
+  - component: {fileID: 2489453992373311102}
+  - component: {fileID: 1839624130021287792}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -677,6 +714,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2489453992373311102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582046388262422764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &1839624130021287792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582046388262422764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Next -->
+  ArabicText: "\u0627\u0644\u062A\u0627\u0644\u064A"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &582046388400880708
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +758,8 @@ GameObject:
   - component: {fileID: 582046388400880711}
   - component: {fileID: 582046388400880705}
   - component: {fileID: 582046388400880710}
+  - component: {fileID: 977042201703803285}
+  - component: {fileID: 4673588257029731349}
   m_Layer: 5
   m_Name: Credits title
   m_TagString: Untagged
@@ -752,8 +824,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255595
-  m_fontColor: {r: 0.92176676, g: 1, b: 0, a: 1}
+    rgba: 4292224897
+  m_fontColor: {r: 0.50782454, g: 0.1544589, b: 0.8396226, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -812,6 +884,40 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &977042201703803285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582046388400880708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &4673588257029731349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582046388400880708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Credits for <br>  Commerce education software
+  ArabicText: "\u0635\u0646\u0627\u0639 \u0628\u0631\u0646\u0627\u0645\u062C \u0627\u0644\u062A\u062C\u0627\u0631\u0629
+    \u0627\u0644\u062A\u0639\u0644\u064A\u0645\u064A"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &582046388780368778
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.34}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31, y: 69.76547}
+  m_AnchoredPosition: {x: 0, y: 69.76547}
   m_SizeDelta: {x: 352.8159, y: 119.5707}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &582046388780368775
@@ -902,6 +1008,8 @@ GameObject:
   - component: {fileID: 6090399281843666601}
   - component: {fileID: 3643708593625462189}
   - component: {fileID: 6584274466682558413}
+  - component: {fileID: 459933869304807678}
+  - component: {fileID: 8139630165498045323}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1026,6 +1134,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &459933869304807678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786959423316896810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &8139630165498045323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786959423316896810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Continue
+  ArabicText: "\u0645\u062A\u0627\u0628\u0639\u0629"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &1454065579910538997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1377,177 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4336134475578490492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5123492703769441092}
+  - component: {fileID: 3267485311539570333}
+  - component: {fileID: 2520860189679059572}
+  - component: {fileID: 7533571060989110005}
+  - component: {fileID: 6470259243065147119}
+  m_Layer: 5
+  m_Name: Music credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5123492703769441092
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336134475578490492}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8509297559548252781}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 157.70137, y: -47.308407}
+  m_SizeDelta: {x: 179.3227, y: 27.7685}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3267485311539570333
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336134475578490492}
+  m_CullTransparentMesh: 1
+--- !u!114 &2520860189679059572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336134475578490492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Music by Poligons Sounds.
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278255595
+  m_fontColor: {r: 0.92176676, g: 1, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 12.9
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 7
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 2.850769, y: 0, z: 0, w: -0.067798615}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7533571060989110005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336134475578490492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &6470259243065147119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336134475578490492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Music by Poligons Sounds.
+  ArabicText: "\u0627\u0644\u0645\u0632\u064A\u0643\u0627 \u0635\u0646\u0639\u0647\u0627
+    Poligons Sounds"
+  allighnWordsInMiddle: 0
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &4482715650742891028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1636,8 @@ GameObject:
   - component: {fileID: 3107362084994941060}
   - component: {fileID: 6086295143808441308}
   - component: {fileID: 1991108198407427467}
+  - component: {fileID: 3735277425049086765}
+  - component: {fileID: 518281186273572564}
   m_Layer: 5
   m_Name: Additional thanks
   m_TagString: Untagged
@@ -1448,6 +1762,43 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3735277425049086765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6583121081245114812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &518281186273572564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6583121081245114812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: 'Addition thanks to: coolext.com and unknown creator of TMPro arabic
+    fixer.'
+  ArabicText: "\u0625\u0636\u0627\u0641\u0629 \u0634\u0643\u0631 \u0625\u0644\u0649:
+    coolext.com \u0648\u0635\u0627\u0646\u0639 \u0628\u0631\u0646\u0627\u0645\u062C
+    TMPro \u0644\u0625\u0635\u0644\u0627\u062D \u0627\u0644\u0643\u062A\u0627\u0628\u0629
+    \u0627\u0644\u0639\u0631\u0628\u064A\u0629."
+  allighnWordsInMiddle: 0
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &8509297558723160798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1810,8 @@ GameObject:
   - component: {fileID: 8509297558723160793}
   - component: {fileID: 8509297558723160795}
   - component: {fileID: 8509297558723160792}
+  - component: {fileID: 6909095411470086068}
+  - component: {fileID: 3257182345854658933}
   m_Layer: 5
   m_Name: Made with gimp
   m_TagString: Untagged
@@ -1483,7 +1836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56.871372, y: -38.10398}
+  m_AnchoredPosition: {x: 0, y: -38.10398}
   m_SizeDelta: {x: 218.1982, y: 28.5194}
   m_Pivot: {x: 0.55179596, y: 0.5}
 --- !u!222 &8509297558723160795
@@ -1514,7 +1867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game  used Gimp photo editor
+  m_text: Game used Gimp photo editor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1541,7 +1894,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.75
+  m_fontSize: 14.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1583,6 +1936,40 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6909095411470086068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297558723160798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &3257182345854658933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297558723160798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Game used Gimp photo editor
+  ArabicText: "\u0627\u0644\u0644\u0639\u0628\u0629 \u0627\u0633\u062A\u062E\u062F\u0645\u062A
+    \u0645\u062D\u0631\u0631 \u0627\u0644\u0635\u0648\u0631 Gimp"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &8509297559435813228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,6 +1981,8 @@ GameObject:
   - component: {fileID: 8509297559435813231}
   - component: {fileID: 8509297559435813225}
   - component: {fileID: 8509297559435813230}
+  - component: {fileID: 6500898945389840600}
+  - component: {fileID: 8907192890483811898}
   m_Layer: 5
   m_Name: Game made possible by
   m_TagString: Untagged
@@ -1658,8 +2047,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255595
-  m_fontColor: {r: 0.92176676, g: 1, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1718,6 +2107,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6500898945389840600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297559435813228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &8907192890483811898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297559435813228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: 'Game made possible by the  contripution of all of:'
+  ArabicText: "\u0627\u0644\u0644\u0639\u0628\u0629 \u0623\u0635\u0628\u062D\u062A
+    \u0645\u0645\u0643\u0646\u0629 \u0628\u0641\u0636\u0644 \u0645\u0633\u0627\u0647\u0645\u0629
+    \u0643\u0644 \u0645\u0646:"
+  allighnWordsInMiddle: 0
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &8509297559480869788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +2153,8 @@ GameObject:
   - component: {fileID: 8509297559480869791}
   - component: {fileID: 8509297559480869785}
   - component: {fileID: 8509297559480869790}
+  - component: {fileID: 8826925463896692074}
+  - component: {fileID: 2446559188665623977}
   m_Layer: 5
   m_Name: Made by Youssef zakaria
   m_TagString: Untagged
@@ -1753,8 +2179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.606144, y: 34.05429}
-  m_SizeDelta: {x: 327.5912, y: 53.0531}
+  m_AnchoredPosition: {x: 0, y: 42.5699}
+  m_SizeDelta: {x: 327.5912, y: 36.0215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8509297559480869785
 CanvasRenderer:
@@ -1847,12 +2273,46 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2.850769, y: 0, z: 0, w: 15.570873}
+  m_margin: {x: 2.850769, y: 0, z: 0, w: 0.4317131}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8826925463896692074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297559480869788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &2446559188665623977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297559480869788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Game made by Youssef Zakaria
+  ArabicText: "\u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C \u0645\u0646 \u0635\u0646\u0639
+    \u064A\u0648\u0633\u0641 \u0632\u0643\u0631\u064A\u0627"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &8509297559548252786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +2343,7 @@ RectTransform:
   m_Children:
   - {fileID: 8509297559435813231}
   - {fileID: 3107362084994941060}
+  - {fileID: 5123492703769441092}
   m_Father: {fileID: 5324370073297542330}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1902,6 +2363,8 @@ GameObject:
   - component: {fileID: 8509297559960579350}
   - component: {fileID: 8509297559960579344}
   - component: {fileID: 8509297559960579345}
+  - component: {fileID: 2654801703234683680}
+  - component: {fileID: 7516017869510917731}
   m_Layer: 5
   m_Name: Made with unity
   m_TagString: Untagged
@@ -1926,7 +2389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.933472, y: -11.854378}
+  m_AnchoredPosition: {x: 0, y: -11.854378}
   m_SizeDelta: {x: 327.5912, y: 53.0531}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8509297559960579344
@@ -2026,6 +2489,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2654801703234683680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297559960579351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &7516017869510917731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509297559960579351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Game made with Unity game Engine
+  ArabicText: "\u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C \u0635\u0646\u0639
+    \u0628\u0623\u0633\u062A\u062E\u062F\u0627\u0645 \u0645\u062D\u0631\u0643 \u0627\u0644\u0623\u0644\u0639\u0627\u0628
+    Unity"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1001 &2919659245680591271
 PrefabInstance:
   m_ObjectHideFlags: 0

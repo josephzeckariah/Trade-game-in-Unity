@@ -76,7 +76,6 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	//OA///////////////////////////////////////////////////////////     On Game Start and End    /////////////////////////////////////////////////////////////
 	void OnGameStarted()                                                         //         <<<-------------------------------------------------------------- 
 	{
-		Debug.Log("game started");
 		ourGeneralSignCycle =StartCoroutine(CycleToSpawnGeneralSigns(timeBetweenSignSpawn));
 	}
 

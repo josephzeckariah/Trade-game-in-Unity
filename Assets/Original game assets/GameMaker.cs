@@ -178,17 +178,6 @@ public  class GameMaker : MonoBehaviour
 		return true;
 	}
 
-	private void Update()
-	{
 
-		if (Input.GetKeyDown(KeyCode.Z))
-		{
-			if (GameStateInformationProvider.AllSigns100 != null)
-			{
-				GameStateInformationProvider.AllSigns100();
-			}
-		}
-
-	}
 }
 

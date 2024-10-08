@@ -44,18 +44,7 @@ public class LanguageChanger : MonoBehaviour
 		ChangeLanguage(GameStateInformationProvider.currentLanguageSelected);
 	}
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Tab))
-			{
-			GameStateInformationProvider.LanguageChanged(LanguagesInGame.English);
-			GameStateInformationProvider.currentLanguageSelected =LanguagesInGame.English;
-		}
-		if (Input.GetKeyDown(KeyCode.Q)){
-			GameStateInformationProvider.LanguageChanged(LanguagesInGame.Arabic);
-			GameStateInformationProvider.currentLanguageSelected = LanguagesInGame.Arabic;
-		}
-	}
+
 
 	public void ChangeLanguage(LanguagesInGame languageToChangeInto)
 	{

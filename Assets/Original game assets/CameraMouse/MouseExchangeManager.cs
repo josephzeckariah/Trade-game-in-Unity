@@ -37,7 +37,8 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		ourExchangeMaker = GetComponentInChildren<ExchangeMaker>();
 
 		GameStateInformationProvider.AnyGameStart += StartExchangeMakingCycle;
-		GameStateInformationProvider.GameEnded += ClearAndStopExchangeMakingCycle;
+		GameStateInformationProvider.AllSigns100 += StopExchangeMakingCycle;
+		GameStateInformationProvider.GameEnded += ClearExchangesMade;
 	}
 	
 
@@ -48,7 +49,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	{
 		ourLookingToStartExchangeCoroutine = StartCoroutine(ContinousCheckForStartingAnExchange());  //upoun start be in (waiting to select first sign) state
 	}
-	void ClearAndStopExchangeMakingCycle()
+	void StopExchangeMakingCycle()
 	{
 		if (exchangeObjectBeingHeld != null)
 		{
@@ -58,14 +59,17 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 		StopCoroutine(ourLookingToStartExchangeCoroutine);
 		StopCoroutine(ourLookingToStartExchangeCoroutine);
 
+
+	}
+
+	void ClearExchangesMade()
+	{
 		foreach (Exchange exchange in ourExchangesCreated)
 		{
 			exchange.ForighnOrderCancelLine();
 		}
 		ourExchangesCreated.Clear();
 	}
-
-
 
 
 

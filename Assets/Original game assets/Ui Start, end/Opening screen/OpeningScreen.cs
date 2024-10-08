@@ -35,4 +35,9 @@ public class OpeningScreen : UiScreen
 		ourUiChangeManager.NewGamePlusButtonClicked();
 	}
 
+	public void OpeningSideLanguageButtonClicked()
+	{
+		ourUiChangeManager.OpeningScreenLanguageButtonClicked();
+	}
+
 }

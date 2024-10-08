@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45.999}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -136.2, y: 151.3}
+  m_AnchoredPosition: {x: -131, y: 131}
   m_SizeDelta: {x: 50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7353232892148083708
@@ -190,7 +190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -154, y: 224.4}
+  m_AnchoredPosition: {x: -148.79999, y: 204.09999}
   m_SizeDelta: {x: 50, y: 197.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8424989947315855363
@@ -474,7 +474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 46}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -174.4, y: 152.2}
+  m_AnchoredPosition: {x: -169.19998, y: 131.9}
   m_SizeDelta: {x: 50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2111323483838357184
@@ -955,7 +955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_fontSize
-      value: 27.25
+      value: 28.1
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_fontColor.b
@@ -970,24 +970,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4282894335
       objectReference: {fileID: 0}
+    - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872519, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 346.4421
+      value: 398.1766
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872519, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100.9397
+      value: 96.2183
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872519, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1.3304
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872519, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 18.2673
+      value: 20.628017
       objectReference: {fileID: 0}
     - target: {fileID: 6650850908939240686, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_text
@@ -1030,6 +1038,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e989f2b6b000c8c4085d4fe52e782a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5443152661878420888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650850908939240684, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+  m_PrefabInstance: {fileID: 1712888655788667252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &699882641070979619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443152661878420888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &7891424415164755077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443152661878420888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: ok
+  ArabicText: "\u062D\u0633\u0646\u0622"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
+--- !u!1 &5443152662008463664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650850908800872516, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+  m_PrefabInstance: {fileID: 1712888655788667252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1121038321812879349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443152662008463664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &6755716968585355852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443152662008463664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: You can replay the game with different countris in new game plus mode.
+  ArabicText: "\u064A\u0645\u0643\u0646\u0643 \u0625\u0639\u0627\u062F\u0629 \u062A\u0634\u063A\u064A\u0644
+    \u0627\u0644\u0644\u0639\u0628\u0629 \u0645\u0639 \u0628\u0644\u062F\u0627\u0646
+    \u0645\u062E\u062A\u0644\u0641\u0629 \u0641\u064A \u0648\u0636\u0639 \u0627\u0644\u0644\u0639\u0628\u0629 
+    \u0627\u0644\u0645\u062C\u062F\u062F\u0629"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!224 &6052824399888924953 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4916405292899905645, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}

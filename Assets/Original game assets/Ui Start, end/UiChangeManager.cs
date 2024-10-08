@@ -172,6 +172,16 @@ public class UiChangeManager : MonoBehaviour
 		IntroScreennUiCreated.willIntroduceMinGmae = false;
 	}
 
+	public void OpeningScreenLanguageButtonClicked()
+	{
+		
+		Destroy(openingUiCreated.gameObject);
+		MakeScreen(languageChoosingUi, ref languageChoosingUiCreated);
+	}
+
+
+
+
 
 	//S///////////////////////////////////////////////////////////     intro start       /////////////////////////////////////////////////////////////
 
@@ -239,15 +249,25 @@ public class UiChangeManager : MonoBehaviour
 
 	public void MoveFromCreditScreenBackToStartScreenWithExplainer()
 	{
-		//if(GameStateInformationProvider.currentGameType == GameStates.NormalGame)
-		
-		Destroy(creditsUiCreated.gameObject);
-		MakeScreen(openingUi, ref openingUiCreated);
+		if(GameStateInformationProvider.currentGameType == GameStates.NormalGame)
+		{
+			Destroy(creditsUiCreated.gameObject);
+			MakeScreen(openingUi, ref openingUiCreated);
 
-		SubFunBringUiToTop(transparentBackgroundCreated);
+			SubFunBringUiToTop(transparentBackgroundCreated);
 
-		MakeScreen(newGamePLusIntroduction, ref newGamePLusIntroductionCreated);
-			
+			MakeScreen(newGamePLusIntroduction, ref newGamePLusIntroductionCreated);
+
+		}
+		else
+		{
+			Destroy(creditsUiCreated.gameObject);
+			MakeScreen(openingUi, ref openingUiCreated);
+
+		}
+
+
+
 	}
 	public void MoveFromCreditScreenBackToStartScreenWithoutAnyExplaner()
 	{

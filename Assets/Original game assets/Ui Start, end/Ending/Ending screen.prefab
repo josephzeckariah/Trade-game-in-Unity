@@ -127,6 +127,8 @@ GameObject:
   - component: {fileID: 2745058989013863573}
   - component: {fileID: 2745058989013863571}
   - component: {fileID: 2745058989013863572}
+  - component: {fileID: 2880056164462430071}
+  - component: {fileID: 9047997204450310661}
   m_Layer: 5
   m_Name: Congratulations text
   m_TagString: Untagged
@@ -254,6 +256,43 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2880056164462430071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745058989013863574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &9047997204450310661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745058989013863574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Congratulations, you helped everyone complete each other and become
+    happier.
+  ArabicText: "\u062A\u0647\u0627\u0646\u064A\u0646\u0627\u060C \u0644\u0642\u062F
+    \u0633\u0627\u0639\u062F\u062A \u0627\u0644\u062C\u0645\u064A\u0639 \u0639\u0644\u0649
+    \u0625\u0643\u0645\u0627\u0644 \u0628\u0639\u0636\u0647\u0645 \u0627\u0644\u0628\u0639\u0636
+    \u0648\u0623\u0635\u0628\u062D\u0648\u0627 \u0623\u0643\u062B\u0631 \u0633\u0639\u0627\u062F\u0629."
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &2745058989152319550
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +304,8 @@ GameObject:
   - component: {fileID: 2745058989152319549}
   - component: {fileID: 2745058989152319547}
   - component: {fileID: 2745058989152319548}
+  - component: {fileID: 4422248380992680253}
+  - component: {fileID: 8157494120585222756}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -391,6 +432,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4422248380992680253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745058989152319550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &8157494120585222756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745058989152319550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: Credits
+  ArabicText: "\u0627\u0644\u062A\u062A\u0631"
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &2745058989568610759
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +610,8 @@ GameObject:
   - component: {fileID: 3559881399175079721}
   - component: {fileID: 3559881399175079723}
   - component: {fileID: 3559881399175079722}
+  - component: {fileID: 359605427595174508}
+  - component: {fileID: 5907080430872612530}
   m_Layer: 5
   m_Name: things to thicnk about text
   m_TagString: Untagged
@@ -560,8 +636,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.46756, y: -62.57232}
-  m_SizeDelta: {x: 135.3459, y: 232.8042}
+  m_AnchoredPosition: {x: -126.55736, y: -62.57232}
+  m_SizeDelta: {x: 119.1663, y: 232.8042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3559881399175079723
 CanvasRenderer:
@@ -594,7 +670,7 @@ MonoBehaviour:
   m_text: 'things To thinck about:
 
 
-    1-look at the things in your house ,imagine
+    -->look at the things in your house ,imagine
     who made them and how did they get to you.
 
 
@@ -626,7 +702,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.6
+  m_fontSize: 18.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -668,6 +744,44 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &359605427595174508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3559881399175079720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
+--- !u!114 &5907080430872612530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3559881399175079720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: 'things To thinck about: <br> -->look at the things in your house
+    ,imagine who made them and how did they get to you. '
+  ArabicText: "\u0623\u0634\u064A\u0627\u0621 \u0644\u0644\u062A\u0641\u0643\u064A\u0631
+    \u0641\u064A\u0647\u0627:                -- > \u0627\u0646\u0638\u0631 \u0625\u0644\u0649
+    \u0627\u0644\u0623\u0634\u064A\u0627\u0621 \u0641\u064A \u0645\u0646\u0632\u0644\u0643\u060C
+    \u0648\u062A\u062E\u064A\u0644 \u0645\u0646 \u0635\u0646\u0639\u0647\u0627 \u0648\u0643\u064A\u0641
+    \u0648\u0635\u0644\u062A \u0625\u0644\u064A\u0643."
+  allighnWordsInMiddle: 0
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
 --- !u!1 &3559881399776066557
 GameObject:
   m_ObjectHideFlags: 0

@@ -179,6 +179,14 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4293722016
       objectReference: {fileID: 0}
+    - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650850908800872518, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6650850908800872519, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
       propertyPath: m_SizeDelta.x
       value: 395.822
@@ -205,3 +213,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+--- !u!1 &2803691009354938657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650850908800872516, guid: 5dde2dfad565d7444af694211ad9e730, type: 3}
+  m_PrefabInstance: {fileID: 8837232038452283749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &99574914061550352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803691009354938657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726a659f1593b24b8f042ca575031c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnglishText: With trade the world became interdependant and interconnected as one.
+  ArabicText: "\u0628\u0641\u0636\u0644 \u0627\u0644\u062A\u062C\u0627\u0631\u0629\u060C
+    \u0623\u0635\u0628\u062D \u0627\u0644\u0639\u0627\u0644\u0645 \u0645\u062A\u0631\u0627\u0628\u0637\u064B\u0627
+    \u0648\u064A\u0639\u062A\u0645\u062F \u0639\u0644\u064A \u0628\u0639\u0636\u0647
+    \u0643\u0643\u064A\u0627\u0646 \u0648\u0627\u062D\u062F."
+  allighnWordsInMiddle: 1
+  EnglishFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ArabicFont: {fileID: 11400000, guid: e477ac1c6b9da2246957f8431d8943ff, type: 2}
+--- !u!114 &8769836832741784959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803691009354938657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
+  worksAloneAndAutoSelfStart: 0
