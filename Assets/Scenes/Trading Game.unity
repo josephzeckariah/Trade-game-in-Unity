@@ -1414,7 +1414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBeforeTutorialStart: 13
-  timeWaitedBeforeAnnouncingItsExchangeStateDidntChangeForTooLong: 11
+  timeWaitedBeforeAnnouncingItsExchangeStateDidntChangeForTooLong: 9
   timeWaitedBeforeDecidingNoExchangewasMadeForAWhile: 17
 --- !u!1 &872909295
 GameObject:
@@ -1987,6 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba4eaa272c2ed84f8a6fb4c7de48446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ArrowPrefab: {fileID: 8578368250834688125, guid: 891ff5ed6d2b41d40a4c449f0e341a7d, type: 3}
 --- !u!1 &1698891060
 GameObject:
   m_ObjectHideFlags: 0

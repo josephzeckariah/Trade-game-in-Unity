@@ -230,7 +230,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 		/////////////////////////////////////////////////////////////
 		  ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[0]);
 
-		yield return new WaitForSecondsRealtime(8f);
+		yield return new WaitForSecondsRealtime(11f);
 
 		if(tutorialSignsMadeAndAreOnScreen[0]!= null)
 		{

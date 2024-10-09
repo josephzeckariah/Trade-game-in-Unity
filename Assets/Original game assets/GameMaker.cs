@@ -163,7 +163,8 @@ public  class GameMaker : MonoBehaviour
 			
 		}
 	}
-	               bool ReturnTrueIfAllSignInGameIs100()
+
+	bool ReturnTrueIfAllSignInGameIs100()
 	{
 		foreach (Country country in countriesLoadedAccordingToGameMode)
 		{
