@@ -220,9 +220,10 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 
 
 	//OA///////////////////////////////////////////////////////////     Tutorial start reaction      /////////////////////////////////////////////////////////////
+	Coroutine tutorialSignSpawninngCycle;
 	void TutorialStartTrigger()
 	{
-		StartCoroutine(TutorialStartedReaction());
+		tutorialSignSpawninngCycle = StartCoroutine(TutorialStartedReaction());
 	}
 	IEnumerator TutorialStartedReaction()                                          //         <<<-------------------------------------------------------------- 
 	{
@@ -232,7 +233,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 
 		yield return new WaitForSecondsRealtime(11f);
 
-		if(tutorialSignsMadeAndAreOnScreen[0]!= null)
+		if (tutorialSignsMadeAndAreOnScreen.Count > 0)
 		{
 			tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
 		}
@@ -251,17 +252,23 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	//OA///////////////////////////////////////////////////////////     Tutorial End reaction      /////////////////////////////////////////////////////////////
 	void TutorialEndReaction()
 	{
-		List<ImaginationSign> signToDestroy = new List<ImaginationSign>();
-		foreach (ImaginationSign tutorialSign in tutorialSignsMadeAndAreOnScreen)
+		if(tutorialSignsMadeAndAreOnScreen.Count > 0)
 		{
-			signToDestroy.Add(tutorialSign);
+			List<ImaginationSign> signToDestroy = new List<ImaginationSign>();
+			foreach (ImaginationSign tutorialSign in tutorialSignsMadeAndAreOnScreen)
+			{
+				signToDestroy.Add(tutorialSign);
+
+			}
+			foreach (ImaginationSign tutorialSign in signToDestroy)
+			{
+
+				tutorialSign.OnXButtonClick();
+			}
 			
 		}
-		foreach (ImaginationSign tutorialSign in signToDestroy)
-		{
-
-			tutorialSign.OnXButtonClick();
-		}
+		
+		StopCoroutine(tutorialSignSpawninngCycle);
 
 		StartCoroutine(MakeTutorialGoalSignThenWaitBeforeReturningGeneralSigns());
 	}
@@ -270,8 +277,12 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	{
 		ourSignDrawer.MakeTutorialSign(listOfTutorialSigns[3]);
 		yield return new WaitForSecondsRealtime(6f);
-		tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
 
+		if (tutorialSignsMadeAndAreOnScreen.Count > 0)
+		{
+
+			tutorialSignsMadeAndAreOnScreen[0].OnXButtonClick();
+		}
 		/////////////////////////////////////////////////////////////
 		generalSignTimer = timeBetweenSignSpawn;
 	}

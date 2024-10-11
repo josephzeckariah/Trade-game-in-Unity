@@ -2315,11 +2315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252832592568161576, guid: a3b93e86cebc998408dc088555de8626, type: 3}
       propertyPath: colorOfCountrysProduction.g
-      value: 0.8117647
+      value: 0.6784314
       objectReference: {fileID: 0}
     - target: {fileID: 3252832592568161576, guid: a3b93e86cebc998408dc088555de8626, type: 3}
       propertyPath: colorOfCountrysProduction.r
-      value: 0.7688074
+      value: 0.592451
       objectReference: {fileID: 0}
     - target: {fileID: 4076860876706202778, guid: a3b93e86cebc998408dc088555de8626, type: 3}
       propertyPath: m_Name

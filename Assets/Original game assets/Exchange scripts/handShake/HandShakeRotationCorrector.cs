@@ -15,7 +15,7 @@ public class HandShakeRotationCorrector : MonoBehaviour
         while (true)
         {
 			this.transform.rotation = Quaternion.identity;
-			yield return new WaitForSecondsRealtime(0.2f);
+			yield return new WaitForSecondsRealtime(0.05f);
         }
     }
 }
