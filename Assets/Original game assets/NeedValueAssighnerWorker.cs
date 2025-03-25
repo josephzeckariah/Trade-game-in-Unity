@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NeedValueAssighnerWorker : MonoBehaviour
@@ -11,12 +12,23 @@ public class NeedValueAssighnerWorker : MonoBehaviour
 	{
 		SubFunAssighnNeedsToEachCountryInABallancedNeg1_Zero_Pos1(choosenNeeds, choosenCountries);
 
-		SubFunBallamceNeedsBetwenCountries(choosenNeeds, choosenCountries);
+		 
+		if (SubFunBallamceNeedsBetwenCountries(choosenNeeds, choosenCountries))      //if some values were all zeor (something went wrong)
+		{
+
+		}else
+		{
+		
+			RestartAsiigningBecauseANeedWasAllZero(choosenNeeds, choosenCountries);        //then restart allover
+			return;
+		}
 
 		SubFunAssighnNumberToNeedsInEachCountry(choosenNeeds, choosenCountries);
+
+		
 	}
 
-	void SubFunAssighnNeedsToEachCountryInABallancedNeg1_Zero_Pos1(List<Needs> choosenNeeds, List<Country> choosenCountries)
+	                    void SubFunAssighnNeedsToEachCountryInABallancedNeg1_Zero_Pos1(List<Needs> choosenNeeds, List<Country> choosenCountries)
 	{
 
 		foreach (Country choosenCountry in choosenCountries)
@@ -92,8 +104,11 @@ public class NeedValueAssighnerWorker : MonoBehaviour
 
 
 	}
-	//the following mithod is composed of 3 foreach loops that ballances the need values between countries
-	void SubFunBallamceNeedsBetwenCountries(List<Needs> choosenNeeds, List<Country> choosenCountries)           
+
+
+
+	                    //the following mithod is composed of 3 foreach loops that ballances the need values between countries
+	                    bool SubFunBallamceNeedsBetwenCountries(List<Needs> choosenNeeds, List<Country> choosenCountries)           
 	{
 		Dictionary<Needs, int> needsUnBallancedAndTheirNeededValue = new Dictionary<Needs, int>();        //make a list of needs that need to be ballanced across countries
 		foreach (Needs needToCheckForBallance in choosenNeeds)                   //go through each need
@@ -211,16 +226,29 @@ public class NeedValueAssighnerWorker : MonoBehaviour
 					goto ContinueWithoutZeroingEverything;
 				}
 			}
+			return false;
 			foreach (Country country in choosenCountries)          //if no changable found just change the need in everyone to 0 
 			{
 				country.ourCountriesNeedsAndTheirValue[needThatNeedsToBeBallanceInternationally] = 0;
 			}
 		ContinueWithoutZeroingEverything:;
-		}
+		}    /////////////////////////////////////////////
 
-
+		return true;
 	}
-	void SubFunAssighnNumberToNeedsInEachCountry(List<Needs> choosenNeeds, List<Country> choosenCountries)
+	                    void RestartAsiigningBecauseANeedWasAllZero(List<Needs> choosenNeeds, List<Country> choosenCountries)
+	{
+		foreach (Country choosenCountry in choosenCountries)
+		{
+			foreach (Needs need in choosenNeeds)
+			{
+				choosenCountry.ourCountriesNeedsAndTheirValue.Clear();
+			}
+		}
+		AssighnChoosenNeedsValueToChoosenCountries(choosenNeeds, choosenCountries);
+	}          //Restart if something went wrong
+
+	                    void SubFunAssighnNumberToNeedsInEachCountry(List<Needs> choosenNeeds, List<Country> choosenCountries)
 	{
 	    
 		foreach(Needs needToAssighnItsNumbers in choosenNeeds)              //for each need to through the process to assighn numbers
@@ -281,8 +309,7 @@ public class NeedValueAssighnerWorker : MonoBehaviour
 		}
 	}
 
-
-	void SubSubFunDistribute_thisValueOfInbalance_upoun_theseCounters(int valueIfInballance,List<Country> countriesToDistributeUpoun,int inverementDirection_Neg1_Or_Pos1,ref Dictionary<Country,int> dictionaryofOutputValue)
+	                                  void SubSubFunDistribute_thisValueOfInbalance_upoun_theseCounters(int valueIfInballance,List<Country> countriesToDistributeUpoun,int inverementDirection_Neg1_Or_Pos1,ref Dictionary<Country,int> dictionaryofOutputValue)
 	{
 
 		int valueOfDistrubution;

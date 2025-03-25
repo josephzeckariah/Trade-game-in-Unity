@@ -18,9 +18,11 @@ public class FitToScreenBehaviour : MonoBehaviour
 	//I///////////////////////////////////////////////////////////     Initalize       /////////////////////////////////////////////////////////////
 	private void Awake()
 	{
-		GameStateInformationProvider.ScreenSizeChanged += RepoSitionOpeningSign;
+		
 		
 		ourCanvasToFitIn = this.GetComponentInParent<Canvas>();
+
+		GameStateInformationProvider.ScreenSizeChanged += RepoSitionOpeningSign;
 	}
 
 

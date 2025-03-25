@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class UiChangeManager : MonoBehaviour
@@ -64,9 +65,9 @@ public class UiChangeManager : MonoBehaviour
 
 
 		/////////////////////////////////////////////////////////////       Position Sign and achor
-		transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);
-		transofrmOfNewSign.anchoredPosition3D = Vector3.zero;
+		/*transofrmOfNewSign.anchorMax = new Vector2(0.5f, 0.5f);
+		transofrmOfNewSign.anchorMin = new Vector2(0.5f, 0.5f);*/
+		transofrmOfNewSign.localPosition = Vector3.zero;
 
 
 	}
@@ -140,8 +141,7 @@ public class UiChangeManager : MonoBehaviour
 	{
 		MakeScreen(transparentBackground, ref transparentBackgroundCreated);
 		MakeScreen(languageChoosingUi, ref languageChoosingUiCreated);
-
-	
+		
 
 		/*MakeScreen(transparentBackground, ref transparentBackgroundCreated);
 		MakeScreen(openingUi, ref openingUiCreated);*/
@@ -154,6 +154,7 @@ public class UiChangeManager : MonoBehaviour
 
 		MakeScreen(openingUi, ref openingUiCreated);
 	}
+
 
 
 	//S///////////////////////////////////////////////////////////     opening screen buttons reactions        /////////////////////////////////////////////////////////////

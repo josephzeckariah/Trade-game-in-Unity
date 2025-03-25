@@ -62,6 +62,7 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 
 	}
 
+
 	void ClearExchangesMade()
 	{
 		foreach (Exchange exchange in ourExchangesCreated)
@@ -69,13 +70,16 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 			exchange.ForighnOrderCancelLine();
 		}
 		ourExchangesCreated.Clear();
+
+		GameStateInformationProvider.numberOfExchangesCompleted = 0;
 	}
 
 
 
 
-	//I///////////////////////////////////////////////////////////     2 Ienumerators for the 2 Choosing phases       /////////////////////////////////////////////////////////////
+	////////////////////////////I///////////////////////////////////////////////////////////     2 Ienumerators for the 2 Choosing phases       /////////////////////////////////////////////////////////////
 
+	//I///////////////////////////////////////////////////////////     Continous check to Start exchange       /////////////////////////////////////////////////////////////
 	IEnumerator ContinousCheckForStartingAnExchange()
 	{
 		yield return new WaitForSecondsRealtime(0.5f);      //wait to avoid glitches
@@ -87,6 +91,9 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 
 	}
 
+
+
+	//I///////////////////////////////////////////////////////////     Continous check to End exchange       /////////////////////////////////////////////////////////////
 	IEnumerator ContinousCheckForCompletingAnExchange(Need secondSignHit)
 	{
 		yield return new WaitForSecondsRealtime(0.5f);     //wait to avoid glitches
@@ -120,7 +127,8 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 	               delegate void actionsTakesANeed(Need sighnHit,Need optionalNeedSelected);
 	               void SubIenumCheckInputToSelectASign(actionsTakesANeed actionToDoUpounNeedHit,Need optionalNeedForChecking)
 	{
-		if (Input.GetKeyUp(KeyCode.Mouse0))
+
+		if (Input.GetKeyUp(KeyCode.Mouse0) )
 		{
 			Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
 			RaycastHit hitInfo = new RaycastHit();
@@ -130,6 +138,24 @@ public class MouseExchangeManager : MonoBehaviour      //the mouseExchangeManage
 				if (hitInfo.collider.gameObject.TryGetComponent<Need>(out Need needOfSighnHit))
 				{
 					actionToDoUpounNeedHit(needOfSighnHit, optionalNeedForChecking);
+				}
+			}
+		}
+
+		if(Input.touchCount > 0)
+		{
+			
+			if(Input.GetTouch(Input.touchCount-1).phase == TouchPhase.Began)
+			{
+				Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.GetTouch(Input.touchCount - 1).position), Camera.main.transform.forward);
+				RaycastHit hitInfo = new RaycastHit();
+
+				if (Physics.Raycast(ray, out hitInfo))
+				{
+					if (hitInfo.collider.gameObject.TryGetComponent<Need>(out Need needOfSighnHit))
+					{
+						actionToDoUpounNeedHit(needOfSighnHit, optionalNeedForChecking);
+					}
 				}
 			}
 		}

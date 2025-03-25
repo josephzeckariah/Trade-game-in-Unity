@@ -117,8 +117,27 @@ public  class GameMaker : MonoBehaviour
 		}
 	}
 
+	//Debug
+/*	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.A))
+		{
 
+			foreach (Country countryToTellToSTart in countriesLoadedAccordingToGameMode)
+			{
+				countryToTellToSTart.ourCountriesNeedsAndTheirValue.Clear();
+				foreach (Need sign in countryToTellToSTart.ourCountriesSigns)
+				{
+					Destroy(sign.gameObject);
+				}
+				countryToTellToSTart.ourCountriesSigns.Clear();
+				Destroy(countryToTellToSTart.ourmainSign.gameObject);
+			}
 
+			StartGame();
+		}
+
+	}*/
 
 
 

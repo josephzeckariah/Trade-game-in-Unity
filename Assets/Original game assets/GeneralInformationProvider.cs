@@ -28,6 +28,7 @@ public class GeneralInformationProvider : MonoBehaviour
 	public static GameObject needSighnTemplate;
 
 	public static Dictionary<string, string> needsNamesAndTranslation = new Dictionary<string, string>();
+	public static bool gameIsOnMobile;
 	//public static Dictionary<Country, string>  countryNamesAndTranslation = new Dictionary<Country, string>();
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +39,8 @@ public class GeneralInformationProvider : MonoBehaviour
 		AssighnSprites();
 
 		AssighnNeedNames();
+
+		StartCoroutine(CheckIfGameIsOnMobile());
 	}
 	                      void AssighnSprites()
 	{
@@ -53,7 +56,7 @@ public class GeneralInformationProvider : MonoBehaviour
 		Smile = SmileSprite;
 	}
 
-	                       void AssighnNeedNames()
+	                      void AssighnNeedNames()
 	{
 		needsNamesAndTranslation.Add(Needs.Food.ToString(), "الطعام");
 		needsNamesAndTranslation.Add(Needs.Materials.ToString(), "الخامات");
@@ -61,19 +64,20 @@ public class GeneralInformationProvider : MonoBehaviour
 		needsNamesAndTranslation.Add(Needs.Machines.ToString(), "الماكينات");
 	}
 
-/*	void AssighnCountryNames()
+
+	                       IEnumerator CheckIfGameIsOnMobile()
 	{
-		List<Country> countriesInGmae = new List<Country>();
-
-		foreach(Country country in FindObjectsOfType(typeof(Country)))
+		while (true)
+		{
+			if(Input.touchCount> 0)
 			{
-			countryNamesAndTranslation.Add(country,"");
+				gameIsOnMobile = true;
+				yield break;
+			}
+
+			yield return null;
 		}
-		countryNamesAndTranslation[0]
-
-
-}*/
-
+	}
 
 
 }

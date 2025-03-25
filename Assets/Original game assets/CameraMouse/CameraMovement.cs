@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -88,22 +89,26 @@ public class CameraMovement : MonoBehaviour
 		this.transform.position = CentrePointDependingGameType;
 
 	}
-	void OnAllSigns100()
-	{
-		StopCoroutine(ourMouseOnEdgeCameraMovement);
-		StartCoroutine(EndAnimation());
-	}
 
-	               IEnumerator MoveCameraIfOnEdgeOfScreen()
+
+	                                 IEnumerator MoveCameraIfOnEdgeOfScreen()
 	{
-		while(true)
+		while (true)
 		{
 			ContinousCalculateCameraMovementFromMousePosition();
 			yield return null;
 		}
 	}
-	                     void ContinousCalculateCameraMovementFromMousePosition()
+	                                             void ContinousCalculateCameraMovementFromMousePosition()
 	{
+		if (GeneralInformationProvider.gameIsOnMobile)
+		{
+			if (Input.touchCount == 0)
+			{
+				return;
+			}
+		}
+
 		Vector3 mousePostionInViewPort = ourCamera.ScreenToViewportPoint(Input.mousePosition);
 		Vector3 translateAmount = new Vector3();
 		//Get the y axis Movemeent and save it translateAmount variable
@@ -153,6 +158,13 @@ public class CameraMovement : MonoBehaviour
 		ourCamera.transform.Translate(translateAmount * Time.deltaTime * cameraMovementSpeed, Space.Self);
 
 
+	}
+
+
+	void OnAllSigns100()
+	{
+		StopCoroutine(ourMouseOnEdgeCameraMovement);
+		StartCoroutine(EndAnimation());
 	}
 
 

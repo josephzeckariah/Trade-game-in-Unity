@@ -31,7 +31,7 @@ public class SignShowingManager : MonoBehaviour  //the script job is to decide w
 	List<ImaginationSign> signsMadeAndAreOnScreen = new List<ImaginationSign>();
 	List<ImaginationSign> tutorialSignsMadeAndAreOnScreen = new List<ImaginationSign>();
 	/////////////////////////////////////////////////////////////
-	float timeBetweenSignSpawn = 9f;
+	float timeBetweenSignSpawn = 11f;
 
 	/////////////////////////////////////////////////////////////
 	Coroutine ourGeneralSignCycle;
