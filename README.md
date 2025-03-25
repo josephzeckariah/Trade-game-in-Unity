@@ -1,3 +1,3 @@
 # Trade-game-in-Unity
-![Cover poster](Commerce game cover poster english.png)
+![Cover poster](Commerce_game_cover_poster_english.png)
 
