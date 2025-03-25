@@ -1,2 +1,2 @@
 # test-decomprissing-educational-software
- dsa
+A simple trade game
